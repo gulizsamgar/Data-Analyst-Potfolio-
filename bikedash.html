@@ -72,64 +72,62 @@
                                                                           <li>Eksik veri olup olmadığı kontrol edilmiş ve tüm alanların veri tipleri uygun şekilde düzenlenmiştir.</li>
                                                                         </ul>
 									<img src="images/excelbikework1.png" alt="Excel Worksheet after Data Cleaning" style="width:1000px;height:500px;" data-position="center center" />
-									<p><i>Resim 1: Temizlenmiş veri setinin görünümü</i></p>
+									<p><i>Resim 1. Temizlenmiş veri setinin görünümü</i></p>
 									<p>Bu adımlar, verilerin analiz için doğru biçimde biçimlendirilmesini ve doğru sonuçlar vermesini sağlamak için önemliydi. Başlangıçta 1026 kayıt bulunan veri seti, temizlik sonrası 1000 kayda düşmüştür.</p>
 									
 									<h2>Analiz (Analysis)</h2>
-									<p>Now that we have clean data, we can perform exploratory data analysis to gain insights and patterns in the data.</p>
+									<p>Veri temizlendikten sonra, keşifsel veri analizleri gerçekleştirmek ve iç görüler elde etmek amacıyla aşağıdaki iş sorularına odaklanılmıştır:</p>
 									<h4>Business Questions:</h4>
 									<ol>
-										<li>What is the most common age group of customers who purchase bikes from the shop?</li>
-										<li>What is the most common gender of customers who purchase bikes from the shop?</li>
-										<li>What is the most common income range of customers who purchase bikes from the shop?</li>
-										<li>What is the most common education level of customers who purchase bikes from the shop?</li>
-										<li>What is the most common occupation of customers who purchase bikes from the shop?</li>
-										<li>What is the most common region of customers who purchase bikes from the shop?</li>
-										<li>What is the most common commute distance of customers who purchase bikes from the shop?</li>
-										<li>What is the most common number of cars owned by customers who purchase bikes from the shop?</li>
-										
-										<li>Does the marital status of customers have any correlation with the likelihood of purchasing a bike from the shop?</li>
-										<li>Does being a home owner have any correlation with the likelihood of purchasing a bike from the shop?</li>
+										<li>1. Mağazadan bisiklet satın alan müşterilerin en yaygın yaş grubu hangisidir?</li>
+										<li>2. Mağazadan bisiklet satın alan müşterilerin en yaygın cinsiyeti nedir?</li>
+										<li>3. Mağazadan bisiklet satın alan müşterilerin en yaygın gelir aralığı nedir?</li>
+										<li>4. Mağazadan bisiklet satın alan müşterilerin en yaygın eğitim düzeyi nedir?</li>
+										<li>5. Mağazadan bisiklet satın alan müşterilerin en yaygın mesleği nedir?</li>
+										<li>6. Mağazadan bisiklet satın alan müşterilerin en yaygın bölgesi neresidir?</li>
+										<li>7. Mağazadan bisiklet satın alan müşterilerin en yaygın işe gidip gelme mesafesi nedir?</li>
+										<li>8. Mağazadan bisiklet satın alan müşterilerin sahip olduğu en yaygın araba sayısı nedir?</li>
+										<li>9. Müşterilerin medeni durumlarının mağazadan bisiklet satın alma olasılığıyla bir ilişkisi var mıdır?</li>
+										<li>10. Ev sahibi olmanın, dükkandan bisiklet satın alma olasılığıyla bir ilgisi var mı?</li>
 									</ol>
 
-									<p>By answering these questions, the bike shop can develop a better understanding of their ideal customer and tailor their marketing strategies to attract more of these customers.</p>
+									<p>Bu sorulara verilen yanıtlar, mağazanın hedef müşteri kitlesini daha iyi anlamasını ve pazarlama stratejilerini buna göre şekillendirmesini sağlayacaktır.</p>
 									
 									<h2>Veri Keşfi (Data Exploration)</h2>
-									<p>We will start by segmenting the customers based on their age, gender, income, marital status, etc.</p>
+									<p>Müşteriler; yaş, cinsiyet, gelir, medeni durum gibi kriterlere göre segmentlere ayrılmıştır.</p>
 
-									<p> I used the customer data to create pivot tables that grouped the customers based on different criteria. Using these groups, I created charts that show key insights. Additionally, differnt functions were used to perform calculations.</p>
+									<p> Pivot tablolar yardımıyla bu gruplamalar yapılmış, ardından bu gruplar kullanılarak grafikler oluşturulmuş ve öne çıkan veriler görselleştirilmiştir. Ayrıca bazı hesaplamalar için farklı Excel fonksiyonları da kullanılmıştır.</p>
 									<img src="images/excelbikepivot.png" alt="Excel Analysis" style="width:1000px;height:500px;" data-position="center center" />
-									<p><i>Fig 2. This image shows the different pivot tables and charts.</i></p>
+									<p><i> Resim 2. Pivot tablolar ve grafiklerle analiz görünümü</i></p>
 
-									<p>To make it easy to view all this information at once, I created a dashboard that displays all the charts. I also added a slicer to the dashboard, which allows users to filter the data based on different criteria. This makes it easy to identify the customer segments that are most likely to purchase a bike.</p>
+									<p>Tüm bu analizlerin tek sayfada izlenebilmesi için bir dashboard (gösterge paneli) oluşturulmuştur. Bu panele dilimleyiciler (slicers) eklenmiş ve böylece kullanıcıların verileri filtreleyerek belirli müşteri segmentlerine kolayca ulaşması sağlanmıştır.</p>
 									<img src="images/excelfinalbikedashboard.png" alt="Excel Sales Dashboard" style="width:1000px;height:500px;" data-position="center center" />
-									<p><i>Fig 3. This image shows the Bike Sales Dashboard.</i></p>
+									<p><i> Resim 3. Bisiklet Satış Dashboard’u</i></p>
 
 									<h3>Temel Bulgular (Key Findings)</h3>
 
-									<p>Using the dashboard, we were able to determine the following insights:
-									</p>
+									<p>Dashboard yardımıyla şu içgörülere ulaşılmıştır:</p>
 									<ul>
-										<li>Age group: The largest group of bike purchasers falls within the middle age range of 31-50.</li>
-										<li>Education level: The majority of customers who purchase bikes have completed partial high school education.</li>
-										<li>Occupation: The most prevalent occupation among bike purchasers is in management.</li>
-										<li>Region: North America is the region where most bike purchases are made.</li>
-										<li>Commute distance: Most bike purchasers have a commute distance of 0-1 mile.</li>
-										<li>Number of cars owned: The majority of bike purchasers own 0-1 cars.</li>
-										<li>Number of children: Most bike purchasers do not have children.</li>										
-										<li>Marital status: Married customers are more likely to purchase a bike, possibly due to their combined income being greater than that of a single income household.</li>
-										<li>Home ownership: There is no significant correlation between being a homeowner and the likelihood of purchasing a bike.</li>
+										<li>Yaş Grubu: En çok bisiklet satın alanlar 31–50 yaş arasındadır.</li>
+										<li>Eğitim Seviyesi: Çoğunlukla lise mezunu olmayanlar (partial high school) satın alma yapmıştır.</li>
+										<li>Meslek: Bisiklet satın alanlar arasında en yaygın meslek yöneticiliktir.</li>
+										<li>Bölge: Satışların çoğu Kuzey Amerika bölgesindedir.</li>
+										<li>Gidip Gelme Mesafesi: Çoğu bisiklet alıcısı 0–1 mil arası bir işe gidip gelme mesafesine sahiptir.</li>
+										<li>Araba Sayısı: Genellikle 0–1 araca sahip bireyler bisiklet satın almıştır.</li>
+										<li>Çocuk Sayısı: Bisiklet satın alanların çoğunun çocuğu yoktur.</li>										
+										<li>Medeni Durum: Evli bireyler, bisiklet alma konusunda daha yüksek orana sahiptir. Bu durum çift gelir etkisine bağlanabilir.</li>
+										<li>Ev Sahipliği: Ev sahibi olmanın bisiklet satın alma kararına anlamlı bir etkisi gözlemlenmemiştir.</li>
 									  </ul>
 
 
 									<h3>Öneriler (Recommendations)</h3>
-									<p>Bu bulgulara dayanarak, satışları artırmak için işletme şu uygulanabilir adımları hayata geçirebilir:</p>
+									<p>Bu bulgular doğrultusunda satışları artırmak için şu stratejiler önerilmektedir:</p>
 									<ul>
-										<li>Target marketing efforts towards the middle age range of 31-50, which is the largest group of bike purchasers. This can be done through targeted advertisements, promotions, and events.</li>
-										<li>Cater to the needs and interests of customers in management positions, who are the most prevalent occupation among bike purchasers. This can be done by offering high-end, performance-focused bikes and accessories.</li>
-										<li>Focus sales efforts on North America, which is the region where most bike purchases are made. This can involve increasing inventory and offering promotions specific to this region.</li>
-										<li>Cater to married customers by offering high-end, performance-focused bikes and accessories. Additionally, consider offering promotions for couples who purchase bikes together.</li>
-										<li>Offer affordable bike options for customers who own 2+ cars. The minority of bike purchasers own 2+ cars, this may due to the fact that they are financing the vehicles they own. This can involve offering financing or payment plans for high-end bikes.</li>
+										<li>Pazarlama çabaları, bisiklet satın alanların en büyük grubu olan 31-50 yaş aralığındaki orta yaş grubuna yöneltilmeli. Bu, hedefli reklamlar, promosyonlar ve etkinlikler aracılığıyla yapılabilir.</li>
+										<li>Bisiklet satın alanlar arasında en yaygın meslek olan yönetici pozisyonundaki müşterilerin ihtiyaç ve ilgi alanlarına hitap edilmeli. Bu, üst düzey, performans odaklı bisikletler ve aksesuarlar sunarak yapılabilir.</li>
+										<li>Bisiklet satın alma işlemlerinin çoğunun yapıldığı bölge olan Kuzey Amerika pazarına odaklanılmalı. Bu, envanteri artırmayı ve bu bölgeye özgü promosyonlar sunmayı içerebilir.</li>
+										<li>Evli müşterilere yönelik “çift alım” kampanyaları veya özel tekliflerle satın alma teşvik edilmeli.</li>
+										<li>2+ araç sahibi bireyler için daha uygun fiyatlı bisiklet seçenekleri sunulmalı. Bisiklet satın alanların azınlığı 2'den fazla arabaya sahiptir, bunun nedeni sahip oldukları araçları finanse etmeleri olabilir. Bu, üst düzey bisikletler için finansman veya ödeme planları sunmayı içerebilir.</li>
 									</ul>
 
 									<p>Sonuç olarak, bu bulgular bisiklet alıcılarının demografisi ve tercihleri ​​hakkında değerli içgörüler sağlar. Bu uygulanabilir adımları uygulayarak, işletme satışları iyileştirebilir ve hedef pazarının ihtiyaç ve ilgi alanlarına daha iyi hitap edebilir.</p>
