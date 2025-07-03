@@ -57,25 +57,33 @@
 							<section id="one">
 								<div class="inner">
 									<header class="major">
-										<h1>Data Professional Survey: Analyzing Employee Churn</h1>
+										<h1>Data Professional Survey Dashboard: Veriye Dayalı Kariyer Analizi</h1>
 									</header>
 									<!--<span class="image main"><img src="images/pic11.jpg" alt="" /></span> -->
-									<h2>Goal</h2>
-									<p>The HR Analytics Dashboard project aims to identify the factors contributing to employee churn and provide actionable insights to reduce employee turnover rate, improve employee retention, and enhance overall organizational performance.</p>
-									<a href="https://github.com/tiannaparris/PortfolioProjects/blob/main/HR%20Analytics.pbix" target="_blank">Download from GitHub!</a>
+									<h2>Hedef</h2>
+									<p>Veri Uzmanları Anketi projesinin amacı, dünya çapında veri profesyonelleri hakkında toplanan anket verilerini analiz ederek önemli içgörüler elde etmektir. Çalışanların kariyer değişiklikleri, maaş aralıkları, sektör tercihleri, iş memnuniyeti ve teknik becerileri gibi faktörler analiz edilerek, veri dünyasındaki trendler ve fırsatlar incelenmektedir. Elde edilecek bilgiler, kurumların veri odaklı stratejik karar süreçlerine katkı 
+                                                                         sağlayarak genel performansı iyileştirmesine yardımcı olacaktır.</p>
+									<a href="https://github.com/tiannaparris/PortfolioProjects/blob/main/HR%20Analytics.pbix" target="_blank">GitHub'dan indirin!</a>
 									<p></p>
 
-									<h2>Background Information</h2>
-									<p>The dataset includes information about employees in the company. It contains various attributes such as the employee's age, gender, job role, education, department, and marital status. Other information in the dataset includes the employee's daily rate, monthly income, training history, work experience, job satisfaction, and performance ratings. Additionally, the dataset includes a column for attrition, which indicates whether an employee has left the company or is still employed.</p>
+									<h2>Arka Plan Bilgisi (Veri Seti Bilgisi)</h2>
+									<p>Veri seti, dünya genelinden 630 veri uzmanının cevaplarından oluşan bir anket verisini içerir. Kayıtlarda katılımcının yaşı, cinsiyeti, ülkesi, eğitim durumu, iş unvanı, yıllık maaş aralığı, tercih ettiği programlama dilleri, iş tatmin derecesi ve iş-yaşam dengesi memnuniyeti gibi çeşitli bilgiler bulunur. Bu özellikler, veri uzmanlarının demografik profillerini ve mesleki eğilimlerini ayrıntılı olarak analiz etmemize imkân tanır.</p>
 									
 									<p></p>
 
 
-									<h2>Setup</h2>
-									<p>The first step in the project involved data cleaning to ensure accurate analysis. This included removing any duplicate entries to avoid potential biases in the dataset. To facilitate better visualization of the data, I created age groups and ranges for monthly income. Furthermore, I verified that there was no missing data and that each field had the correct data type using Power BI's query tool.</p>
+									<h2>Kurulum</h2>
+									<p>Projeye başlamadan önce Power BI içindeki Power Query aracı kullanılarak kapsamlı bir veri temizleme ve hazırlık süreci gerçekleştirildi. Analiz için gerekli olmayan sütunlar (örneğin tarih, tarayıcı, işletim sistemi bilgileri) veri setinden kaldırıldı. Eksik veriler kontrol edildi ve veri tiplerinin uygunluğu sağlandı.</p>
+									<p>Verilerin daha anlamlı ve görselleştirilebilir hale gelmesi amacıyla şu düzenlemeler yapıldı:</p>
+									 <ul>
+                                                                          <li>İş Unvanı Segmentasyonu: Katılımcıların iş unvanları farklı şekilde yazılmış olsa da (örneğin "Analyst", "Fianance Analyst", "Business Analyst" vb.), analiz kolaylığı sağlamak amacıyla benzer roller gruplandırıldı. "Other" seçeneği üzerinden girilen tüm farklı unvanlar da tek bir “Other” grubu altında birleştirildi.</li>
+                                                                          <li>Favori Program Dilleri: Katılımcıların en çok sevdikleri programlama dili veya araçları belirtmeleri için açık uçlu "Other" seçeneği mevcuttu. Ancak veri çeşitliliği yüksek olduğundan, bu girişler de tek bir "Other" grubu altında birleştirildi.</li>
+                                                                          <li>Maaş Aralıkları: Metinsel olarak belirtilen maaş aralıkları, ortalama sayısal değerlere dönüştürüldü.</li>
+                                                                          <li>Ülke Dağılımı: Katılımcılar, mevcut listede olmayan ülkeleri de "Other" seçeneğiyle manuel olarak girdi. Bu farklı ülke isimleri analiz açısından gruplanarak yine "Other" başlığı altında birleştirildi.</li>
+                                                                        </ul>
 									<img src="images/powerbitransform.png" alt="HR Data after transformation" style="width:1000px;height:500px;" data-position="center center" />
-									<p><i>Fig 1. This image shows the dataset after it was loaded.</i></p>
-									<p>These steps were essential to ensure that the data was properly formatted for analysis and would yield accurate results.</p>
+									<p><i>Resim 1. Temizlenmiş, dönüştürülmüş veri setinin görünümü</i></p>
+									<p>Bu adımlar, verinin analiz için uygun formatta olmasını sağlayarak elde edilen sonuçların güvenilirliğini artırmıştır.</p>
 									
 									<h2>Dashboard Design and Creation.</h2>
 									<p>With the processed data, I created a HR analytics dashboard that presents key insights on employee attrition. The dashboard includes charts showing attrition rates by department, age, salary, and job satisfaction, providing a comprehensive view of factors contributing to attrition within the company. These visualizations can help inform HR decision-making and guide targeted efforts to reduce attrition and retain valuable employees.</p>
@@ -88,8 +96,8 @@
 
 
 
-									<h2>Conclusion</h2>
-									<p>The HR analytics dashboard created using Power BI is a powerful tool for making informed decisions about employee attrition. It demonstrates my skills in data analysis and visualization. The skills I have acquired in this project can be applied to various industries and domains, helping organizations make data-driven decisions and achieve their goals.</p>
+									<h2>Sonuç</h2>
+									<p>Power BI kullanılarak hazırlanan Veri Uzmanları Anketi Dashboard'u, veri profesyonellerinin profili hakkında bilgiye dayalı kararlar almayı kolaylaştıran güçlü bir araçtır. Bu proje, veri analizi ve görselleştirme konusundaki yetkinliklerimi ortaya koymaktadır. Elde ettiğim bu deneyimler, çeşitli sektörlerdeki organizasyonların veriye dayalı karar almasına ve hedeflerine ulaşmasına katkı sağlayacak becerileri kapsamaktadır.</p>
 
 									
 								</div>
