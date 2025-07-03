@@ -103,14 +103,15 @@
 									<p>Keşifsel veri analizi aşamasında, verinin temel özelliklerini anlamak için çeşitli görselleştirmeler oluşturuldu. 
 									Yaş ve cinsiyet bilgisini gösteren görsellerle katılımcı profili analiz edildi. Ülkeler bazında katılımcı sayısı ve ortalama maaş karşılaştırmaları yapıldı. Tercih edilen programlama dilleri ve iş/yaşam dengesi gibi memnuniyet seviyeleri incelenerek örüntüler ortaya çıkarıldı. 
 									Ayrıca tercih edilen iş unvanları ve kariyer geçiş eğilimleri de bu aşamada incelendi.
-									Elde edilen içgörüler, dashboard tasarımında hangi metriklerin öne çıkması gerektiğine dair yol gösterdi.</p>
-									
+										
 									<p>Bu analiz sürecinde daha güçlü içgörüler üretebilmek için Power BI üzerinde özel ölçümler (measures) oluşturuldu:</p>
 									<ul>
+										<li><code>Count of Takers</code>: Anketi yanıtlayan toplam katılımcı sayısını ölçmek için kullanıldı.</li>
+										<li><code>% Age Group</code>: Yaş gruplarının toplam içindeki yüzdesini göstermek için kullanıldı.</li>
+										<li><code>Female</code>, <code>Male</code>: Cinsiyetlere göre katılımcı sayısını ayıran temel ölçüler olarak tanımlandı.</li>
 										<li><code>% Female</code>, <code>% Male</code>: Cinsiyet dağılımını oransal olarak göstermek için hesaplandı.</li>
 										<li><code>Count of Takers</code>: Anketi yanıtlayan toplam katılımcı sayısını ölçmek için kullanıldı.</li>
-										<li><code>Female</code>, <code>Male</code>: Cinsiyetlere göre katılımcı sayısını ayıran temel ölçüler olarak tanımlandı.</li>
-										<li><code>% Age Group</code>:Yaş gruplarının toplam içindeki yüzdesini göstermek için kullanıldı.</li>
+									
 									</ul>
 									<p>Bu ölçümler sayesinde, dinamik görselleştirmelerle hem genel eğilimler hem de daha ince segmentlerdeki detaylar etkili şekilde analiz edilebildi.</p>
 									<p>Elde edilen bu içgörüler, sonrasında pano (dashboard) tasarımında hangi metriklerin öne çıkarılması gerektiğine dair yol gösterici olmuştur.</p>
@@ -119,7 +120,8 @@
  
 									<h2>Dasboard Tasarımı</h2>
 									<p>İşlenen veriler kullanılarak Power BI ortamında etkileşimli bir dashboard hazırlandı. Bu dashboard, veri uzmanlarının profiline dair önemli göstergeleri içerir.
-									Kullanılan görselleştirmeler arasında; katılımcı sayısını/yaşını vurgulayan kartlar, katılımcıların ülkelerini görselleştiren treemap, programlama dillerinin dağılımını gösteren kümeli sütun grafikler (Clustred columnn chart) ve iş/yaşam ile maaş memnuniyetini ölçen göstergeler (gauge) bulunmaktadır. Ayrıca kullanıcıların İş ünvanına göre filtreleme yapmalarını sağlayan dilimleyiciler (slicer) eklenmiştir. Dashboard'da belirli ana göstergeleri vurgulamak için kartlar ve önemli alanlara dikkat çekmek amacıyla şekiller kullanılmıştır. Bu sayede kullanıcılar, ihtiyaç duydukları verilere kolayca odaklanabilir.</p>
+									Kullanılan görselleştirmeler arasında; katılımcı sayısını/yaşını vurgulayan kartlar, katılımcıların ülkelerini görselleştiren treemap, yaş gruplarının katılımcı sayısındaki dağılımını ve yüzdesini gösteren alan grafik (area chart), programlama dillerinin dağılımını gösteren kümeli sütun grafikler (Clustred columnn chart) ve iş/yaşam ile maaş memnuniyetini ölçen göstergeler (gauge) bulunmaktadır. 
+									Ayrıca kullanıcıların iş ünvanına göre filtreleme yapmalarını sağlayan dilimleyiciler (slicer) eklenmiştir. Dashboard'da belirli ana göstergeleri vurgulamak için kartlar ve önemli alanlara dikkat çekmek amacıyla şekiller kullanılmıştır. Bu sayede kullanıcılar, ihtiyaç duydukları verilere kolayca odaklanabilir.</p>
 
 									<img src="images/powerbidash.png" alt="HR Analytics Dashboard" style="width:1000px;height:500px;" data-position="center center" />
 									<p><i>Resim 2. Veri Uzmanları Anketi dashboard'una ait bir görünüm.</i></p>
