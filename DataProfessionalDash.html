@@ -57,7 +57,7 @@
 							<section id="one">
 								<div class="inner">
 									<header class="major">
-										<h1>Data Professional Survey Dashboard: Veriye Dayalı Kariyer Analizi</h1>
+										<h1>Data Professional Survey Dashboard: Kariyer Analizi</h1>
 									</header>
 									<!--<span class="image main"><img src="images/pic11.jpg" alt="" /></span> -->
 									<h2>Hedef</h2>
@@ -68,7 +68,7 @@
 
 									<h2>Arka Plan Bilgisi (Veri Seti Bilgisi)</h2>
 									<p>Veri seti, dünya genelinden 630 veri uzmanının cevaplarından oluşan bir anket verisini içerir. Kayıtlarda katılımcının yaşı, cinsiyeti, ülkesi, eğitim durumu, iş unvanı, yıllık maaş aralığı, tercih ettiği programlama dilleri, iş tatmin derecesi ve iş-yaşam dengesi memnuniyeti gibi çeşitli bilgiler bulunur. Bu özellikler, veri uzmanlarının demografik profillerini ve mesleki eğilimlerini ayrıntılı olarak analiz etmemize imkân tanır.</p>
-									
+									<a href="https://github.com/tiannaparris/PortfolioProjects/blob/main/HR%20Analytics.pbix" target="_blank">GitHub'dan veri setini indirin!</a>
 									<p></p>
 
 
@@ -84,19 +84,56 @@
 									<img src="images/powerbitransform.png" alt="HR Data after transformation" style="width:1000px;height:500px;" data-position="center center" />
 									<p><i>Resim 1. Temizlenmiş, dönüştürülmüş veri setinin görünümü</i></p>
 									<p>Bu adımlar, verinin analiz için uygun formatta olmasını sağlayarak elde edilen sonuçların güvenilirliğini artırmıştır.</p>
-									
+
+								        <h2>Analiz (Analysis)</h2>
+									<p>Veri temizlendikten sonra, keşifsel veri analizleri gerçekleştirmek ve iç görüler elde etmek amacıyla aşağıdaki iş sorularına odaklanılmıştır:</p>
+									<h4>İş Soruları (Business Questions):</h4>
+									<ol>
+						
+                                                                           <li>Veri uzmanlarının cinsiyete göre ortalama maaşları arasında fark var mı?</li>
+                                                                           <li>Katılımcılar hangi ülkelerden gelmektedir ve ülke bazında ortalama maaşlar nelerdir?</li>
+                                                                           <li>En popüler programlama dilleri hangileridir?</li>
+                                                                           <li>Yaş, eğitim düzeyi ve iş unvanına göre demografik dağılımlar nasıldır?</li>
+                                                                           <li>İş tatmini ile ücret memnuniyeti arasında nasıl bir ilişki vardır?</li>
+    
+									</ol>
+
+									<h2>Veri Keşfi (Data Exploration)</h2>
+									<p>Keşifsel veri analizi aşamasında, verinin temel özelliklerini anlamak için çeşitli görselleştirmeler oluşturuldu. Yaş grubu ve cinsiyet dağılımını gösteren grafiklerle katılımcı profili analiz edildi. Ülkeler bazında katılımcı sayısı ve ortalama maaş karşılaştırmaları yapıldı. Tercih edilen programlama dilleri ve iş/yaşam dengesi gibi memnuniyet seviyeleri incelenerek örüntüler ortaya çıkarıldı. Elde edilen içgörüler, dashboard tasarımında hangi metriklerin öne çıkması gerektiğine dair yol gösterdi.</p>
+
+
 									<h2>Dashboard Design and Creation.</h2>
-									<p>With the processed data, I created a HR analytics dashboard that presents key insights on employee attrition. The dashboard includes charts showing attrition rates by department, age, salary, and job satisfaction, providing a comprehensive view of factors contributing to attrition within the company. These visualizations can help inform HR decision-making and guide targeted efforts to reduce attrition and retain valuable employees.</p>
+									<p>İşlenen veriler kullanılarak Power BI ortamında etkileşimli bir dashboard hazırlandı. Bu dashboard, veri uzmanlarının profiline dair önemli göstergeleri içerir.
+									Kullanılan görselleştirmeler arasında; katılımcı sayısını/yaşını vurgulayan kartlar, katılımcıların ülkelerini görselleştiren treemap, programlama dillerinin dağılımını gösteren kümeli sütun grafikler (Clustred columnn chart) ve iş/yaşam ile maaş memnuniyetini ölçen göstergeler (gauge) bulunmaktadır. Ayrıca kullanıcıların İş ünvanına göre filtreleme yapmalarını sağlayan dilimleyiciler (slicer) eklenmiştir. Dashboard'da belirli ana göstergeleri vurgulamak için kartlar ve önemli alanlara dikkat çekmek amacıyla şekiller kullanılmıştır. Bu sayede kullanıcılar, ihtiyaç duydukları verilere kolayca odaklanabilir.</p>
 									
 									
 									<img src="images/powerbidash.png" alt="HR Analytics Dashboard" style="width:1000px;height:500px;" data-position="center center" />
-									<p><i>Fig 2. This image shows the HR Analytics Dashboard.</i></p>
+									<p><i>Resim 2. Veri Uzmanları Anketi dashboard'una ait bir görünüm.</i></p>
 
-									<p>In addition to creating the charts mentioned earlier, I also added slicers to the HR analytics dashboard. These slicers allow the user to filter the data by various criteria such as department, job role, and education level. This provides a more dynamic and interactive user experience, allowing the user to explore the data in greater detail and gain deeper insights.</p>
+									<h2>Temel Bulgular (Key Findings)</h2>
+									<p>Dashboard yardımıyla aşağıdaki önemli içgörülere ulaşılmıştır:</p>
+									<ul>
+										<li>Veri uzmanlarının ortalama yaşı yaklaşık 29'dur (en genç 18, en yaşlı 92 yaşındadır).</li>
+										<li>Katılımcıların büyük çoğunluğu erkektir.</li>
+										<li>Veri uzmanlarının çoğu ABD'de bulunmaktadır; ABD, en yüksek katılımcı sayısına sahiptir.</li>
+										<li>Veri bilimciler, diğer meslek gruplarına göre en yüksek ortalama maaşa sahiptir.</li>
+										<li>Python, veri profesyonelleri arasında en sık tercih edilen programlama dilidir.</li>
+										<li>1-10 ölçeğinde, ortalama maaş memnuniyeti nispeten düşüktür.</li>
+										<li>İş/yaşam dengesi memnuniyeti ise ortalama seviyenin biraz üzerindedir.</li>
+									</ul>
 
+									<h2>Öneriler (Recommendations)</h2>
+                                                                        <p>Bu bulgular ışığında kurumlara aşağıdaki stratejiler önerilmektedir:</p>
+                                                                        <ul>
+										<li>Veri bilimcilerin sektörde yüksek talep gördüğü ve yüksek maaş aldığı göz önünde bulundurularak, bu alanda uzman yetiştirmek için eğitim ve kariyer geliştirme programları düzenlenebilir.</li>
+										<li>Ortalama maaş memnuniyetinin düşük olması nedeniyle, rekabetçi maaş ve yan hak politikaları gözden geçirilebilir.</li>
+										<li>Python gibi popüler programlama dillerinde eğitim ve kurs imkânları sağlanarak çalışanların yetkinliği artırılabilir.</li>
+										<li>Hibrit veya esnek çalışma modelleriyle çalışanların iş/yaşam dengesi desteği sürdürülebilir.</li>
+										<li>Kapsayıcı işe alım stratejileri ile özellikle kadın veri uzmanlarının oranı ve motivasyonu desteklenebilir.</li>
+									</ul>
+									
 
-
-									<h2>Sonuç</h2>
+									<h2>Sonuç (Conclusion)</h2>
 									<p>Power BI kullanılarak hazırlanan Veri Uzmanları Anketi Dashboard'u, veri profesyonellerinin profili hakkında bilgiye dayalı kararlar almayı kolaylaştıran güçlü bir araçtır. Bu proje, veri analizi ve görselleştirme konusundaki yetkinliklerimi ortaya koymaktadır. Elde ettiğim bu deneyimler, çeşitli sektörlerdeki organizasyonların veriye dayalı karar almasına ve hedeflerine ulaşmasına katkı sağlayacak becerileri kapsamaktadır.</p>
 
 									
