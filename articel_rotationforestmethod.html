@@ -54,11 +54,11 @@
 						<!-- One -->
 							<section id="one">
 								<div class="inner">
-									<header class="major">
-										<h1>Makale İncelemesi</h1>
-									</header>
-									<!--<span class="image main"><img src="images/pic11.jpg" alt="" /></span> -->
-									<p class="date-page">Haziran 2, 2025 &bull; <span class="small-text">5 sayfa</span></p>
+						<header class="major">
+					        <h1>Makale İncelemesi</h1>
+						</header>
+						<!--<span class="image main"><img src="images/pic11.jpg" alt="" /></span> -->
+						<p class="date-page">Haziran 2, 2025 &bull; <span class="small-text">5 sayfa</span></p>
                   
                   <p><strong>Makale:</strong> Customer Churn Prediction in Telecommunication</p>
                   <p><strong>Bağlantı:</strong> <a href="https://www.researchgate.net/publication/282981765_Customer_churn_prediction_in_telecommunication" target="_blank">Makale, ResearchGate platformunda yayınlanmıştır.</a></p>
@@ -68,89 +68,80 @@
                     Çalışmada, özellikle <strong>Rotation Forest</strong> yöntemi, <strong>AntMiner+</strong> ve <strong>C4.5 karar ağacı</strong> gibi algoritmalarla karşılaştırılmıştır. Veriler, ABD merkezli bir telekom şirketine ait 5000 müşteri kaydından oluşmaktadır. 
                     Makale, dengesiz veri setlerinin etkisini azaltmak için <strong>down sampling</strong> uygulamış, ardından farklı sınıflandırma yöntemlerinin doğruluk (accuracy), duyarlılık (sensitivity) ve özgüllük (specificity) oranlarını kıyaslamıştır. Rotation Forest algoritmasının, özellikle churn tahmininde en yüksek duyarlılığı sağlayarak diğer yöntemlerden daha başarılı olduğu sonucuna varılmıştır.</p>
 
-                  <h3>Yorum:</h3>
-                  <p>Makale, telekomünikasyon sektöründe müşteri kaybı (churn) tahminine odaklanıyor ve bu alandaki farklı veri madenciliği algoritmalarını performans açısından karşılaştırıyor. En dikkat çeken nokta, yalnızca modelin genel başarısına (doğruluk – accuracy) değil, ayrılma riski yüksek müşterileri doğru tahmin edebilme yeteneğine (duyarlılık – sensitivity) öncelik verilmesi. Çünkü müşteri churn tahmininde amaç, şirketi terk edecek müşterileri zamanında fark edip onları elde tutabilmek. Bu nedenle duyarlılık oranı, bu tür uygulamalarda en kritik metriktir.</p>
-                  <p>Makalede karşılaştırılan üç temel algoritma var:</p>
-
-                  <table border="1" cellspacing="0" cellpadding="6" style="border-collapse: collapse; margin-top: 10px;">
-  <caption><strong>Karşılaştırmalı Sınıflandırma Sonuçları</strong></caption>
-  <thead>
-    <tr style="background-color: #f2f2f2;">
-      <th>Yöntem</th>
-      <th>Accuracy (%)</th>
-      <th>Sensitivity (Duyarlılık) (%)</th>
-      <th>Specificity (Özgüllük) (%)</th>
+                  	<p>Makalede karşılaştırılan üç temel algoritma bulunuyor: <strong>Rotation Forest</strong>, <strong>AntMiner+</strong> ve <strong>C4.5</strong>. Bu algoritmalar, hem orijinal veriyle hem de veri dengesizliğini gidermek amacıyla kullanılan <em>down sampling</em> ve <em>oversampling</em> yöntemleriyle test edilmiştir. Her modelin performansı, üç önemli metrikle değerlendirilmiştir: <strong>Accuracy (doğruluk)</strong>, <strong>Sensitivity (duyarlılık)</strong> ve <strong>Specificity (özgüllük)</strong>.</p>
+	
+	<ul>
+	  <li><strong>Rotation Forest:</strong> Yeni nesil bir sınıflandırma algoritmasıdır. Çok sayıda karar ağacı (decision tree) modeli oluşturur, ancak her bir ağacı farklı veri alt kümeleriyle eğitir. Bu sayede hem çeşitlilik sağlanır hem de modelin öğrenme kapasitesi artar. Bu çalışmada, özellikle <strong>down sampling</strong> uygulandığında en yüksek <strong>duyarlılık (%84.57)</strong> değerine ulaşmıştır. Bu, churn riski yüksek müşterileri en doğru tespit eden yöntem olduğunu gösteriyor. Ayrıca orijinal veriyle kullanıldığında da duyarlılık %73.40 ile yine en üst düzeydedir.</li>
+	
+	  <li><strong>C4.5:</strong> Geleneksel bir karar ağacı algoritmasıdır ve "eğer-ise" kuralları üretir. Yorumlanması kolaydır ve iş kullanıcıları tarafından anlaşılabilir. <strong>Oversampling</strong> ile %80.82 duyarlılık oranına ulaşarak churn müşterilerini oldukça başarılı şekilde tahmin etmiştir. Ancak Rotation Forest’ın gerisinde kalmıştır.</li>
+	
+	  <li><strong>AntMiner+:</strong> Karınca kolonisi optimizasyonundan esinlenen bir algoritmadır. “Böl ve fethet” mantığıyla çalışır: önce tüm veriden bir kural çıkarır, bu kuralla kapsanan örnekleri veri setinden çıkarır ve kalan veriyle yeni kurallar üretir. Kurallara dayalı bir yapı sunduğu için anlaşılırdır;   En yüksek <strong>özgüllük (%99.71)</strong> değerini orijinal veriyle elde etmiştir, yani churn etmeyecek müşterileri çok iyi tanımlar. Ancak <strong>duyarlılığı düşüktür</strong> (%37.09 orijinal veride, %65.76 oversampling ile). Yani riskli müşterileri kaçırma olasılığı yüksektir.</li>
+	</ul>
+									<table style="width: 100%; border-collapse: collapse; font-family: Arial, sans-serif; margin-top: 16px;">
+  <caption style="caption-side: top; text-align: left; font-weight: bold; margin-bottom: 8px;">Karşılaştırmalı Sınıflandırma Sonuçları</caption>
+  <thead style="background-color: #1e1e2f; color: #ffffff;">
+    <tr>
+      <th style="padding: 10px; text-align: left;">Yöntem</th>
+      <th style="padding: 10px;">Accuracy (%)</th>
+      <th style="padding: 10px;">Sensitivity (Duyarlılık) (%)</th>
+      <th style="padding: 10px;">Specificity (Özgüllük) (%)</th>
     </tr>
   </thead>
-  <tbody>
+  <tbody style="background-color: #2c2c3e; color: #f1f1f1;">
     <tr>
-      <td>Rotation Forest (orijinal veri)</td>
-      <td>95.68</td>
-      <td><strong>73.40</strong></td>
-      <td>99.49</td>
+      <td style="padding: 10px;">Rotation Forest (orijinal veri)</td>
+      <td style="text-align: center;">95.68</td>
+      <td style="text-align: center; font-weight: bold;">73.40</td>
+      <td style="text-align: center;">99.49</td>
     </tr>
     <tr>
-      <td>C4.5 (orijinal veri)</td>
-      <td>93.59</td>
-      <td>64.93</td>
-      <td>98.34</td>
+      <td style="padding: 10px;">C4.5 (orijinal veri)</td>
+      <td style="text-align: center;">93.59</td>
+      <td style="text-align: center;">64.93</td>
+      <td style="text-align: center;">98.34</td>
     </tr>
     <tr>
-      <td>AntMiner+ (orijinal veri)</td>
-      <td>90.85</td>
-      <td>37.09</td>
-      <td><strong>99.71</strong></td>
+      <td style="padding: 10px;">AntMiner+ (orijinal veri)</td>
+      <td style="text-align: center;">90.85</td>
+      <td style="text-align: center;">37.09</td>
+      <td style="text-align: center; font-weight: bold;">99.71</td>
     </tr>
     <tr>
-      <td>Rotation Forest (down sampling)</td>
-      <td>92.49</td>
-      <td><strong>84.57</strong></td>
-      <td>96.46</td>
+      <td style="padding: 10px;">Rotation Forest (down sampling)</td>
+      <td style="text-align: center;">92.49</td>
+      <td style="text-align: center; font-weight: bold;">84.57</td>
+      <td style="text-align: center;">96.46</td>
     </tr>
     <tr>
-      <td>C4.5 (oversampling)</td>
-      <td>91.66</td>
-      <td>80.82</td>
-      <td>93.45</td>
+      <td style="padding: 10px;">C4.5 (oversampling)</td>
+      <td style="text-align: center;">91.66</td>
+      <td style="text-align: center;">80.82</td>
+      <td style="text-align: center;">93.45</td>
     </tr>
     <tr>
-      <td>AntMiner+ (oversampling)</td>
-      <td>93.15</td>
-      <td>65.76</td>
-      <td>97.72</td>
+      <td style="padding: 10px;">AntMiner+ (oversampling)</td>
+      <td style="text-align: center;">93.15</td>
+      <td style="text-align: center;">65.76</td>
+      <td style="text-align: center;">97.72</td>
     </tr>
   </tbody>
 </table>
+
+
+								
 	
-	<ul>
-	  <li>
-	    <strong>Rotation Forest:</strong> Yeni nesil bir sınıflandırma algoritmasıdır. Çok sayıda karar ağacı (decision tree) modeli oluşturur, ancak her bir ağacı farklı veri alt kümeleriyle eğitir. Bu alt kümeler, <em>Principal Component Analysis (PCA)</em> adlı bir teknikle dönüştürülür. Bu sayede hem çeşitlilik sağlanır hem de modelin öğrenme kapasitesi artar. Rotation Forest, bu çalışmada en yüksek duyarlılığı (%84,57) sağlayarak, churn riski taşıyan müşterileri en doğru şekilde tespit eden yöntem olmuştur.
-	  </li>
+	<p>Burada dikkat edilmesi gereken nokta şudur: <strong>Accuracy (doğruluk)</strong> tek başına yeterli bir performans ölçütü değildir. Özellikle churn tahmininde asıl hedef, ayrılma riski olan müşterileri <em>kaçırmadan</em> tespit edebilmektir. Bu nedenle <strong>duyarlılık (sensitivity)</strong> metriği çok daha önemlidir. Rotation Forest, bu açıdan tüm varyasyonlarda en güçlü sonuçları vermiştir.</p>
 	
-	  <li>
-	    <strong>AntMiner+:</strong> Karınca kolonisi optimizasyonundan esinlenen bir algoritmadır. “Böl ve fethet” mantığıyla çalışır: önce tüm veriden bir kural çıkarır, bu kuralla kapsanan örnekleri veri setinden çıkarır ve kalan veriyle yeni kurallar üretir. Kurallara dayalı bir yapı sunduğu için anlaşılırdır; fakat churn müşterilerini belirlemede duyarlılığı daha düşüktür (%65,76).
-	  </li>
+	<p>Makale ayrıca, orijinal veride churn oranının yalnızca %14,3 olması nedeniyle modellerin dengesiz veriyle başa çıkmakta zorlandığını vurguluyor. Bu sorunu çözmek için uygulanan <strong>down sampling</strong> ve <strong>oversampling</strong> teknikleri sayesinde, özellikle Rotation Forest ve C4.5 modellerinin duyarlılığı önemli ölçüde artmıştır.</p>
 	
-	  <li>
-	    <strong>C4.5:</strong> Geleneksel karar ağacı algoritmalarındandır. İf-else kuralları üretir ve yorumlaması kolaydır. Bu çalışmada %80,82 duyarlılıkla başarılı bir performans göstermiştir. Ancak Rotation Forest ile kıyaslandığında biraz daha düşük kalmaktadır.
-	  </li>
-	</ul>
+	<p>Son olarak, model performansı yalnızca teknik bir başarı olarak değil, potansiyel iş etkisiyle de ele alınmıştır. Örneğin, 1 milyon müşterisi olan bir operatör şirketi için %15 churn oranı varsayıldığında, Rotation Forest’ın diğer modellere kıyasla fazladan 30.000 müşteriyi doğru tespit edebileceği ve bunun da yıllık milyonlarca dolarlık gelir kaybını önleyebileceği hesaplanmıştır.</p>
 	
-	<p>
-	Makale, ayrıca veri dengesizliği (imbalanced data) sorununa da çözüm üretmiş. Çünkü orijinal veri setinde %14,3 churn oranı varken geri kalanı “churn olmayan” müşterilerden oluşuyor. Bu dengesizlik, modellerin çoğunluğu (non-churn) öğrenip azınlığı (churn) göz ardı etmesine yol açar. Bu sorunu aşmak için <strong>down sampling</strong> uygulanmış ve her bir alt kümede churn müşteriler artırılmış. Bu sayede özellikle Rotation Forest modelinin duyarlılığı ciddi oranda yükselmiştir.
-	</p>
-	
-	<p>
-	Yazarlar, modelin başarısını sadece sayılarla değil, olası ekonomik etkilerle de açıklıyor. Örneğin; 1 milyon müşteriden %15’inin ayrılma riski varsa, Rotation Forest yöntemi diğer modellere göre 30.000 müşteriyi fazladan elde tutabilir. Aylık ortalama fatura 100$ olduğunda bu, yıllık 3 milyon $ kazanç demektir.
-	</p>
-	
-	<p>
-	Sonuç olarak, bu çalışma sadece algoritmalar arası performans farklarını göstermekle kalmıyor, aynı zamanda veri hazırlamanın (sampling, PCA), metrik seçiminin (sensitivity vs. accuracy) ve model seçiminin işletme sonuçlarına nasıl etki ettiğini açıkça ortaya koyuyor. Bu yönüyle hem teknik hem stratejik bakış açısı kazandıran değerli bir kaynak niteliğindedir.
-	</p>
+	<p>Bu yönüyle makale, sadece algoritma kıyaslaması yapmıyor; aynı zamanda doğru metrik seçiminin, veri işleme yöntemlerinin ve model tercihinin işletme sonuçlarına doğrudan nasıl yansıdığını somut şekilde ortaya koyuyor.</p>
+
 	
 	<h3>Uygulama Fikri:</h3>
 	<p>
-	Bu çalışmada kullanılan churn tahmin modeli, benzer veri altyapısına sahip her şirket için uygulanabilir. <strong>Benzer veri altyapısı</strong> ifadesiyle şunu kastediyoruz: eğer bir şirketin elinde müşterilere ait şu bilgiler varsa — çağrı süresi, uluslararası görüşme kullanımı, müşteri hizmetleriyle iletişim sayısı, fatura tutarı, sesli mesaj tercihi gibi davranışsal ve demografik veriler — bu model doğrudan ya da küçük uyarlamalarla entegre edilebilir.
+	Bu çalışmada kullanılan churn tahmin modeli, benzer veri altyapısına sahip her şirket için uygulanabilir. Yani eğer bir şirketin elinde müşterilere ait şu bilgiler varsa — çağrı süresi, uluslararası görüşme kullanımı, müşteri hizmetleriyle iletişim sayısı, fatura tutarı, sesli mesaj tercihi gibi davranışsal ve demografik veriler — bu model doğrudan ya da küçük uyarlamalarla entegre edilebilir.
 	</p>
 	
 	<p>
