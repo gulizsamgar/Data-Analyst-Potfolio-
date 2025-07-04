@@ -68,7 +68,7 @@
                     Çalışmada, özellikle <strong>Rotation Forest</strong> yöntemi, <strong>AntMiner+</strong> ve <strong>C4.5 karar ağacı</strong> gibi algoritmalarla karşılaştırılmıştır. Veriler, ABD merkezli bir telekom şirketine ait 5000 müşteri kaydından oluşmaktadır. 
                     Makale, dengesiz veri setlerinin etkisini azaltmak için <strong>down sampling</strong> uygulamış, ardından farklı sınıflandırma yöntemlerinin doğruluk (accuracy), duyarlılık (sensitivity) ve özgüllük (specificity) oranlarını kıyaslamıştır. Rotation Forest algoritmasının, özellikle churn tahmininde en yüksek duyarlılığı sağlayarak diğer yöntemlerden daha başarılı olduğu sonucuna varılmıştır.</p>
 
-		<h2>Yorum:</h2>
+		<h3>Yorum:</h3>
                 <p>Makalede karşılaştırılan üç temel algoritma bulunuyor: <strong>Rotation Forest</strong>, <strong>AntMiner+</strong> ve <strong>C4.5</strong>. Bu algoritmalar, hem orijinal veriyle hem de veri dengesizliğini gidermek amacıyla kullanılan <em>down sampling</em> ve <em>oversampling</em> yöntemleriyle test edilmiştir. Her modelin performansı, üç önemli metrikle değerlendirilmiştir: <strong>Accuracy (doğruluk)</strong>, <strong>Sensitivity (duyarlılık)</strong> ve <strong>Specificity (özgüllük)</strong>.</p>
 	
 	<ul>
@@ -79,13 +79,13 @@
 	  <li><strong>AntMiner+:</strong> Karınca kolonisi optimizasyonundan esinlenen bir algoritmadır. “Böl ve fethet” mantığıyla çalışır: önce tüm veriden bir kural çıkarır, bu kuralla kapsanan örnekleri veri setinden çıkarır ve kalan veriyle yeni kurallar üretir. Kurallara dayalı bir yapı sunduğu için anlaşılırdır;   En yüksek <strong>özgüllük (%99.71)</strong> değerini orijinal veriyle elde etmiştir, yani churn etmeyecek müşterileri çok iyi tanımlar. Ancak <strong>duyarlılığı düşüktür</strong> (%37.09 orijinal veride, %65.76 oversampling ile). Yani riskli müşterileri kaçırma olasılığı yüksektir.</li>
 	</ul>
 <table style="width: 100%; border-collapse: collapse; font-family: Arial, sans-serif; margin-top: 16px;">
- <caption style="caption-side: top; text-align: center; font-weight: bold; margin-bottom: 10px; font-size: 6px;"> Karşılaştırmalı Sınıflandırma Sonuçları</caption>
+ <caption style="caption-side: top; text-align: center; font-weight: bold; margin-bottom: 10px; font-size: 10px;"> Karşılaştırmalı Sınıflandırma Sonuçları</caption>
   <thead style="background-color: #1e1e2f; color: #ffffff;">
     <tr>
       <th style="padding: 10px; text-align: left;">Yöntem</th>
-      <th style="padding: 10px;">Accuracy (%)</th>
-      <th style="padding: 10px;">Sensitivity (%)</th>
-      <th style="padding: 10px;">Specificity (%)</th>
+      <th style="padding: 10px;">Accuracy (Doğruluk) (%)</th>
+      <th style="padding: 10px;">Sensitivity (Duyarlılık)</th>
+      <th style="padding: 10px;">Specificity (Özgüllük)</th>
     </tr>
   </thead>
   <tbody style="background-color: #2c2c3e; color: #f1f1f1;">
