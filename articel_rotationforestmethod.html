@@ -1,0 +1,256 @@
+<!DOCTYPE HTML>
+<!--
+	Forty by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Makale İncelemesi - Customer Churn Prediction in Telecommunication </title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<a href="index.html" class="logo"><strong>Data Analyst Portfolio</strong> <span>by Güliz Samğar </span></a>
+						<nav>
+							<a href="#menu">Menü</a>
+						</nav>
+					</header>
+
+				<!-- Menu -->
+				<nav id="menu">
+					<ul class="links">
+						<li><a href="index.html">Ana Sayfa</a></li>
+						<li><a href="about.html">Hakkında</a></li>
+						<li><a href="#footer">İletişim</a></li>
+						 <div class="dropup">
+							<button class="dropbtn">Portfolyo Projeleri</button>
+							  <div class="dropup-content">
+									<a href="python.html">Python</a>
+									<a href="r.html">R</a>
+									<a href="sql.html">SQL</a>
+									<a href="excel.html">Excel</a>
+									<a href="https://public.tableau.com/app/profile/tianna.parris" target="_blank" class="link">Tableau</a>
+									<a href="powerbi.html">Power BI</a>
+								  <a href="articel.html">Makale</a>
+							</div>
+						 </div>	
+					</ul>						
+				</nav>
+
+
+				<!-- Main -->
+					<div id="main" class="alt">
+						
+
+						<!-- One -->
+							<section id="one">
+								<div class="inner">
+									<header class="major">
+										<h1>Makale İncelemesi</h1>
+									</header>
+									<!--<span class="image main"><img src="images/pic11.jpg" alt="" /></span> -->
+									<p class="date-page">Haziran 2015 &bull; <span class="small-text">6 sayfa</span></p>
+                  
+                  <p><strong>Makale:</strong> Customer Churn Prediction in Telecommunication</p>
+                  <p><strong>Bağlantı:</strong> <a href="https://www.researchgate.net/publication/282981765_Customer_churn_prediction_in_telecommunication" target="_blank">Makale, ResearchGate platformunda yayınlanmıştır.</a></p>
+                  
+                  <h3>Özet:</h3>
+                  <p>Bu makale, telekomünikasyon sektöründe müşteri kaybı (churn) tahminine yönelik veri madenciliği tekniklerini karşılaştırmalı olarak incelemektedir. Temel odak noktası, churn oranlarını önceden tahmin ederek şirketlerin müşteri kaybını azaltmasına katkı sağlamaktır. 
+                    Çalışmada, özellikle <strong>Rotation Forest</strong> yöntemi, <strong>AntMiner+</strong> ve <strong>C4.5 karar ağacı</strong> gibi algoritmalarla karşılaştırılmıştır. Veriler, ABD merkezli bir telekom şirketine ait 5000 müşteri kaydından oluşmaktadır. 
+                    Makale, dengesiz veri setlerinin etkisini azaltmak için <strong>down sampling</strong> uygulamış, ardından farklı sınıflandırma yöntemlerinin duyarlılık (sensitivity), özgüllük (specificity) ve doğruluk (accuracy) oranlarını kıyaslamıştır. Rotation Forest algoritmasının, özellikle churn tahmininde en yüksek duyarlılığı sağlayarak diğer yöntemlerden daha başarılı olduğu sonucuna varılmıştır.</p>
+
+                  <h3>Yorum:</h3>
+                  <p>Makale, telekomünikasyon sektöründe müşteri kaybı (churn) tahminine odaklanıyor ve bu alandaki farklı veri madenciliği algoritmalarını performans açısından karşılaştırıyor. En dikkat çeken nokta, yalnızca modelin genel başarısına (doğruluk – accuracy) değil, ayrılma riski yüksek müşterileri doğru tahmin edebilme yeteneğine (duyarlılık – sensitivity) öncelik verilmesi. Çünkü müşteri churn tahmininde amaç, şirketi terk edecek müşterileri zamanında fark edip onları elde tutabilmek. Bu nedenle duyarlılık oranı, bu tür uygulamalarda en kritik metriktir.</p>
+                  <p>Makalede karşılaştırılan üç temel algoritma var:</p>
+
+                  <table border="1" cellspacing="0" cellpadding="6" style="border-collapse: collapse; margin-top: 10px;">
+  <caption><strong>Karşılaştırmalı Sınıflandırma Sonuçları</strong></caption>
+  <thead>
+    <tr style="background-color: #f2f2f2;">
+      <th>Yöntem</th>
+      <th>Accuracy (%)</th>
+      <th>Sensitivity (Duyarlılık) (%)</th>
+      <th>Specificity (Özgüllük) (%)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Rotation Forest (orijinal veri)</td>
+      <td>95.68</td>
+      <td><strong>73.40</strong></td>
+      <td>99.49</td>
+    </tr>
+    <tr>
+      <td>C4.5 (orijinal veri)</td>
+      <td>93.59</td>
+      <td>64.93</td>
+      <td>98.34</td>
+    </tr>
+    <tr>
+      <td>AntMiner+ (orijinal veri)</td>
+      <td>90.85</td>
+      <td>37.09</td>
+      <td><strong>99.71</strong></td>
+    </tr>
+    <tr>
+      <td>Rotation Forest (down sampling)</td>
+      <td>92.49</td>
+      <td><strong>84.57</strong></td>
+      <td>96.46</td>
+    </tr>
+    <tr>
+      <td>C4.5 (oversampling)</td>
+      <td>91.66</td>
+      <td>80.82</td>
+      <td>93.45</td>
+    </tr>
+    <tr>
+      <td>AntMiner+ (oversampling)</td>
+      <td>93.15</td>
+      <td>65.76</td>
+      <td>97.72</td>
+    </tr>
+  </tbody>
+</table>
+	
+	<ul>
+	  <li>
+	    <strong>Rotation Forest:</strong> Yeni nesil bir sınıflandırma algoritmasıdır. Çok sayıda karar ağacı (decision tree) modeli oluşturur, ancak her bir ağacı farklı veri alt kümeleriyle eğitir. Bu alt kümeler, <em>Principal Component Analysis (PCA)</em> adlı bir teknikle dönüştürülür. Bu sayede hem çeşitlilik sağlanır hem de modelin öğrenme kapasitesi artar. Rotation Forest, bu çalışmada en yüksek duyarlılığı (%84,57) sağlayarak, churn riski taşıyan müşterileri en doğru şekilde tespit eden yöntem olmuştur.
+	  </li>
+	
+	  <li>
+	    <strong>AntMiner+:</strong> Karınca kolonisi optimizasyonundan esinlenen bir algoritmadır. “Böl ve fethet” mantığıyla çalışır: önce tüm veriden bir kural çıkarır, bu kuralla kapsanan örnekleri veri setinden çıkarır ve kalan veriyle yeni kurallar üretir. Kurallara dayalı bir yapı sunduğu için anlaşılırdır; fakat churn müşterilerini belirlemede duyarlılığı daha düşüktür (%65,76).
+	  </li>
+	
+	  <li>
+	    <strong>C4.5:</strong> Geleneksel karar ağacı algoritmalarındandır. İf-else kuralları üretir ve yorumlaması kolaydır. Bu çalışmada %80,82 duyarlılıkla başarılı bir performans göstermiştir. Ancak Rotation Forest ile kıyaslandığında biraz daha düşük kalmaktadır.
+	  </li>
+	</ul>
+	
+	<p>
+	Makale, ayrıca veri dengesizliği (imbalanced data) sorununa da çözüm üretmiş. Çünkü orijinal veri setinde %14,3 churn oranı varken geri kalanı “churn olmayan” müşterilerden oluşuyor. Bu dengesizlik, modellerin çoğunluğu (non-churn) öğrenip azınlığı (churn) göz ardı etmesine yol açar. Bu sorunu aşmak için <strong>down sampling</strong> uygulanmış ve her bir alt kümede churn müşteriler artırılmış. Bu sayede özellikle Rotation Forest modelinin duyarlılığı ciddi oranda yükselmiştir.
+	</p>
+	
+	<p>
+	Yazarlar, modelin başarısını sadece sayılarla değil, olası ekonomik etkilerle de açıklıyor. Örneğin; 1 milyon müşteriden %15’inin ayrılma riski varsa, Rotation Forest yöntemi diğer modellere göre 30.000 müşteriyi fazladan elde tutabilir. Aylık ortalama fatura 100$ olduğunda bu, yıllık 3 milyon $ kazanç demektir.
+	</p>
+	
+	<p>
+	Sonuç olarak, bu çalışma sadece algoritmalar arası performans farklarını göstermekle kalmıyor, aynı zamanda veri hazırlamanın (sampling, PCA), metrik seçiminin (sensitivity vs. accuracy) ve model seçiminin işletme sonuçlarına nasıl etki ettiğini açıkça ortaya koyuyor. Bu yönüyle hem teknik hem stratejik bakış açısı kazandıran değerli bir kaynak niteliğindedir.
+	</p>
+	
+	<h3>Uygulama Fikri:</h3>
+	<p>
+	Bu çalışmada kullanılan churn tahmin modeli, benzer veri altyapısına sahip her şirket için uygulanabilir. <strong>Benzer veri altyapısı</strong> ifadesiyle şunu kastediyoruz: eğer bir şirketin elinde müşterilere ait şu bilgiler varsa — çağrı süresi, uluslararası görüşme kullanımı, müşteri hizmetleriyle iletişim sayısı, fatura tutarı, sesli mesaj tercihi gibi davranışsal ve demografik veriler — bu model doğrudan ya da küçük uyarlamalarla entegre edilebilir.
+	</p>
+	
+	<p>
+	Örneğin, yüksek churn riski taşıyan müşteriler önceden belirlenerek sadakat programları, indirimli kampanyalar ya da kişiselleştirilmiş teklifler sunulabilir. Bu sayede hem elde tutma oranı artar hem de pazarlama bütçesi daha verimli kullanılır. Rotation Forest gibi duyarlılığı yüksek modeller sayesinde, promosyonlar sadece gerçekten riski olan müşterilere yöneltilir — bu da <strong>kaybı önceden öngörüp maliyeti minimize etme</strong> anlamına gelir.
+	</p>
+
+							
+								</div>
+							</section>
+                        
+					</div>
+
+				<!-- Contact -->
+					<!--<section id="contact">
+						<div class="inner">
+							<section>
+								<form method="post" action="#">
+									<div class="fields">
+										<div class="field half">
+											<label for="name">Name</label>
+											<input type="text" name="name" id="name" />
+										</div>
+										<div class="field half">
+											<label for="email">Email</label>
+											<input type="text" name="email" id="email" />
+										</div>
+										<div class="field">
+											<label for="message">Message</label>
+											<textarea name="message" id="message" rows="6"></textarea>
+										</div>
+									</div>
+									<ul class="actions">
+										<li><input type="submit" value="Send Message" class="primary" /></li>
+										<li><input type="reset" value="Clear" /></li>
+									</ul>
+								</form>
+							</section>
+							<section class="split">
+								<section>
+									<div class="contact-method">
+										<span class="icon solid alt fa-envelope"></span>
+										<h3>Email</h3>
+										<a href="#">information@untitled.tld</a>
+									</div>
+								</section>
+								<section>
+									<div class="contact-method">
+										<span class="icon solid alt fa-phone"></span>
+										<h3>Phone</h3>
+										<span>(000) 000-0000 x12387</span>
+									</div>
+								</section>
+								<section>
+									<div class="contact-method">
+										<span class="icon solid alt fa-home"></span>
+										<h3>Address</h3>
+										<span>1234 Somewhere Road #5432<br />
+										Nashville, TN 00000<br />
+										United States of America</span>
+									</div>
+								</section>
+							</section>-->
+						</div>
+					</section>
+
+				<!-- Footer -->
+				<section class="split">
+					<section>
+						<h4>İletişim Bilgileri</h4>															
+					</section>
+				</section>
+			</div>
+			<!-- Footer -->
+			<footer id="footer">
+				<div class="inner">
+					<ul class="icons">
+						<li><a href="mailto:gulizsam@gmail.com?subject=Portföy Hakkında&body=Merhaba Güliz, portföyünü inceledim..."target="_blank" class="icon solid alt fa-envelope"><span class="label">Twitter</span></a></li>
+						<li><a href="https://github.com/gulizsamgar" target="_blank" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+					        <li><a href="https://www.linkedin.com/in/g%C3%BCliz-sam%C4%9Far/" target="_blank" class="icon brands alt fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
+					</ul>
+					<ul class="copyright">
+						<li>&copy; Untitled</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li>
+					</ul>
+				</div>
+			</footer>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
+
+			
+						
+		
