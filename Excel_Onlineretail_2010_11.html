@@ -102,7 +102,7 @@
     <li><strong>WEEKDAY:</strong> Gün sayısını bulma (1 = Pazartesi)</li>
     <li><strong>EXACT, =, SUMIF, SUMIFS:</strong> Karşılaştırma ve koşullu toplama işlemleri</li>
   </ul>
-          				<img src="images/Excel Bike Pivot.png" alt="Excel Analysis" style="width:1000px;height:500px;" data-position="center center" />
+						                        <img src="images/Excel Bike Pivot.png" alt="Excel Analysis" style="width:1000px;height:500px;" data-position="center center" />
 									<p><i> Resim 2. Temel Excel fonksiyonlarını kullanımı</i></p>
             
   <h4>Fransa Analizi</h4>
@@ -123,23 +123,23 @@
 									<p><i> Resim 3. Fransa analiz görünümü</i></p>
 
 								<h2>Temel Bulgular (Key Findings)</h2>
+						<h4>1. Değişkenlerin Dağılım Analizi:</h4>
+						<ul>
+							<li>Fiyat dağılımı nispeten dengeli (ortalama ≈ medyan, düşük CV), bu da fiyatlandırmanın tutarlı yürütüldüğünü gösterir.</li>
+							<li>Gelir ve adet değişkenleri yüksek varyansa sahip. CV değerlerinin bu denli yüksek olması, bazı işlemlerin ortalamadan aşırı saptığını ve aykırı değerlerin sistemde baskın etkiler yarattığını gösterir.</li>
+							<li>Özellikle gelirdeki bu dağınıklık, bazı büyük siparişlerin toplam ciroyu ciddi şekilde etkilediğini göstermektedir. Bu durum gelir tahmini ve segmentasyon gibi modellemelerde dikkatle ele alınmalıdır.</li>
+						</ul>
 
-  <h4>1. Değişkenlerin Dağılım Analizi:</h4>
-  <ul>
-    <li>Fiyat dağılımı nispeten dengeli (ortalama ≈ medyan, düşük CV), bu da fiyatlandırmanın tutarlı yürütüldüğünü gösterir.</li>
-    <li>Gelir ve adet değişkenleri yüksek varyansa sahip. CV değerlerinin bu denli yüksek olması, bazı işlemlerin ortalamadan aşırı saptığını ve aykırı değerlerin sistemde baskın etkiler yarattığını gösterir.</li>
-    <li>Özellikle gelirdeki bu dağınıklık, bazı büyük siparişlerin toplam ciroyu ciddi şekilde etkilediğini göstermektedir. Bu durum gelir tahmini ve segmentasyon gibi modellemelerde dikkatle ele alınmalıdır.</li>
-  </ul>
-
-  <h4>2. Fransa’ya Ait Satış Analizi:</h4>
-  <table border="1" cellpadding="6" cellspacing="0">
-    <thead>
-      <tr>
-        <th>Metrik</th>
-        <th>Değer</th>
-        <th>Açıklama</th>
-      </tr>
-    </thead>
+						<h4>2. Fransa’ya Ait Satış Analizi:</h4>
+						
+						<table border="1" cellpadding="6" cellspacing="0">
+							<thead>
+								<tr>
+									<th>Metrik</th>
+									<th>Değer</th>
+									<th>Açıklama</th>
+								</tr>
+							</thead>
     <tbody>
       <tr><td>Toplam Ciro</td><td>£197,422</td><td>Fransa’dan elde edilen toplam satış hacmi</td></tr>
       <tr><td>Müşteri Sayısı (unik)</td><td>88</td><td>Aktif müşteri sayısı – hedefleme ve CRM için kritik</td></tr>
@@ -150,31 +150,31 @@
       <tr><td>Tek Seferde En Yüksek Ciro</td><td>£4,161.06</td><td>Uç değer; promosyon/satış stratejilerinin etkisi olabilir</td></tr>
     </tbody>
   </table>
-  <ul>
-    <li>Ortalama kişi başı ciro oldukça yüksek; Fransa pazarı yüksek potansiyelli müşteri segmentlerine sahip olabilir.</li>
-    <li>Ortalama alışveriş sıklığının 71 gün olması, birçok müşterinin tek seferlik alışveriş yaptığını veya müşteri bağlılığının düşük olduğunu düşündürmektedir. Bu içgörü, sadakat artırıcı kampanyalar için temel teşkil edebilir.</li>
-    <li>Tek seferde gerçekleşen en yüksek ciro olan £4.161, veri setindeki işlemler arasında aykırı (uç) bir değer olup, ortalamaları yapay biçimde yükseltebilir. Ancak bu sipariş aynı zamanda iş fırsatlarına da işaret eder. Örneğin:
-      <ul>
-        <li>Bu müşterinin profili incelenerek benzer müşterilere ulaşmak mümkündür.</li>
-        <li>Bu tip siparişlerin, kampanya etkisiyle mi yoksa toptan alım nedeniyle mi gerçekleştiği analiz edilerek satış stratejileri şekillendirilebilir.</li>
-      </ul>
-    </li>
-  </ul>
+						<ul>
+							<li>Ortalama kişi başı ciro oldukça yüksek; Fransa pazarı yüksek potansiyelli müşteri segmentlerine sahip olabilir.</li>
+							<li>Ortalama alışveriş sıklığının 71 gün olması, birçok müşterinin tek seferlik alışveriş yaptığını veya müşteri bağlılığının düşük olduğunu düşündürmektedir. Bu içgörü, sadakat artırıcı kampanyalar için temel teşkil edebilir.</li>
+							<li>Tek seferde gerçekleşen en yüksek ciro olan £4.161, veri setindeki işlemler arasında aykırı (uç) bir değer olup, ortalamaları yapay biçimde yükseltebilir. Ancak bu sipariş aynı zamanda iş fırsatlarına da işaret eder. Örneğin:
+								<ul>
+									<li>Bu müşterinin profili incelenerek benzer müşterilere ulaşmak mümkündür.</li>
+									<li>Bu tip siparişlerin, kampanya etkisiyle mi yoksa toptan alım nedeniyle mi gerçekleştiği analiz edilerek satış stratejileri şekillendirilebilir.</li>
+								</ul>
+							</li>
+						</ul>
 
-  <h4>3. Günlük En Yüksek Ciro Analizi (Pivot Tablolarla)</h4>
-  <ul>
-    <li>Belirli günlerde ortaya çıkan yüksek cirolu işlemler, kampanya etkisi, kurumsal alımlar veya sezonluk taleplerin habercisi olabilir.</li>
-    <li>Bu tür analizler, yoğunluk tahmini ve promosyon zamanlaması için temel içgörüler sağlar.</li>
-    <li>Pazarlama & tedarik zinciri ekipleri için kritik zaman noktaları belirlenebilir.</li>
-  </ul>
-
-<h2>Sonuç (Conclusion)</h2>
-  <ul>
-    <li>Excel’in temel fonksiyonları ile veri temizleme ve hesaplama becerileri uygulandı.</li>
-    <li>Fransa verisi filtrelenerek müşteri davranışları analiz edildi.</li>
-    <li>CV, ortalama, medyan gibi istatistiklerle değişken dağılımı incelendi.</li>
-    <li>Pivot tablo ile zaman bazlı analiz yapılarak iş içgörüleri üretildi.</li>
-  </ul> 
+						<h4>3. Günlük En Yüksek Ciro Analizi (Pivot Tablolarla)</h4>
+						<ul>
+							<li>Belirli günlerde ortaya çıkan yüksek cirolu işlemler, kampanya etkisi, kurumsal alımlar veya sezonluk taleplerin habercisi olabilir.</li>
+							<li>Bu tür analizler, yoğunluk tahmini ve promosyon zamanlaması için temel içgörüler sağlar.</li>
+							<li>Pazarlama & tedarik zinciri ekipleri için kritik zaman noktaları belirlenebilir.</li>
+						</ul>
+						
+						<h2>Sonuç (Conclusion)</h2>
+						<ul>
+							<li>Excel’in temel fonksiyonları ile veri temizleme ve hesaplama becerileri uygulandı.</li>
+							<li>Fransa verisi filtrelenerek müşteri davranışları analiz edildi.</li>
+							<li>CV, ortalama, medyan gibi istatistiklerle değişken dağılımı incelendi.</li>
+							<li>Pivot tablo ile zaman bazlı analiz yapılarak iş içgörüleri üretildi.</li>
+						</ul> 
 								</div>
 							</section>
                         
