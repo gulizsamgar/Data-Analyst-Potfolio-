@@ -1,0 +1,269 @@
+<!DOCTYPE HTML>
+<!--
+	Forty by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Online Retail 2010-2011 - Excel with CRM Anlaytics</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<a href="index.html" class="logo"><strong>Data Analyst Portfolio</strong> <span>by Güliz Samğar </span></a>
+						<nav>
+							<a href="#menu">Menü</a>
+						</nav>
+					</header>
+
+				<!-- Menu -->
+				<nav id="menu">
+					<ul class="links">
+						<li><a href="index.html">Ana Sayfa</a></li>
+						<li><a href="about.html">Hakkında</a></li>
+						<li><a href="#footer">İletişim</a></li>
+						 <div class="dropup">
+							<button class="dropbtn">Portfolyo Projeleri</button>
+							  <div class="dropup-content">
+									<a href="python.html">Python</a>
+									<a href="r.html">R</a>
+									<a href="sql.html">SQL</a>
+									<a href="excel.html">Excel</a>
+									<a href="https://public.tableau.com/app/profile/tianna.parris" target="_blank" class="link">Tableau</a>
+									<a href="powerbi.html">Power BI</a>
+								  <a href="articel.html">Makale</a>
+							</div>
+						 </div>	
+					</ul>						
+				</nav>
+
+
+				<!-- Main -->
+					<div id="main" class="alt">
+						
+
+						<!-- One -->
+							<section id="one">
+								<div class="inner">
+									<header class="major">
+										<h1>Proje Detayları</h1>
+									</header>
+									<!--<span class="image main"><img src="images/pic11.jpg" alt="" /></span> -->
+									<h2>Hedef</h2>
+									<p>Bu projenin temel amacı, <strong>Online Retail 2010–2011</strong> veri setini kullanarak temel Excel fonksiyonlarıyla veri analiz becerilerini sergilemek, <strong>Fransa satışlarına odaklanarak</strong> iş iç görülerini ortaya çıkarmaktır.
+  </p></p>
+									<a href="Online Retail 2010-2011.7z" target="_blank">GitHub'dan indirin!</a>
+									<p></p>
+
+									<h4>Veri Seti Bilgisi:</h4>
+  <ul>
+    <li>Kaynak: UCI Machine Learning Repository</li>
+    <li>İçerik: Avrupa merkezli çevrim içi bir mağazanın 2010–2011 yıllarına ait fatura verileri</li>
+    <li>Değişkenler: Ürün kodu, açıklama, miktar, tarih, fiyat, müşteri kimliği, ülke, vb.</li>
+    <li>Toplam işlem sayısı: ~500.000+</li>
+    <li>Veri süresi: Aralık 2010 – Aralık 2011</li>
+  </ul>
+</section>
+									<img src="images/Excel Bike Work Sheet.png" alt=" Veri setine ait bir görünüm" style="width:1000px;height:500px;" data-position="center center" />
+									<p><i>Resim 1. Veri setine ait bir görünüm</i></p>
+				
+									
+									<h2>Analiz (Analysis)</h2>
+									<p>Aşağıdaki iş sorularına odaklanılarak keşifsel veri analizleri gerçekleştirilmiştir:</p>
+									<h4>İş Soruları (Business Questions):</h4>
+		<ol>
+  <li>Fransa’dan yapılan satışların toplam cirosu nedir?</li>
+  <li>Fransa’dan alışveriş yapan kaç farklı müşteri vardır?</li>
+  <li>Kişi başı ortalama alışveriş tutarı ve sıklığı nedir?</li>
+  <li>En yüksek ciroyu getiren satış günü ve fatura nedir?</li>
+  <li>Fiyat, gelir ve adet değerlerinin dağılımı nasıldır? Aykırı değer var mı?</li>
+</ol>
+
+									<p>Bu sorulara cevap vermek, müşteri davranışlarını, satış performansını ve gelir kaynaklarını daha iyi anlayarak veri odaklı iş kararları almak için kritik öneme sahiptir.</p>
+									
+									<h2>Veri Keşfi (Data Exploration)</h2>
+
+                  <h4>Fonksiyon Denemeleri (Temel Excel Fonksiyonları)</h4>
+  <p>Amaç: Veri üzerinde temel Excel fonksiyonlarının nasıl çalıştığını anlamak.</p>
+  <ul>
+    <li><strong>COUNT, COUNTA:</strong> Sayısal veri ve boş hücre kontrolü</li>
+    <li><strong>COUNTIF, COUNTIFS:</strong> Koşullu sayım işlemleri</li>
+    <li><strong>TRIM, CONCATENATE:</strong> Metin temizleme ve birleştirme</li>
+    <li><strong>LEFT, RIGHT:</strong> Karakter parçalama</li>
+    <li><strong>WEEKDAY:</strong> Gün sayısını bulma (1 = Pazartesi)</li>
+    <li><strong>EXACT, =, SUMIF, SUMIFS:</strong> Karşılaştırma ve koşullu toplama işlemleri</li>
+  </ul>
+          				<img src="images/Excel Bike Pivot.png" alt="Excel Analysis" style="width:1000px;height:500px;" data-position="center center" />
+									<p><i> Resim 2. Temel Excel fonksiyonlarını kullanımı</i></p>
+            
+  <h4>Fransa Analizi</h4>
+  <p>
+    Fransa’ya ait satışlar özel olarak filtrelenerek daha derin bir analiz yapılmıştır. Amaç, müşteri davranışlarını, ürün satış kalıplarını ve satışların genel yapısını daha iyi anlayarak iş kararlarını destekleyecek içgörüler üretmektir.
+  </p>
+  <ul>
+    <li>Fiyat, gelir ve adet değişkenleri için ortalama, medyan, standart sapma ve değişim katsayısı (CV) hesaplanmıştır. Bu ölçümler sayesinde: Verilerin merkezi eğilimleri gözlemlenmiş, dağılımın ne kadar değişken olduğu ortaya konmuştur.</li>
+    <li>Her bir günün en yüksek gelir getiren satış kaydı pivot tablo kullanılarak analiz edilmiştir. Bu sayede:
+      <ul>
+        <li>Hangi tarihlerde yüksek hacimli siparişlerin gerçekleştiği tespit edilmiş,</li>
+        <li>Öne çıkan müşteriler veya kampanya etkileri gibi durumlar görünür hale gelmiştir.</li>
+      </ul>
+    </li>
+  </ul>
+
+          				<img src="images/Excel Bike Pivot.png" alt="Excel Analysis" style="width:1000px;height:500px;" data-position="center center" />
+									<p><i> Resim 3. Fransa analiz görünümü</i></p>
+
+								<h2>Temel Bulgular (Key Findings)</h2>
+
+  <h4>1. Değişkenlerin Dağılım Analizi:</h4>
+  <ul>
+    <li>Fiyat dağılımı nispeten dengeli (ortalama ≈ medyan, düşük CV), bu da fiyatlandırmanın tutarlı yürütüldüğünü gösterir.</li>
+    <li>Gelir ve adet değişkenleri yüksek varyansa sahip. CV değerlerinin bu denli yüksek olması, bazı işlemlerin ortalamadan aşırı saptığını ve aykırı değerlerin sistemde baskın etkiler yarattığını gösterir.</li>
+    <li>Özellikle gelirdeki bu dağınıklık, bazı büyük siparişlerin toplam ciroyu ciddi şekilde etkilediğini göstermektedir. Bu durum gelir tahmini ve segmentasyon gibi modellemelerde dikkatle ele alınmalıdır.</li>
+  </ul>
+
+  <h4>2. Fransa’ya Ait Satış Analizi:</h4>
+  <table border="1" cellpadding="6" cellspacing="0">
+    <thead>
+      <tr>
+        <th>Metrik</th>
+        <th>Değer</th>
+        <th>Açıklama</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Toplam Ciro</td><td>£197,422</td><td>Fransa’dan elde edilen toplam satış hacmi</td></tr>
+      <tr><td>Müşteri Sayısı (unik)</td><td>88</td><td>Aktif müşteri sayısı – hedefleme ve CRM için kritik</td></tr>
+      <tr><td>Toplam Sipariş Sayısı</td><td>461</td><td>İşlem hacmi – operasyonel yoğunluk göstergesi</td></tr>
+      <tr><td>Kişi Başı Ortalama Ciro</td><td>£2,243</td><td>Ortalama müşteri değeri (CLV için öncül metrik)</td></tr>
+      <tr><td>Kişi Başı Sipariş Sayısı</td><td>5.24</td><td>Sadakat ve geri dönüş oranını yansıtır</td></tr>
+      <tr><td>Kişi Başına Alışveriş Sıklığı (gün)</td><td>71.20 gün</td><td>Müşteri alışveriş döngüsü – segmentasyon için kıymetli</td></tr>
+      <tr><td>Tek Seferde En Yüksek Ciro</td><td>£4,161.06</td><td>Uç değer; promosyon/satış stratejilerinin etkisi olabilir</td></tr>
+    </tbody>
+  </table>
+  <ul>
+    <li>Ortalama kişi başı ciro oldukça yüksek; Fransa pazarı yüksek potansiyelli müşteri segmentlerine sahip olabilir.</li>
+    <li>Ortalama alışveriş sıklığının 71 gün olması, birçok müşterinin tek seferlik alışveriş yaptığını veya müşteri bağlılığının düşük olduğunu düşündürmektedir. Bu içgörü, sadakat artırıcı kampanyalar için temel teşkil edebilir.</li>
+    <li>Tek seferde gerçekleşen en yüksek ciro olan £4.161, veri setindeki işlemler arasında aykırı (uç) bir değer olup, ortalamaları yapay biçimde yükseltebilir. Ancak bu sipariş aynı zamanda iş fırsatlarına da işaret eder. Örneğin:
+      <ul>
+        <li>Bu müşterinin profili incelenerek benzer müşterilere ulaşmak mümkündür.</li>
+        <li>Bu tip siparişlerin, kampanya etkisiyle mi yoksa toptan alım nedeniyle mi gerçekleştiği analiz edilerek satış stratejileri şekillendirilebilir.</li>
+      </ul>
+    </li>
+  </ul>
+
+  <h4>3. Günlük En Yüksek Ciro Analizi (Pivot Tablolarla)</h4>
+  <ul>
+    <li>Belirli günlerde ortaya çıkan yüksek cirolu işlemler, kampanya etkisi, kurumsal alımlar veya sezonluk taleplerin habercisi olabilir.</li>
+    <li>Bu tür analizler, yoğunluk tahmini ve promosyon zamanlaması için temel içgörüler sağlar.</li>
+    <li>Pazarlama & tedarik zinciri ekipleri için kritik zaman noktaları belirlenebilir.</li>
+  </ul>
+
+<h2>Sonuç (Conclusion)</h2>
+  <ul>
+    <li>Excel’in temel fonksiyonları ile veri temizleme ve hesaplama becerileri uygulandı.</li>
+    <li>Fransa verisi filtrelenerek müşteri davranışları analiz edildi.</li>
+    <li>CV, ortalama, medyan gibi istatistiklerle değişken dağılımı incelendi.</li>
+    <li>Pivot tablo ile zaman bazlı analiz yapılarak iş içgörüleri üretildi.</li>
+  </ul> 
+								</div>
+							</section>
+                        
+					</div>
+
+				<!-- Contact -->
+					<!--<section id="contact">
+						<div class="inner">
+							<section>
+								<form method="post" action="#">
+									<div class="fields">
+										<div class="field half">
+											<label for="name">Name</label>
+											<input type="text" name="name" id="name" />
+										</div>
+										<div class="field half">
+											<label for="email">Email</label>
+											<input type="text" name="email" id="email" />
+										</div>
+										<div class="field">
+											<label for="message">Message</label>
+											<textarea name="message" id="message" rows="6"></textarea>
+										</div>
+									</div>
+									<ul class="actions">
+										<li><input type="submit" value="Send Message" class="primary" /></li>
+										<li><input type="reset" value="Clear" /></li>
+									</ul>
+								</form>
+							</section>
+							<section class="split">
+								<section>
+									<div class="contact-method">
+										<span class="icon solid alt fa-envelope"></span>
+										<h3>Email</h3>
+										<a href="#">information@untitled.tld</a>
+									</div>
+								</section>
+								<section>
+									<div class="contact-method">
+										<span class="icon solid alt fa-phone"></span>
+										<h3>Phone</h3>
+										<span>(000) 000-0000 x12387</span>
+									</div>
+								</section>
+								<section>
+									<div class="contact-method">
+										<span class="icon solid alt fa-home"></span>
+										<h3>Address</h3>
+										<span>1234 Somewhere Road #5432<br />
+										Nashville, TN 00000<br />
+										United States of America</span>
+									</div>
+								</section>
+							</section>-->
+						</div>
+					</section>
+
+				<!-- Footer -->
+				<section class="split">
+					<section>
+						<h4>İletişim Bilgileri</h4>															
+					</section>
+				</section>
+			</div>
+			<!-- Footer -->
+			<footer id="footer">
+				<div class="inner">
+					<ul class="icons">
+						<li><a href="mailto:gulizsam@gmail.com?subject=Portföy Hakkında&body=Merhaba Güliz, portföyünü inceledim..."target="_blank" class="icon solid alt fa-envelope"><span class="label">Twitter</span></a></li>
+						<li><a href="https://github.com/gulizsamgar" target="_blank" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+					        <li><a href="https://www.linkedin.com/in/g%C3%BCliz-sam%C4%9Far/" target="_blank" class="icon brands alt fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
+					</ul>
+					<ul class="copyright">
+						<li>&copy; Untitled</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li>
+					</ul>
+				</div>
+			</footer>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
