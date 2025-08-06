@@ -79,12 +79,11 @@
 									</ul>
 
                  <h2>Kurulum</h2>
-                 <p>Projeye veri temizliğiyle başlandı. Özellikle MonthlyCharges ve TotalCharges sütunları sayısal formatta olmadığı için "Text to Columns" yöntemiyle dönüştürüldü. Ardından segment oluşturma süreci başladı.</p>
-
-                 <p>Veri setinde bulunan bazı sütunlar yeniden kategorize edildi. Aşağıdaki formüller yardımıyla her müşteri, belirli segment tanımlamalarına uygun şekilde sınıflandırıldı:</p>
+                 <p>Projeye veri temizliğiyle başlandı. Özellikle MonthlyCharges ve TotalCharges sütunları sayısal formatta olmadığı için "Text to Columns" yöntemiyle dönüştürüldü. Ardından segment oluşturma süreci başladı.
+	         Veri setinde bulunan bazı sütunlar yeniden kategorize edildi. Aşağıdaki formüller yardımıyla her müşteri, belirli segment tanımlamalarına uygun şekilde sınıflandırıldı:</p>
 
                   <ul>
-                  <li>Senior_Cat: Genç/Yetişkin ayrımı → <code>=IF(SeniorCitizen=0,"J","S")</code></li>
+                  <li>Senior_Cat: Genç / Yetişkin ayrımı → <code>=IF(SeniorCitizen=0,"J","S")</code></li>
                   <li>Tenure_Cat: 6 ay altı / 6–16 ay / 16 ay üzeri → <code>=IF(tenure<7,"_6AY",IF(tenure<17,"_16AY","_16AY+"))</code></li>
                   <li>TechUser: Teknolojik hizmet kullanıp kullanmama → <code>=IF(COUNTIF(OnlineSecurity:TechSupport,"Yes")>0,"_Using","_NotUsing")</code></li>
                   <li>Contract_Cat: Aylık / Yıllık / İki yıllık sözleşme → <code>=IFS(Contract="Month-to-month","_MM",Contract="One year","_OY",TRUE,"_TY")</code></li>
@@ -163,8 +162,7 @@
                     <li>Teknolojik hizmet kullanımı (OnlineSecurity, OnlineBackup, TechSupport) churn üzerinde belirgin bir etkiye sahiptir. Bu hizmetleri kullanan segmentlerde churn oranı ortalama %6-10 daha düşüktür.</li>
                     <li>Sözleşme tipi, müşteri sadakati üzerinde doğrudan belirleyicidir. Aylık sözleşme ile hizmet alan segmentlerde churn oranı ortalama  %43 iken, yıllık ve iki yıllık sözleşmeli segmentlerde bu oran %3–11 düzeyine düşmektedir.</li>
                     <li>Bazı segmentler hem yüksek MRR (gelir) hem de yüksek churn oranı taşımaktadır. Örneğin, J_16AY+_NotUsing_MM segmenti, önemli bir gelir katkısı sağlamasına rağmen yüksek churn riski taşımaktadır. Bu segmentler “yüksek değerli ama kırılgan müşteri grubu” olarak değerlendirilmelidir.</li>
-                    <li>Bubble chart analizi, segmentler arasında hem sadakat hem gelir açısından görsel kıyaslama yapılmasına olanak tanımış; stratejik olarak odaklanılması gereken segmentlerin belirlenmesini kolaylaştırmıştır.</li>
-                  </ol>
+                </ol>
                   
                   <h2>Segment Analizi ve AI Tabanlı Strateji</h2>
                   
@@ -177,7 +175,7 @@
                     <li><strong>Ortalama Tenure:</strong> 2 ay (sadakat gelişmemiş)</li>
                   </ul>
                   
-                  <h4>AI Perspektifiyle Stratejik Çıkarım:</h4>
+                  <h3>AI Perspektifiyle Stratejik Çıkarım:</h3>
                   <p>Bu segment, churn riskini en hızlı yansıtan müşteri grubudur. Bu profil genellikle:</p>
                   <ul>
                     <li>Deneme sürecinde olan veya</li>
@@ -186,11 +184,13 @@
                   </ul>
                   <p>kişileri barındırır.</p>
                   
-                  <h4>AI Tarafından Üretilmiş Olası Stratejiler (Simülasyon Senaryosu):</h4>
+                  <h3>AI Tarafından Üretilmiş Olası Stratejiler (Simülasyon Senaryosu):</h3>
                    <ol>
                     <li>
-                      <strong>Predictive Personalization (Tahmine Dayalı Kişiselleştirme):</strong><br>
-                      Bu segmentte churn riski yüksek müşterilere özel, ilk ay içinde tetiklenen dinamik onboarding içerikleri sunulmalı. AI modeli, müşterinin ilk 7 gün içindeki davranışlarını izleyerek aşağıdaki segmentasyonla aksiyon öneriyor:
+                       <strong>Predictive Personalization (Tahmine Dayalı Kişiselleştirme):</strong>
+                      <p>Bu segmentte churn riski yüksek müşterilere özel, ilk ay içinde tetiklenen dinamik onboarding içerikleri sunulmalı. AI modeli, müşterinin ilk 7 gün içindeki davranışlarını izleyerek aşağıdaki segmentasyonla aksiyon öneriyor:</p>
+			    <p></p>
+			    
                       <table border="1" cellpadding="5" cellspacing="0">
                         <thead>
                           <tr>
@@ -216,20 +216,22 @@
                     </li>
 
                      <li>
-                       <strong>Ürün Öneri Motoru ile Teknoloji Ürün Geçişi:</strong><br>
-                       Segmentte teknolojik hizmet kullanımı yok. AI tabanlı öneri motoru, benzer profildeki kullanıcıların davranışlarına göre TechSupport ve OnlineBackup hizmetlerinin bu kullanıcıya özel bundle halinde sunulmasının churn'u azalttığını öngörüyor.
+                       <strong>Ürün Öneri Motoru ile Teknoloji Ürün Geçişi:</strong>
+                      <p>Segmentte teknolojik hizmet kullanımı yok. AI tabanlı öneri motoru, benzer profildeki kullanıcıların davranışlarına göre TechSupport ve OnlineBackup hizmetlerinin bu kullanıcıya özel bundle halinde sunulmasının churn'u azalttığını öngörüyor.</p>
                      </li>
+			   
                      <li>
-                       <strong>Dynamic Contract Suggestion (Akıllı Kontrat Geçişi):</strong><br>
-                       ML modeli, ay bazlı müşterilerin ilk 3 ay içinde yıllık kontrata geçtiğini ve churn oranlarının azaldığını tespit etti. Bu segmentte şu strateji önerilir:
+                       <strong>Dynamic Contract Suggestion (Akıllı Kontrat Geçişi):</strong>
+                       <p>ML modeli, ay bazlı müşterilerin ilk 3 ay içinde yıllık kontrata geçtiğini ve churn oranlarının azaldığını tespit etti. Bu segmentte şu strateji önerilir:</p>
                        <ul>
                          <li>İlk 2 ay sonunda kullanıcı davranışı puanı 60+ olanlara "Sana özel fiyatla yıllık kontrata geç!" önerisi göster</li>
                        </ul>
                      </li>
+			   
                      <li>
-                       <strong>Churn Likelihood Tracking Paneli:</strong><br>
-                       Bu segmentte churn olasılığı %0.5 üzerindeki her kullanıcı için gerçek zamanlı alert sistemi ile müşteri hizmetleri devreye sokulmalı. Bu sayede proaktif müdahale ile churn azaltımı hedeflenebilir.<br>
-                       Churn riski taşıyan müşteriler için gerçek zamanlı izleme sistemi kurularak erken müdahale yapılabilir.
+                       <strong>Churn Likelihood Tracking Paneli:</strong>
+                       <p>Bu segmentte churn olasılığı %0.5 üzerindeki her kullanıcı için gerçek zamanlı alert sistemi ile müşteri hizmetleri devreye sokulmalı. Bu sayede proaktif müdahale ile churn azaltımı hedeflenebilir.<br>
+                       Churn riski taşıyan müşteriler için gerçek zamanlı izleme sistemi kurularak erken müdahale yapılabilir.<p>
                      </li>
                    </ol>
                   
