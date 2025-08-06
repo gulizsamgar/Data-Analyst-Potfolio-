@@ -1,0 +1,340 @@
+<!DOCTYPE HTML>
+<!--
+	Forty by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Telco Customer Churn - Excel with CRM Anlaytics</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<a href="index.html" class="logo"><strong>Data Analyst Portfolio</strong> <span>by Güliz Samğar </span></a>
+						<nav>
+							<a href="#menu">Menü</a>
+						</nav>
+					</header>
+
+				<!-- Menu -->
+				<nav id="menu">
+					<ul class="links">
+						<li><a href="index.html">Ana Sayfa</a></li>
+						<li><a href="about.html">Hakkında</a></li>
+						<li><a href="#footer">İletişim</a></li>
+						 <div class="dropup">
+							<button class="dropbtn">Portfolyo Projeleri</button>
+							  <div class="dropup-content">
+									<a href="python.html">Python</a>
+									<a href="sql.html">SQL</a>
+									<a href="excel.html">Excel</a>
+									<a href="https://public.tableau.com/app/profile/tianna.parris" target="_blank" class="link">Tableau</a>
+									<a href="powerbi.html">Power BI</a>
+								  <a href="articel.html">Makale</a>
+							</div>
+						 </div>	
+					</ul>						
+				</nav>
+
+
+				<!-- Main -->
+					<div id="main" class="alt">
+						
+
+						<!-- One -->
+							<section id="one">
+								<div class="inner">
+									<header class="major">
+										<h1>Proje Detayları</h1>
+									</header>
+									<!--<span class="image main"><img src="images/pic11.jpg" alt="" /></span> -->
+                  
+                  <h2>Literatürel Bağlam</h2>
+                  <p>Telekom sektöründe müşteri kaybı (churn), kârlılık ve sürdürülebilirlik açısından en kritik göstergelerden biridir. Çalışmalar, yeni bir müşteri kazanmanın, mevcut bir müşteriyi elde tutmaktan 5–7 kat daha maliyetli olduğunu ortaya koymaktadır. Bu nedenle churn oranının yükselmesi, doğrudan gelir kaybı anlamına gelir.
+                  Özellikle belli bir eşiğin (örneğin %30’un) üzerindeki churn oranları, hem müşteri deneyimi sorunlarına hem de hizmet/paket uyumsuzluklarına işaret edebilir. Bu oranların zamanında tespit edilmesi, hedefli aksiyon planlarıyla riskin azaltılmasını sağlar.
+                  Bu bağlamda yapılan segmentasyon bazlı churn analizleri, yüksek risk taşıyan müşteri gruplarını görünür kılarak erken müdahale fırsatları sunar. Bu proje de bu anlayışla şekillendirilmiş ve churn'ü merkeze alarak veri temelli içgörüler üretilmiştir. </p>
+									
+                  <h2>Hedef</h2>
+									<p>Bu proje, TelcoCustomer veri seti üzerinde müşteri davranışlarını ve sözleşme yapılarını inceleyerek, churn eğilimlerini anlamaya ve açıklamaya yönelik bir segmentasyon çalışmasıdır. Amaç, gelişmiş Excel teknikleriyle churn’u etkileyen faktörleri görünür hale getirmek, riskli müşteri gruplarını net şekilde tanımlayarak bunlara yönelik karar destek stratejileri geliştirmektir.
+                  Makine öğrenmesi yerine yorumlanabilirlik ve uygulama kolaylığı sunan bir segmentasyon modeli tercih edilmiş; analiz sonunda, bir segment için olası bir yapay zekâ stratejisi geliştirilerek projenin iş değerini somutlaştırmak hedeflenmiştir.  </p></p>
+									<a href="https://github.com/gulizsamgar/Excel-CRM-Analytics/blob/3713e0628bee9a359e70b9fbdc0cfcf554ce548a/05_TelcoCustomer_Churn_Segmentasyon_Analysis.xlsx" target="_blank">Github'dan indirin!</a>
+									<p></p>
+
+									<h4>Veri Seti Bilgisi:</h4>
+									<ul>
+										<li>Kaynak: <a href="https://www.kaggle.com/datasets/blastchar/telco-customer-churn" target="_blank">Kaggle – Telco Customer Churn Dataset</a></li>
+										<li>Kapsam: Telekom şirketi müşterilerinin sözleşme, hizmet kullanımı ve fatura bilgileri</li>
+										<li>Değişkenler: gender, SeniorCitizen, tenure, Contract, InternetService, MonthlyCharges, TotalCharges, Churn, vb.</li>
+										<li>Toplam işlem sayısı: 7.043 müşteri</li>
+										<li>Veri süresi: Belirtilmemiş (statik kesit veri)</li>
+									</ul>
+
+                 <h2>Kurulum</h2>
+                 <p>Projeye veri temizliğiyle başlandı. Özellikle MonthlyCharges ve TotalCharges sütunları sayısal formatta olmadığı için "Text to Columns" yöntemiyle dönüştürüldü. Ardından segment oluşturma süreci başladı.</p>
+
+                 <p>Veri setinde bulunan bazı sütunlar yeniden kategorize edildi. Aşağıdaki formüller yardımıyla her müşteri, belirli segment tanımlamalarına uygun şekilde sınıflandırıldı:</p>
+
+                  <ul>
+                  <li>Senior_Cat: Genç/Yetişkin ayrımı → <code>=IF(SeniorCitizen=0,"J","S")</li>
+                  <li>Tenure_Cat: 6 ay altı / 6–16 ay / 16 ay üzeri → <code>=IF(tenure<7,"_6AY",IF(tenure<17,"_16AY","_16AY+"))</code></li>
+                  <li>TechUser: Teknolojik hizmet kullanıp kullanmama → <code>=IF(COUNTIF(OnlineSecurity:TechSupport,"Yes")>0,"_Using","_NotUsing")</code></li>
+                  <li>Contract_Cat: Aylık / Yıllık / İki yıllık sözleşme → <code>=IFS(Contract="Month-to-month","_MM",Contract="One year","_OY",TRUE,"_TY")</code></li>
+                  <li>Churn_: Churn değişkeni için ikili dönüşüm → <code>=IF(Churn="No",0,1)</code></li>
+                  </ul>
+                  
+						      <img src="images/Excel Online Retail_ Fonkisyonlar.png" alt="Excel Analysis" style="width:1000px;height:500px;" data-position="center center" />
+									<p><i> Resim 1. Temel Excel fonksiyonlarının kullanımı</i></p>
+                  
+                <p>Bu dört sütun birleştirilerek toplam 31 farklı segment tanımlandı. Son olarak, oluşturulan yeni sütunlar renklendirilerek görsel seçicilik artırıldı.</p>
+
+                <h2>Analiz</h2>
+                <p>Aşağıdaki iş sorularına odaklanılarak churn analizi ve segment bazlı keşifsel veri analizleri gerçekleştirilmiştir:</p>
+                  <h4>İş Soruları:</h4>
+                  <ol>
+                    <li>Hangi müşteri segmentleri en yüksek churn oranına sahiptir?</li>
+                    <li>Segmentler özelinde ortalama abonelik süresi (tenure) nasıldır?</li>
+                    <li>Segmentlere göre ortalama aylık gelir (Monthly Recurring Revenue - MRR) ne düzeydedir?</li>
+                    <li>Müşteri sayısı en yüksek olan segmentler hangileridir?</li>
+                    <li>En fazla churn eden müşteri sayısı hangi segmentlerde yoğunlaşmıştır?</li>
+                    <li>Churn içindeki toplam müşteri kaybının en büyük yüzdesini oluşturan segmentler hangileridir?</li>
+                    <li>Yüksek churn oranına rağmen potansiyel değeri yüksek (yüksek MRR) segmentler var mıdır?</li>
+                    <li>Teknolojik hizmet (OnlineSecurity, Backup, TechSupport) kullanımı segmentlerin churn oranını nasıl etkilemektedir?</li>
+                    <li>Sözleşme türüne (Contract) göre churn oranı segmentler arasında nasıl değişmektedir?</li>
+                    <li>“Short tenure” segmentleriyle “long tenure” segmentleri arasında churn açısından belirgin farklar var mı?</li>
+                  </ol>
+									
+									<h2>Veri Keşfi</h2>
+									
+                  <p>Veri keşfi için oluşturulan pivot tablolar aracılığıyla müşteriler, çeşitli segmentasyon kriterlerine göre analiz edilmiştir. Gerçekleştirilen veri keşfinde:</p>
+
+                  <ul>
+                    <li>Her segmentin toplam müşteri sayısı</li>
+                    <li>Segment içindeki churn oranı ve churn eden müşteri sayısı</li>
+                    <li>Churn edenlerin toplam churn içindeki payı</li>
+                    <li>Ortalama MRR (Monthly Charges)</li>
+                    <li>Ortalama abonelik süresi (tenure)</li>
+                  </ul>
+
+                  <p>...gibi özet metrikler detaylı şekilde hesaplanmıştır.</p>
+                  <p>Ayrıca eklenen ek pivot tablolar sayesinde;<br>
+                    ✅ Teknoloji hizmeti kullanımı,<br>
+                    ✅ Sözleşme tipi,<br>
+                    ✅ Abonelik süresi<br>
+                    gibi ana değişkenlerin churn üzerindeki etkileri ayrı ayrı analiz edilmiştir.</p>
+									
+						      <img src="images/Excel Online Retail_ Fonkisyonlar.png" alt="Excel Analysis" style="width:1000px;height:500px;" data-position="center center" />
+									<p><i> Resim 1. Temel Excel fonksiyonlarının kullanımı</i></p>
+                  
+                  <p>Bu analizler sayesinde bazı segmentlerde yüksek churn oranı ama düşük müşteri ömrü (low tenure) gibi kritik risk kalıpları belirlenmiştir. Pivot tablolar, churn oranı, gelir katkısı ve müşteri kitlesi büyüklüğü arasındaki ilişkiyi görmeye yardımcı olmuş ve en öncelikli müdahale edilmesi gereken segmentlerin tespitine olanak sağlamıştır.</p>
+
+                  <h2>Bubble Chart Görselleştirmesi</h2>
+                  <p>Pivot tablo verisi doğrudan görselleştirme için uygun olmadığından, 03_Bubble_Chart_Data sayfasında yapı dönüştürüldü. Her segment için:</p>
+                  <ul>
+                    <li>X ekseni: Ortalama MRR</li>
+                    <li>Y ekseni: Ortalama tenure</li>
+                    <li>Balon boyutu: Churn oranı</li>
+                    <li>Balon etiketi: Segment adı ve churn yüzdesi</li>
+                  </ul>
+                  
+                  <p>...şeklinde organize edilen verilerle, 04_Bubble_Chart_Visual sayfasında interaktif bir karşılaştırma grafiği oluşturuldu. Grafik üzerinde:</p>
+                  <ul>
+                    <li>Düşük tenure ve yüksek churn içeren segmentler büyük ve alt konumda</li>
+                    <li>Uzun süreli, yüksek MRR’li ve düşük churn segmentleri sağ üstte konumlandı</li>
+                  </ul>
+                  
+          				<img src="images/Excel Online Retail_ Fransa Analizi.png" alt="Excel Analysis" style="width:1000px;height:500px;" data-position="center center" />
+									<p><i> Resim 2. Fransa analiz görünümü</i></p>
+
+                  <p>Bu sayede kritik segmentler tek bakışta fark edilebildi.</p>
+
+                  <h2>Temel Bulgular</h2>
+                  <ol>
+                    <li>Churn riski en yüksek segmentler, kısa abonelik süresine (<6 ay), teknoloji hizmeti kullanmayan profillere ve aylık sözleşmeye sahip müşterilerden oluşmaktadır. Özellikle J_6AY_NotUsing_MM segmenti, hem churn oranı (%52) hem de müşteri sayısı açısından kritik risk taşımaktadır.</li>
+                    <li>En düşük churn oranları, S_16AY+_Using_TY gibi uzun süreli abonelik süresine, yıllık veya iki yıllık sözleşmeye ve teknoloji kullanımına sahip müşterilerde gözlemlenmiştir. Bu segmentlerde churn oranı %5’in altındadır.</li>
+                    <li>Teknolojik hizmet kullanımı (OnlineSecurity, OnlineBackup, TechSupport) churn üzerinde belirgin bir etkiye sahiptir. Bu hizmetleri kullanan segmentlerde churn oranı ortalama %6-10 daha düşüktür.</li>
+                    <li>Sözleşme tipi, müşteri sadakati üzerinde doğrudan belirleyicidir. Aylık sözleşme ile hizmet alan segmentlerde churn oranı ortalama  %43 iken, yıllık ve iki yıllık sözleşmeli segmentlerde bu oran %3–11 düzeyine düşmektedir.</li>
+                    <li>Bazı segmentler hem yüksek MRR (gelir) hem de yüksek churn oranı taşımaktadır. Örneğin, J_16AY+_NotUsing_MM segmenti, önemli bir gelir katkısı sağlamasına rağmen yüksek churn riski taşımaktadır. Bu segmentler “yüksek değerli ama kırılgan müşteri grubu” olarak değerlendirilmelidir.</li>
+                    <li>Bubble chart analizi, segmentler arasında hem sadakat hem gelir açısından görsel kıyaslama yapılmasına olanak tanımış; stratejik olarak odaklanılması gereken segmentlerin belirlenmesini kolaylaştırmıştır.</li>
+                  </ol>
+                  
+                  <h2>Segment Analizi ve AI Tabanlı Strateji</h2>
+                  
+                  <p><strong>Hedef Segment:</strong> J_6AY_NotUsing_MM</p>
+                  <ul>
+                    <li><strong>Profil:</strong> Genç kullanıcılar, abonelik süresi 6 ay ve altı, teknoloji hizmetlerini kullanmıyor, sözleşme tipi ay bazlı (Month-to-Month)</li>
+                    <li><strong>Segment Boyutu:</strong> 777 müşteri</li>
+                    <li><strong>Churn Oranı:</strong> %52 (çok yüksek)</li>
+                    <li><strong>Ortalama Fatura (MonthlyCharges):</strong> $47 (ortalama seviye)</li>
+                    <li><strong>Ortalama Tenure:</strong> 2 ay (sadakat gelişmemiş)</li>
+                  </ul>
+                  
+                  <h4>AI Perspektifiyle Stratejik Çıkarım:</h4>
+                  <p>Bu segment, churn riskini en hızlı yansıtan müşteri grubudur. Bu profil genellikle:</p>
+                  <ul>
+                    <li>Deneme sürecinde olan veya</li>
+                    <li>Hizmetin değerini henüz hissedememiş</li>
+                    <li>Katma değerli ürünlerle tanışmamış</li>
+                  </ul>
+                  <p>kişileri barındırır.</p>
+                  
+                  <h4>AI Tarafından Üretilmiş Olası Stratejiler (Simülasyon Senaryosu):</h4>
+                   <ol>
+                    <li>
+                      <strong>Predictive Personalization (Tahmine Dayalı Kişiselleştirme):</strong><br>
+                      Bu segmentte churn riski yüksek müşterilere özel, ilk ay içinde tetiklenen dinamik onboarding içerikleri sunulmalı. AI modeli, müşterinin ilk 7 gün içindeki davranışlarını izleyerek aşağıdaki segmentasyonla aksiyon öneriyor:
+                      <table border="1" cellpadding="5" cellspacing="0">
+                        <thead>
+                          <tr>
+                            <th>Aktivite Göstergesi</th>
+                            <th>Önerilen Aksiyon</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>Giriş sayısı < 2</td>
+                            <td>Mobil app kullanım eğitimi içeren push bildirimleri</td>
+                          </tr>
+                          <tr>
+                            <td>Fatura ekranı ziyaret edilmemiş</td>
+                            <td>"Faturanı kontrol et, avantajları öğren" kampanyası</td>
+                          </tr>
+                          <tr>
+                            <td>Tech ürün kullanımı yoksa</td>
+                            <td>Kişiye özel deneme kampanyası önerisi</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </li>
+
+                     <li>
+                       <strong>Ürün Öneri Motoru ile Teknoloji Ürün Geçişi:</strong><br>
+                       Segmentte teknolojik hizmet kullanımı yok. AI tabanlı öneri motoru, benzer profildeki kullanıcıların davranışlarına göre TechSupport ve OnlineBackup hizmetlerinin bu kullanıcıya özel bundle halinde sunulmasının churn'u azalttığını öngörüyor.
+                     </li>
+                     <li>
+                       <strong>Dynamic Contract Suggestion (Akıllı Kontrat Geçişi):</strong><br>
+                       ML modeli, ay bazlı müşterilerin ilk 3 ay içinde yıllık kontrata geçtiğini ve churn oranlarının azaldığını tespit etti. Bu segmentte şu strateji önerilir:
+                       <ul>
+                         <li>İlk 2 ay sonunda kullanıcı davranışı puanı 60+ olanlara "Sana özel fiyatla yıllık kontrata geç!" önerisi göster</li>
+                       </ul>
+                     </li>
+                     <li>
+                       <strong>Churn Likelihood Tracking Paneli:</strong><br>
+                       Bu segmentte churn olasılığı %0.5 üzerindeki her kullanıcı için gerçek zamanlı alert sistemi ile müşteri hizmetleri devreye sokulmalı. Bu sayede proaktif müdahale ile churn azaltımı hedeflenebilir.<br>
+                       Churn riski taşıyan müşteriler için gerçek zamanlı izleme sistemi kurularak erken müdahale yapılabilir.
+                     </li>
+                   </ol>
+                  
+                  <p>Model kurmaksızın yapılan bu iş zekâsı temelli analiz, yüksek churn potansiyeli taşıyan segmentleri tanımlamada ve onlara özel stratejiler geliştirmede güçlü bir çerçeve sunmaktadır.<br>
+                    Eğer makine öğrenmesi tabanlı bir churn tahmin modeli kurulsaydı, bu segmentler öncelikli risk alanı olarak yine öne çıkacaktı.</p>
+                  
+                  <h2>Sonuç</h2>
+                  <p>Bu proje, yalnızca Excel araçlarını etkili kullanmakla kalmayıp, müşteri segmentasyonu ve churn analizi gibi CRM alanında kritik içgörüler üretme becerimi de göstermektedir.</p>
+                  
+                  <ul>
+                    <li><strong>Teknik beceriler:</strong> Veri temizleme, segment oluşturma, formül yazma, pivot tablo oluşturma, veri görselleştirme</li>
+                    <li><strong>Analitik yetkinlik:</strong> Churn odaklı segment bazlı analiz, içgörü üretme ve veri odaklı strateji geliştirme</li>
+                    <li><strong>Stratejik yaklaşım:</strong> AI destekli çözüm önerileriyle veriden aksiyona geçiş</li>
+                  </ul>
+                  <p>Bu proje, hem iş zekâsı uygulamaları hem de CRM bakış açısıyla veri analizi konusunda yetkinliğimi ortaya koymaktadır.</p>
+
+								</div>
+							</section>
+                        
+					</div>
+
+				<!-- Contact -->
+					<!--<section id="contact">
+						<div class="inner">
+							<section>
+								<form method="post" action="#">
+									<div class="fields">
+										<div class="field half">
+											<label for="name">Name</label>
+											<input type="text" name="name" id="name" />
+										</div>
+										<div class="field half">
+											<label for="email">Email</label>
+											<input type="text" name="email" id="email" />
+										</div>
+										<div class="field">
+											<label for="message">Message</label>
+											<textarea name="message" id="message" rows="6"></textarea>
+										</div>
+									</div>
+									<ul class="actions">
+										<li><input type="submit" value="Send Message" class="primary" /></li>
+										<li><input type="reset" value="Clear" /></li>
+									</ul>
+								</form>
+							</section>
+							<section class="split">
+								<section>
+									<div class="contact-method">
+										<span class="icon solid alt fa-envelope"></span>
+										<h3>Email</h3>
+										<a href="#">information@untitled.tld</a>
+									</div>
+								</section>
+								<section>
+									<div class="contact-method">
+										<span class="icon solid alt fa-phone"></span>
+										<h3>Phone</h3>
+										<span>(000) 000-0000 x12387</span>
+									</div>
+								</section>
+								<section>
+									<div class="contact-method">
+										<span class="icon solid alt fa-home"></span>
+										<h3>Address</h3>
+										<span>1234 Somewhere Road #5432<br />
+										Nashville, TN 00000<br />
+										United States of America</span>
+									</div>
+								</section>
+							</section>-->
+						</div>
+					</section>
+
+				<!-- Footer -->
+				<section class="split">
+					<section>
+						<h4>İletişim Bilgileri</h4>															
+					</section>
+				</section>
+			</div>
+			<!-- Footer -->
+			<footer id="footer">
+				<div class="inner">
+					<ul class="icons">
+						<li><a href="mailto:gulizsam@gmail.com?subject=Portföy Hakkında&body=Merhaba Güliz, portföyünü inceledim..."target="_blank" class="icon solid alt fa-envelope"><span class="label">Twitter</span></a></li>
+						<li><a href="https://github.com/gulizsamgar" target="_blank" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+					        <li><a href="https://www.linkedin.com/in/g%C3%BCliz-sam%C4%9Far/" target="_blank" class="icon brands alt fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
+					</ul>
+					<ul class="copyright">
+						<li>&copy; Untitled</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li>
+					</ul>
+				</div>
+			</footer>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
