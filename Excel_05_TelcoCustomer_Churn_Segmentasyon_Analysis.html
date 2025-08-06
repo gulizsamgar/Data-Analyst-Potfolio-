@@ -84,7 +84,7 @@
                  <p>Veri setinde bulunan bazı sütunlar yeniden kategorize edildi. Aşağıdaki formüller yardımıyla her müşteri, belirli segment tanımlamalarına uygun şekilde sınıflandırıldı:</p>
 
                   <ul>
-                  <li>Senior_Cat: Genç/Yetişkin ayrımı → <code>=IF(SeniorCitizen=0,"J","S")</li>
+                  <li>Senior_Cat: Genç/Yetişkin ayrımı → <code>=IF(SeniorCitizen=0,"J","S")</code></li>
                   <li>Tenure_Cat: 6 ay altı / 6–16 ay / 16 ay üzeri → <code>=IF(tenure<7,"_6AY",IF(tenure<17,"_16AY","_16AY+"))</code></li>
                   <li>TechUser: Teknolojik hizmet kullanıp kullanmama → <code>=IF(COUNTIF(OnlineSecurity:TechSupport,"Yes")>0,"_Using","_NotUsing")</code></li>
                   <li>Contract_Cat: Aylık / Yıllık / İki yıllık sözleşme → <code>=IFS(Contract="Month-to-month","_MM",Contract="One year","_OY",TRUE,"_TY")</code></li>
