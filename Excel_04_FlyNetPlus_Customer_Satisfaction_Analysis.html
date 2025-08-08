@@ -98,26 +98,26 @@
 <p>Analize başlamadan önce, yalnızca Business Class yolcuları filtrelenerek özel bir müşteri segmenti oluşturulmuştur. Bu segmentteki yolcular, hizmet kalitesi açısından daha yüksek beklentilere sahip oldukları için, memnuniyet düzeylerinin detaylı şekilde analiz edilmesi hedeflenmiştir.</p>
 <p>İlk veri düzenleme adımı olarak, “Arrival Delay in Minutes” değişkeni, metin formatındaydı ve bu nedenle doğru analiz yapılabilmesi için “Text to Columns” yöntemiyle sayısal formata dönüştürülmüştür.</p>
 									
-										 <img src="images/Excel 05_Telco_DataCleaned.png" alt="Excel Analysis" style="width:1000px;height:500px;" data-position="center center" />
+										 <img src="images/Excel_04_Business_Class_Filtered.png" alt="Excel Analysis" style="width:1000px;height:500px;" data-position="center center" />
 									<p><i> Resim 1. Temizlenmiş ve segment etiketleriyle zenginleştirilmiş müşteri verisi görünümü.</i></p>
 									
 <p>Ardından, hizmetlere verilen puanlarla en iyi ve en kötü hizmetleri belirlemek üzere temel istatistiksel analiz yapılması planlanmıştır. Ancak bu analizden önce, tüm hizmet puanlarının karşılaştırılabilir hale getirilmesi gerekmektedir. Zira orijinal puanlama sistemi 1–5 arası Likert ölçeği kullanmaktadır ve bu format, bazı hizmetler arasında doğrudan kıyaslama yapılmasını zorlaştırmaktadır.</p>
 <p>Bu problemi aşmak için puanlar, daha evrensel bir ölçüt olan 0–100 ölçeğine dönüştürülmüştür. Dönüştürme işleminde, her puanın karşılığı olan yeni değerleri içeren bir referans tablosu kullanılmıştır. Excel’in <code>DÜŞEYARA (VLOOKUP)</code> fonksiyonu yardımıyla her satırdaki puan yeni değeriyle değiştirilmiştir.</p>
 									
-										 <img src="images/Excel 05_Telco_DataCleaned.png" alt="Excel Analysis" style="width:1000px;height:500px;" data-position="center center" />
-									<p><i> Resim 1. Temizlenmiş ve segment etiketleriyle zenginleştirilmiş müşteri verisi görünümü.</i></p>
+										 <img src="images/Excel_04_CSS_Score_Transformation.png" alt="Excel Analysis" style="width:1000px;height:500px;" data-position="center center" />
+									<p><i> Resim 2. Temizlenmiş ve segment etiketleriyle zenginleştirilmiş müşteri verisi görünümü.</i></p>
 									
 <p>Dönüşüm sonrasında elde edilen yeni veri setinde, değişiklik yapılan sütunlar renklendirilmiş ve görsel ayrıştırıcılık sağlanmıştır. Böylece görsel analiz sırasında kullanıcı dikkatinin ilgili alanlara yönlendirilmesi kolaylaştırılmıştır. Bu düzenlemeler, sonraki adımlarda yapılacak istatistiksel karşılaştırmalar ve görselleştirmeler için zemin oluşturmuştur.</p>
 
-									 <img src="images/Excel 05_Telco_DataCleaned.png" alt="Excel Analysis" style="width:1000px;height:500px;" data-position="center center" />
-									<p><i> Resim 1. Temizlenmiş ve segment etiketleriyle zenginleştirilmiş müşteri verisi görünümü.</i></p>
+									 <img src="images/Excel_04_Business_Transformed_Data.png" alt="Excel Analysis" style="width:1000px;height:500px;" data-position="center center" />
+									<p><i> Resim 3. Temizlenmiş ve segment etiketleriyle zenginleştirilmiş müşteri verisi görünümü.</i></p>
 									
 <h3>Hizmet Bazlı Memnuniyet Haritası</h3>
 <p>Business Class müşterilerinin hizmetlere ilişkin memnuniyetini detaylı biçimde anlamak için, her bir hizmet değişkeni için temel istatistiksel analizler yapılmıştır. İlk olarak, her hizmet için ortalama memnuniyet puanları ve standart sapma değerleri hesaplanmıştır. Bu sayede, müşterilerin genel eğilimleri ve memnuniyet düzeylerindeki tutarlılık gözlemlenmiştir.</p>
 <p>Ardından, her bir hizmet değişkeninin genel memnuniyet skoru ile olan ilişkisi ölçülmüştür. Bu aşamada Excel’in korelasyon analiz fonksiyonu (CORREL) kullanılmıştır. Bu analiz, genel memnuniyet üzerinde hangi hizmetlerin en fazla etkili olduğunu belirlememizi sağlamıştır.</p>
 
-										 <img src="images/Excel 05_Telco_DataCleaned.png" alt="Excel Analysis" style="width:1000px;height:500px;" data-position="center center" />
-									<p><i> Resim 1. Temizlenmiş ve segment etiketleriyle zenginleştirilmiş müşteri verisi görünümü.</i></p>
+										 <img src="images/Excel_04_Business_Satisfaction_Charts_Data.png" alt="Excel Analysis" style="width:1000px;height:500px;" data-position="center center" />
+									<p><i> Resim 4. Temizlenmiş ve segment etiketleriyle zenginleştirilmiş müşteri verisi görünümü.</i></p>
 									
 <p>Elde edilen korelasyon ve ortalama puan değerleri görselleştirilerek iki tür dağılım grafiği (scatter plot) oluşturulmuştur:</p>
 <ol>
@@ -129,15 +129,15 @@
 <li>Pasif Bölge: Hem düşük önem hem düşük memnuniyet. Öncelikli yatırım alanı değildir.</li>
 </ul>
 
-		 <img src="images/Excel 05_Telco_DataCleaned.png" alt="Excel Analysis" style="width:1000px;height:500px;" data-position="center center" />
-									<p><i> Resim 1. Temizlenmiş ve segment etiketleriyle zenginleştirilmiş müşteri verisi görünümü.</i></p>
+		 <img src="images/Excel_04_Business_Satisfaction_Chart1.png" alt="Excel Analysis" style="width:1000px;height:500px;" data-position="center center" />
+									<p><i> Resim 5. Temizlenmiş ve segment etiketleriyle zenginleştirilmiş müşteri verisi görünümü.</i></p>
 	
 </li>
 <li><strong>Memnuniyet Tutarlılığı Haritası:</strong> Burada, hizmetlerin ortalama memnuniyet puanı ile bu puanların standart sapması karşılaştırılmıştır. Amaç, müşterilerin bir hizmet hakkında tutarlı mı yoksa değişken mi düşündüğünü görmek ve potansiyel kararsızlık alanlarını belirlemektir.</li>
 </ol>
 
-										 <img src="images/Excel 05_Telco_DataCleaned.png" alt="Excel Analysis" style="width:1000px;height:500px;" data-position="center center" />
-									<p><i> Resim 1. Temizlenmiş ve segment etiketleriyle zenginleştirilmiş müşteri verisi görünümü.</i></p>
+										 <img src="images/Excel_04_Business_Satisfaction_Chart2.png" alt="Excel Analysis" style="width:1000px;height:500px;" data-position="center center" />
+									<p><i> Resim 6. Temizlenmiş ve segment etiketleriyle zenginleştirilmiş müşteri verisi görünümü.</i></p>
 									
 
 									<h3>Segmentasyon</h3>
@@ -163,7 +163,7 @@
 </ul>
 
 										 <img src="images/Excel 05_Telco_DataCleaned.png" alt="Excel Analysis" style="width:1000px;height:500px;" data-position="center center" />
-									<p><i> Resim 1. Temizlenmiş ve segment etiketleriyle zenginleştirilmiş müşteri verisi görünümü.</i></p>
+									<p><i> Resim 7. Temizlenmiş ve segment etiketleriyle zenginleştirilmiş müşteri verisi görünümü.</i></p>
 									
 <p>Bu gruplandırmalar sayesinde farklı müşteri profilleriyle memnuniyet düzeyleri karşılaştırılabilmiş, yaş ve mesafe faktörlerinin memnuniyet üzerindeki etkisi net biçimde analiz edilmiştir.</p>
 
@@ -176,8 +176,8 @@
 </ul>
 <p>CSS skalasında sonuçların yorumlanabilmesi için genel eşik değerleri kullanılmıştır:</p> 
 									
-							 <img src="images/Excel 05_Telco_DataCleaned.png" alt="Excel Analysis" style="width:1000px;height:500px;" data-position="center center" />
-									<p><i> Resim 1. Temizlenmiş ve segment etiketleriyle zenginleştirilmiş müşteri verisi görünümü.</i></p>
+							 <img src="images/Excel_04_css_Scale.png" alt="Excel Analysis" style="width:1000px;height:500px;" data-position="center center" />
+									<p><i> Resim 8. Temizlenmiş ve segment etiketleriyle zenginleştirilmiş müşteri verisi görünümü.</i></p>
 									
 									<p></p>
 <table border="1" cellpadding="4" cellspacing="0">
@@ -197,15 +197,15 @@
 </tbody>
 </table>
 
-										 <img src="images/Excel 05_Telco_DataCleaned.png" alt="Excel Analysis" style="width:1000px;height:500px;" data-position="center center" />
-									<p><i> Resim 1. Temizlenmiş ve segment etiketleriyle zenginleştirilmiş müşteri verisi görünümü.</i></p>
+										 <img src="images/Excel_04_EDA_CSS_Satisfaction.png" alt="Excel Analysis" style="width:1000px;height:500px;" data-position="center center" />
+									<p><i> Resim 9. Temizlenmiş ve segment etiketleriyle zenginleştirilmiş müşteri verisi görünümü.</i></p>
 
 <h2>NPS Analizi</h2>
 <h3>Net Tavsiye Skoru</h3>
 <p>Net Tavsiye Skoru, müşterilerin markayı tavsiye etme istekliliğini yansıtan kritik bir göstergedir:</p>
 
-									 <img src="images/Excel 05_Telco_DataCleaned.png" alt="Excel Analysis" style="width:1000px;height:500px;" data-position="center center" />
-									<p><i> Resim 1. Temizlenmiş ve segment etiketleriyle zenginleştirilmiş müşteri verisi görünümü.</i></p>
+									 <img src="images/Excel_04_NPS_Formula.png" alt="Excel Analysis" style="width:1000px;height:500px;" data-position="center center" />
+									<p><i> Resim 10. Temizlenmiş ve segment etiketleriyle zenginleştirilmiş müşteri verisi görünümü.</i></p>
 <ul>
 <li>0–6 arası puanlayanlar: Kötüleyenler</li>
 <li>7–8 puanlayanlar: Pasifler</li>
@@ -215,7 +215,7 @@
 <p>Elde edilen NPS değeri: <strong>3.2</strong> – Bu değer sektör ortalamasının (yaklaşık 45) oldukça altındadır.</p>
 
 										 <img src="images/Excel 05_Telco_DataCleaned.png" alt="Excel Analysis" style="width:1000px;height:500px;" data-position="center center" />
-									<p><i> Resim 1. Temizlenmiş ve segment etiketleriyle zenginleştirilmiş müşteri verisi görünümü.</i></p>
+									<p><i> Resim 11. Temizlenmiş ve segment etiketleriyle zenginleştirilmiş müşteri verisi görünümü.</i></p>
 
 <h3>NPS Dönüşümü</h3>
 <p>NPS analizlerini segment bazlı olarak derinleştirmek için puanlar şu şekilde kodlanmıştır:</p>
@@ -226,8 +226,8 @@
 </ul>
 <p>Bu sayede her segment için ortalama NPS puanı pivot tablolarla hesaplanabilmiştir.</p>
 
-										 <img src="images/Excel 05_Telco_DataCleaned.png" alt="Excel Analysis" style="width:1000px;height:500px;" data-position="center center" />
-									<p><i> Resim 1. Temizlenmiş ve segment etiketleriyle zenginleştirilmiş müşteri verisi görünümü.</i></p>
+										 <img src="images/Excel_04_NPS_Transform.png" alt="Excel Analysis" style="width:1000px;height:500px;" data-position="center center" />
+									<p><i> Resim 12. Temizlenmiş ve segment etiketleriyle zenginleştirilmiş müşteri verisi görünümü.</i></p>
 
 <h3>NPS Veri Keşfi</h3>
 <ul>
@@ -236,8 +236,8 @@
 <li>En yüksek NPS değerleri: Business Class yolcuları.</li>
 </ul>
 
-										 <img src="images/Excel 05_Telco_DataCleaned.png" alt="Excel Analysis" style="width:1000px;height:500px;" data-position="center center" />
-									<p><i> Resim 1. Temizlenmiş ve segment etiketleriyle zenginleştirilmiş müşteri verisi görünümü.</i></p>
+										 <img src="images/Excel_04_NPS_EDA.png" alt="Excel Analysis" style="width:1000px;height:500px;" data-position="center center" />
+									<p><i> Resim 13. Temizlenmiş ve segment etiketleriyle zenginleştirilmiş müşteri verisi görünümü.</i></p>
 
 <h2>Temel Bulgular</h2>
 <ul>
