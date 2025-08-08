@@ -58,202 +58,218 @@
 									</header>
 									<!--<span class="image main"><img src="images/pic11.jpg" alt="" /></span> -->
                   
-                  <h2>Literatürel Bağlam</h2>
-                  <p>Telekom sektöründe müşteri kaybı (churn), kârlılık ve sürdürülebilirlik açısından en kritik göstergelerden biridir. Çalışmalar, yeni bir müşteri kazanmanın, mevcut bir müşteriyi elde tutmaktan 5–7 kat daha maliyetli olduğunu ortaya koymaktadır. Bu nedenle churn oranının yükselmesi, doğrudan gelir kaybı anlamına gelir.
-                  Özellikle belli bir eşiğin (örneğin %30’un) üzerindeki churn oranları, hem müşteri deneyimi sorunlarına hem de hizmet/paket uyumsuzluklarına işaret edebilir. Bu oranların zamanında tespit edilmesi, hedefli aksiyon planlarıyla riskin azaltılmasını sağlar.
-                  Bu bağlamda yapılan segmentasyon bazlı churn analizleri, yüksek risk taşıyan müşteri gruplarını görünür kılarak erken müdahale fırsatları sunar. Bu proje de bu anlayışla şekillendirilmiş ve churn'ü merkeze alarak veri temelli içgörüler üretilmiştir. </p>
+
+<h2>Literatürel Bağlam</h2>
+<p>Müşteri deneyimini anlamak ve optimize etmek, hizmet sektöründe uzun vadeli başarıyı güvence altına almanın temelidir. Havayolu sektörü gibi yüksek rekabetin ve hizmet temas noktalarının çok sayıda olduğu alanlarda, müşteri memnuniyeti yalnızca sadakat ve tekrar tercih edilme oranını değil, aynı zamanda marka algısını doğrudan etkiler.</p>
+<p>Bu bağlamda, analizlerde kullanılan iki temel metrik öne çıkmaktadır:</p>
+<ul>
+<li><strong>Customer Satisfaction Score (CSS):</strong> Bu metrik, müşterilerin hizmet kalitesiyle ilgili deneyimlerini Likert ölçeği üzerinden değerlendirerek genel memnuniyet düzeylerini ölçer. Uygulamada, ürün veya hizmetin belirli yönlerine verilen 1-5 arası puanlar, 0-100 ölçeğine dönüştürülerek standartlaştırılmış analizler yapılmasına olanak tanır.</li>
+<li><strong>Net Promoter Score (NPS):</strong> Müşteri memnuniyetinin ötesine geçerek marka bağlılığı ve tavsiye etme eğilimini ölçer. “Bu hizmeti arkadaşınıza tavsiye eder misiniz?” sorusuna verilen 0-10 arası puanlarla hesaplanır. 9-10 puan verenler destekçiler, 7-8 pasifler ve 0-6 arası puanlayanlar kötüleyenler olarak ayrılır. NPS skoru, destekçilerin yüzdesinden kötüleyenlerin yüzdesi çıkarılarak elde edilir.</li>
+</ul>
+<p>Bu iki göstergeyle desteklenen analiz süreci, müşterinin temas ettiği her hizmet noktasını değerlendirme imkânı sunar. Özellikle uçuş öncesi, uçuş sırası ve uçuş sonrası gibi aşamalarda, temas noktalarındaki sorunları tespit ederek stratejik iyileştirme fırsatları yaratmak mümkündür.</p>
+
+<h2>Hedef</h2>
+<p>Bu proje, FlyNet Plus havayolu müşterilerinin uçuş deneyimi sırasında yaşadığı memnuniyeti hem CSS (Customer Satisfaction Score) hem de NPS (Net Promoter Score) üzerinden çok boyutlu olarak analiz etmeyi hedeflemektedir. Amaç, hizmet bileşenlerinin memnuniyet üzerindeki etkisini ölçmek, düşük puan alan segmentleri tespit ederek bu segmentler özelinde iyileştirme stratejileri geliştirmektir. Proje aynı zamanda müşteri segmentasyonu, yaş ve uçuş mesafesi gibi değişkenlere göre analizler gerçekleştirerek stratejik içgörüler üretmeyi amaçlamaktadır.</p>
+
+<h4>Veri Seti Bilgisi</h4>
+<ul>
+<li>Kaynak: Miuul - FlyNet Plus (Simüle edilmiş müşteri memnuniyeti verisi)</li>
+<li>Kapsam: Havayolu yolcularının uçuş deneyimlerine ilişkin memnuniyet verileri</li>
+<li>Değişkenler: Gender, Age, Type of Travel, Class, Flight Distance, Seat comfort, Food & drink, CSS, NPS vb.</li>
+<li>Toplam işlem sayısı: 1.035 müşteri verisi</li>
+<li>Veri Süresi: Belirtilmemiş – Statik anket ve işlem verileri</li>
+</ul>
+
+<h2>Analiz</h2>
+<h4>İş Soruları:</h4>
+<ol>
+<li>Hangi hizmetler genel memnuniyeti en çok etkilemektedir?</li>
+<li>Hangi hizmetler kritik öncelik taşıyan ama düşük memnuniyet alan alanlardır?</li>
+<li>Hangi yaş ve cinsiyet gruplarında memnuniyet düzeyi düşüktür?</li>
+<li>Uçuş mesafesi, memnuniyet ve zamanlamayla (delay) ilişkili midir?</li>
+<li>Sınıf (Eco, Business, vb.) ve uçuş mesafesi ilişkisi nasıldır?</li>
+<li>Genel NPS skoru nedir ve sektör ortalamasıyla kıyaslandığında ne durumdadır?</li>
+<li>Hangi segmentler NPS açısından iyileştirme gerektirmektedir?</li>
+</ol>
+
+<h2>CSS Analizi</h2>
+<h3>Kurulum & Veri Hazırlığı</h3>
+<p>Analize başlamadan önce, yalnızca Business Class yolcuları filtrelenerek özel bir müşteri segmenti oluşturulmuştur. Bu segmentteki yolcular, hizmet kalitesi açısından daha yüksek beklentilere sahip oldukları için, memnuniyet düzeylerinin detaylı şekilde analiz edilmesi hedeflenmiştir.</p>
+<p>İlk veri düzenleme adımı olarak, “Arrival Delay in Minutes” değişkeni, metin formatındaydı ve bu nedenle doğru analiz yapılabilmesi için “Text to Columns” yöntemiyle sayısal formata dönüştürülmüştür.</p>
 									
-                  <h2>Hedef</h2>
-									<p>Bu proje, TelcoCustomer veri seti üzerinde müşteri davranışlarını ve sözleşme yapılarını inceleyerek, churn eğilimlerini anlamaya ve açıklamaya yönelik bir segmentasyon çalışmasıdır. Amaç, gelişmiş Excel teknikleriyle churn’u etkileyen faktörleri görünür hale getirmek, riskli müşteri gruplarını net şekilde tanımlayarak bunlara yönelik karar destek stratejileri geliştirmektir.
-                  Makine öğrenmesi yerine yorumlanabilirlik ve uygulama kolaylığı sunan bir segmentasyon modeli tercih edilmiş; analiz sonunda, bir segment için olası bir yapay zekâ stratejisi geliştirilerek projenin iş değerini somutlaştırmak hedeflenmiştir.  </p></p>
-									<a href="https://github.com/gulizsamgar/Excel-CRM-Analytics/blob/3713e0628bee9a359e70b9fbdc0cfcf554ce548a/05_TelcoCustomer_Churn_Segmentasyon_Analysis.xlsx" target="_blank">Github'dan indirin!</a>
-									<p></p>
-
-									<h4>Veri Seti Bilgisi:</h4>
-									<ul>
-										<li>Kaynak: <a href="https://www.kaggle.com/datasets/blastchar/telco-customer-churn" target="_blank">Kaggle – Telco Customer Churn Dataset</a></li>
-										<li>Kapsam: Telekom şirketi müşterilerinin sözleşme, hizmet kullanımı ve fatura bilgileri</li>
-										<li>Değişkenler: gender, SeniorCitizen, tenure, Contract, InternetService, MonthlyCharges, TotalCharges, Churn, vb.</li>
-										<li>Toplam işlem sayısı: 7.043 müşteri</li>
-										<li>Veri süresi: Belirtilmemiş (statik kesit veri)</li>
-									</ul>
-
-                 <h2>Kurulum</h2>
-                 <p>Projeye veri temizliğiyle başlandı. Özellikle MonthlyCharges ve TotalCharges sütunları sayısal formatta olmadığı için "Text to Columns" yöntemiyle dönüştürüldü. Ardından segment oluşturma süreci başladı.
-	         Veri setinde bulunan bazı sütunlar yeniden kategorize edildi. Aşağıdaki formüller yardımıyla her müşteri, belirli segment tanımlamalarına uygun şekilde sınıflandırıldı:</p>
-
-                  <ul>
-                  <li>Senior_Cat: Genç / Yetişkin ayrımı → <code>=IF(SeniorCitizen=0,"J","S")</code></li>
-                  <li>Tenure_Cat: 6 ay altı / 6–16 ay / 16 ay üzeri → <code>=IF(tenure<7,"_6AY",IF(tenure<17,"_16AY","_16AY+"))</code></li>
-                  <li>TechUser: Teknolojik hizmet kullanıp kullanmama → <code>=IF(COUNTIF(OnlineSecurity:TechSupport,"Yes")>0,"_Using","_NotUsing")</code></li>
-                  <li>Contract_Cat: Aylık / Yıllık / İki yıllık sözleşme → <code>=IFS(Contract="Month-to-month","_MM",Contract="One year","_OY",TRUE,"_TY")</code></li>
-                  <li>Churn_: Churn değişkeni için ikili dönüşüm → <code>=IF(Churn="No",0,1)</code></li>
-                  </ul>
-                  
-						      <img src="images/Excel 05_Telco_DataCleaned.png" alt="Excel Analysis" style="width:1000px;height:500px;" data-position="center center" />
+										 <img src="images/Excel 05_Telco_DataCleaned.png" alt="Excel Analysis" style="width:1000px;height:500px;" data-position="center center" />
 									<p><i> Resim 1. Temizlenmiş ve segment etiketleriyle zenginleştirilmiş müşteri verisi görünümü.</i></p>
-                  
-                <p>Bu dört sütun birleştirilerek toplam 31 farklı segment tanımlandı. Son olarak, oluşturulan yeni sütunlar renklendirilerek görsel seçicilik artırıldı.</p>
-
-                <h2>Analiz</h2>
-                <p>Aşağıdaki iş sorularına odaklanılarak churn analizi ve segment bazlı keşifsel veri analizleri gerçekleştirilmiştir:</p>
-                  <h4>İş Soruları:</h4>
-                  <ol>
-                    <li>Hangi müşteri segmentleri en yüksek churn oranına sahiptir?</li>
-                    <li>Segmentler özelinde ortalama abonelik süresi (tenure) nasıldır?</li>
-                    <li>Segmentlere göre ortalama aylık gelir (Monthly Recurring Revenue - MRR) ne düzeydedir?</li>
-                    <li>Müşteri sayısı en yüksek olan segmentler hangileridir?</li>
-                    <li>En fazla churn eden müşteri sayısı hangi segmentlerde yoğunlaşmıştır?</li>
-                    <li>Churn içindeki toplam müşteri kaybının en büyük yüzdesini oluşturan segmentler hangileridir?</li>
-                    <li>Yüksek churn oranına rağmen potansiyel değeri yüksek (yüksek MRR) segmentler var mıdır?</li>
-                    <li>Teknolojik hizmet (OnlineSecurity, Backup, TechSupport) kullanımı segmentlerin churn oranını nasıl etkilemektedir?</li>
-                    <li>Sözleşme türüne (Contract) göre churn oranı segmentler arasında nasıl değişmektedir?</li>
-                    <li>“Short tenure” segmentleriyle “long tenure” segmentleri arasında churn açısından belirgin farklar var mı?</li>
-                  </ol>
 									
-									<h2>Veri Keşfi</h2>
+<p>Ardından, hizmetlere verilen puanlarla en iyi ve en kötü hizmetleri belirlemek üzere temel istatistiksel analiz yapılması planlanmıştır. Ancak bu analizden önce, tüm hizmet puanlarının karşılaştırılabilir hale getirilmesi gerekmektedir. Zira orijinal puanlama sistemi 1–5 arası Likert ölçeği kullanmaktadır ve bu format, bazı hizmetler arasında doğrudan kıyaslama yapılmasını zorlaştırmaktadır.</p>
+<p>Bu problemi aşmak için puanlar, daha evrensel bir ölçüt olan 0–100 ölçeğine dönüştürülmüştür. Dönüştürme işleminde, her puanın karşılığı olan yeni değerleri içeren bir referans tablosu kullanılmıştır. Excel’in <code>DÜŞEYARA (VLOOKUP)</code> fonksiyonu yardımıyla her satırdaki puan yeni değeriyle değiştirilmiştir.</p>
 									
-                  <p>Veri keşfi için oluşturulan pivot tablolar aracılığıyla müşteriler, çeşitli segmentasyon kriterlerine göre analiz edilmiştir. Gerçekleştirilen veri keşfinde:<br>
-
-                  <ul>
-                    <li>Her segmentin toplam müşteri sayısı</li>
-                    <li>Segment içindeki churn oranı ve churn eden müşteri sayısı</li>
-                    <li>Churn edenlerin toplam churn içindeki payı</li>
-                    <li>Ortalama MRR (Monthly Charges)</li>
-                    <li>Ortalama abonelik süresi (tenure)</li>
-                  </ul>
-
-                  ...gibi özet metrikler detaylı şekilde hesaplanmıştır.</p>
-                  <p>Ayrıca eklenen ek pivot tablolar sayesinde;<br>
-                    ✅ Teknoloji hizmeti kullanımı,<br>
-                    ✅ Sözleşme tipi,<br>
-                    ✅ Abonelik süresi<br>
-                    gibi ana değişkenlerin churn üzerindeki etkileri ayrı ayrı analiz edilmiştir.</p>
+										 <img src="images/Excel 05_Telco_DataCleaned.png" alt="Excel Analysis" style="width:1000px;height:500px;" data-position="center center" />
+									<p><i> Resim 1. Temizlenmiş ve segment etiketleriyle zenginleştirilmiş müşteri verisi görünümü.</i></p>
 									
-						      <img src="images/Excel 05_Telco_SegmentPivot.png" alt="Excel Analysis" style="width:1000px;height:500px;" data-position="center center" />
-									<p><i> Resim 2. Segment dağılımı ve churn oranları – Pivot tablo görünümü.</i></p>
-                  
-                  <p>Bu analizler sayesinde bazı segmentlerde yüksek churn oranı ama düşük müşteri ömrü (low tenure) gibi kritik risk kalıpları belirlenmiştir. Pivot tablolar, churn oranı, gelir katkısı ve müşteri kitlesi büyüklüğü arasındaki ilişkiyi görmeye yardımcı olmuş ve en öncelikli müdahale edilmesi gereken segmentlerin tespitine olanak sağlamıştır.</p>
+<p>Dönüşüm sonrasında elde edilen yeni veri setinde, değişiklik yapılan sütunlar renklendirilmiş ve görsel ayrıştırıcılık sağlanmıştır. Böylece görsel analiz sırasında kullanıcı dikkatinin ilgili alanlara yönlendirilmesi kolaylaştırılmıştır. Bu düzenlemeler, sonraki adımlarda yapılacak istatistiksel karşılaştırmalar ve görselleştirmeler için zemin oluşturmuştur.</p>
 
-                  <h2>Bubble Chart Görselleştirmesi</h2>
-                  <p>Pivot tablo verisi doğrudan görselleştirme için uygun olmadığından, 03_Bubble_Chart_Data sayfasında yapı dönüştürüldü. Her segment için:</p>
-                  <ul>
-                    <li>X ekseni: Ortalama MRR</li>
-                    <li>Y ekseni: Ortalama tenure</li>
-                    <li>Balon boyutu: Churn oranı</li>
-                    <li>Balon etiketi: Segment adı ve churn yüzdesi</li>
-                  </ul>
-                  
-                  <p>...şeklinde organize edilen verilerle, 04_Bubble_Chart_Visual sayfasında interaktif bir karşılaştırma grafiği oluşturuldu. Grafik üzerinde:</p>
-                  <ul>
-                    <li>Düşük tenure ve yüksek churn içeren segmentler büyük ve alt konumda</li>
-                    <li>Uzun süreli, yüksek MRR’li ve düşük churn segmentleri sağ üstte konumlandı</li>
-                  </ul>
-                  
-          				<img src="images/Excel 05_Telco_BubbleChart.png" alt="Excel Analysis" style="width:1000px;height:500px;" data-position="center center" />
-									<p><i> Resim 3. Churn, MRR ve sadakat odaklı segment karşılaştırma grafiği.</i></p>
-
-                  <p>Bu sayede kritik segmentler tek bakışta fark edilebildi.</p>
-
-                  <h2>Temel Bulgular</h2>
-                  <ol>
-                    <li>Churn riski en yüksek segmentler, kısa abonelik süresine (<6 ay), teknoloji hizmeti kullanmayan profillere ve aylık sözleşmeye sahip müşterilerden oluşmaktadır. Özellikle J_6AY_NotUsing_MM segmenti, hem churn oranı (%52) hem de müşteri sayısı açısından kritik risk taşımaktadır.</li>
-                    <li>En düşük churn oranları, S_16AY+_Using_TY gibi uzun süreli abonelik süresine, yıllık veya iki yıllık sözleşmeye ve teknoloji kullanımına sahip müşterilerde gözlemlenmiştir. Bu segmentlerde churn oranı %5’in altındadır.</li>
-                    <li>Teknolojik hizmet kullanımı (OnlineSecurity, OnlineBackup, TechSupport) churn üzerinde belirgin bir etkiye sahiptir. Bu hizmetleri kullanan segmentlerde churn oranı ortalama %6-10 daha düşüktür.</li>
-                    <li>Sözleşme tipi, müşteri sadakati üzerinde doğrudan belirleyicidir. Aylık sözleşme ile hizmet alan segmentlerde churn oranı ortalama  %43 iken, yıllık ve iki yıllık sözleşmeli segmentlerde bu oran %3–11 düzeyine düşmektedir.</li>
-                    <li>Bazı segmentler hem yüksek MRR (gelir) hem de yüksek churn oranı taşımaktadır. Örneğin, J_16AY+_NotUsing_MM segmenti, önemli bir gelir katkısı sağlamasına rağmen yüksek churn riski taşımaktadır. Bu segmentler “yüksek değerli ama kırılgan müşteri grubu” olarak değerlendirilmelidir.</li>
-                </ol>
-                  
-                  <h2>Segment Analizi ve AI Tabanlı Strateji</h2>
-                  
-                  <p><strong>Hedef Segment:</strong> J_6AY_NotUsing_MM</p>
-                  <ul>
-                    <li>Profil: Genç kullanıcılar, abonelik süresi 6 ay ve altı, teknoloji hizmetlerini kullanmıyor, sözleşme tipi ay bazlı (Month-to-Month)</li>
-                    <li>Segment Boyutu: 777 müşteri</li>
-                    <li>Churn Oranı: %52 (çok yüksek)</li>
-                    <li>Ortalama Fatura (MonthlyCharges): $47 (ortalama seviye)</li>
-                    <li>Ortalama Tenure: 2 ay (sadakat gelişmemiş)</li>
-                  </ul>
-                  
-                  <h3>AI Perspektifiyle Stratejik Çıkarım:</h3>
-                  <p>Bu segment, müşteri kaybı riskini en hızlı yansıtan grubu temsil eder. Bu gruptaki müşteriler genellikle aşağıdaki profillerden bir veya daha fazlasına girer:</p>
-                  <ul>
-                    <li>Deneme sürecinde olan veya</li>
-                    <li>Hizmetin değerini henüz hissedememiş</li>
-                    <li>Katma değerli ürünlerle tanışmamış</li>
-                  </ul>
-
-									<img src="images/Excel 05_Telco_AIStrategy.png" alt="Excel Analysis" style="width:1000px;height:500px;" data-position="center center" />
-									<p><i> Resim 4.  AI destekli churn tahmin ve strateji sistemlerini temsil eden kavramsal görsel.</i></p> 
+									 <img src="images/Excel 05_Telco_DataCleaned.png" alt="Excel Analysis" style="width:1000px;height:500px;" data-position="center center" />
+									<p><i> Resim 1. Temizlenmiş ve segment etiketleriyle zenginleştirilmiş müşteri verisi görünümü.</i></p>
 									
-                  <h3>AI Tarafından Üretilmiş Olası Stratejiler (Simülasyon Senaryosu):</h3>
-                   <ol>
-                    <li>
-                       <strong>Predictive Personalization (Tahmine Dayalı Kişiselleştirme):</strong>
-                      <p>Bu segmentte churn riski yüksek müşterilere özel, ilk ay içinde tetiklenen dinamik onboarding içerikleri sunulmalı. AI modeli, müşterinin ilk 7 gün içindeki davranışlarını izleyerek aşağıdaki segmentasyonla aksiyon öneriyor:</p>
-			    <p></p>
-			    
-                      <table border="1" cellpadding="5" cellspacing="0">
-                        <thead>
-                          <tr>
-                            <th>Aktivite Göstergesi</th>
-                            <th>Önerilen Aksiyon</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <td>Giriş sayısı < 2</td>
-                            <td>Mobil app kullanım eğitimi içeren push bildirimleri</td>
-                          </tr>
-                          <tr>
-                            <td>Fatura ekranı ziyaret edilmemiş</td>
-                            <td>"Faturanı kontrol et, avantajları öğren" kampanyası</td>
-                          </tr>
-                          <tr>
-                            <td>Tech ürün kullanımı yoksa</td>
-                            <td>Kişiye özel deneme kampanyası önerisi</td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </li>
+<h3>Hizmet Bazlı Memnuniyet Haritası</h3>
+<p>Business Class müşterilerinin hizmetlere ilişkin memnuniyetini detaylı biçimde anlamak için, her bir hizmet değişkeni için temel istatistiksel analizler yapılmıştır. İlk olarak, her hizmet için ortalama memnuniyet puanları ve standart sapma değerleri hesaplanmıştır. Bu sayede, müşterilerin genel eğilimleri ve memnuniyet düzeylerindeki tutarlılık gözlemlenmiştir.</p>
+<p>Ardından, her bir hizmet değişkeninin genel memnuniyet skoru ile olan ilişkisi ölçülmüştür. Bu aşamada Excel’in korelasyon analiz fonksiyonu (CORREL) kullanılmıştır. Bu analiz, genel memnuniyet üzerinde hangi hizmetlerin en fazla etkili olduğunu belirlememizi sağlamıştır.</p>
 
-                     <li>
-                       <strong>Ürün Öneri Motoru ile Teknoloji Ürün Geçişi:</strong>
-                      <p>Segmentte teknolojik hizmet kullanımı yok. AI tabanlı öneri motoru, benzer profildeki kullanıcıların davranışlarına göre TechSupport ve OnlineBackup hizmetlerinin bu kullanıcıya özel bundle halinde sunulmasının churn'u azalttığını öngörüyor.</p>
-                     </li>
-			   
-                     <li>
-                       <strong>Dynamic Contract Suggestion (Akıllı Kontrat Geçişi):</strong>
-                       <p>ML modeli, ay bazlı müşterilerin ilk 3 ay içinde yıllık kontrata geçtiğini ve churn oranlarının azaldığını tespit etti. Bu segmentte şu strateji önerilir:<br>
-			     <ul>
-				     <li>2. ayın sonunda, bir kullanıcının etkileşim puanı 60+ ise, kişiselleştirilmiş bir mesaj tetikleyin:</li>
-			     </ul>
-		       </p>
-			  <blockquote style="margin-top: 10px; margin-left: 20px; font-style: italic; color: white; border-left: 4px solid #2980b9; padding-left: 12px;">
-				  “Özel bir fiyattan yararlanın - Bugün yıllık plana geçin!”
-			  </blockquote>
-		   </li>
+										 <img src="images/Excel 05_Telco_DataCleaned.png" alt="Excel Analysis" style="width:1000px;height:500px;" data-position="center center" />
+									<p><i> Resim 1. Temizlenmiş ve segment etiketleriyle zenginleştirilmiş müşteri verisi görünümü.</i></p>
+									
+<p>Elde edilen korelasyon ve ortalama puan değerleri görselleştirilerek iki tür dağılım grafiği (scatter plot) oluşturulmuştur:</p>
+<ol>
+<li><strong>Memnuniyet Haritası:</strong> Bu harita, her bir hizmetin genel memnuniyete katkısını ve aldığı ortalama memnuniyet puanı (CSS) aynı anda gösterir. Dört alanda sınıflandırma yapılmıştır:
+<ul>
+<li>Başarı Bölgesi: Yüksek önem ve yüksek memnuniyet. Güçlü kalması gereken stratejik alanlardır.</li>
+<li>Kritik Bölge: Yüksek önem ancak düşük memnuniyet. Acil iyileştirme gereken hizmetleri gösterir.</li>
+<li>Bakım Bölgesi: Düşük önem fakat yüksek memnuniyet. Performans düşmemeli, ama yatırım önceliği düşük.</li>
+<li>Pasif Bölge: Hem düşük önem hem düşük memnuniyet. Öncelikli yatırım alanı değildir.</li>
+</ul>
 
-			   
-                     <li>
-                       <strong>Churn Likelihood Tracking Paneli:</strong>
-                       <p>Bu segmentte churn olasılığı %0.5 üzerindeki her kullanıcı için gerçek zamanlı alert sistemi ile müşteri hizmetleri devreye sokulmalı. Bu sayede proaktif müdahale ile churn azaltımı hedeflenebilir.
-			Churn riski taşıyan müşteriler için gerçek zamanlı izleme sistemi kurularak erken müdahale yapılabilir.<p>
-                     </li>
-                   </ol>
-                  
-                  <p>Model kurmaksızın yapılan bu iş zekâsı temelli analiz, yüksek churn potansiyeli taşıyan segmentleri tanımlamada ve onlara özel stratejiler geliştirmede güçlü bir çerçeve sunmaktadır.
-                    Eğer makine öğrenmesi tabanlı bir churn tahmin modeli kurulsaydı, bu segmentler öncelikli risk alanı olarak yine öne çıkacaktı.</p>
-                  
-                  <h2>Sonuç</h2>
-                  <p>Bu proje, yalnızca Excel araçlarını etkili kullanmakla kalmayıp, müşteri segmentasyonu ve churn analizi gibi CRM alanında kritik içgörüler üretme becerimi de göstermektedir.</p>
-                  
-                  <ul>
-                    <li><strong>Teknik beceriler:</strong> Veri temizleme, segment oluşturma, formül yazma, pivot tablo oluşturma, veri görselleştirme</li>
-                    <li><strong>Analitik yetkinlik:</strong> Churn odaklı segment bazlı analiz, içgörü üretme ve veri odaklı strateji geliştirme</li>
-                    <li><strong>Stratejik yaklaşım:</strong> AI destekli çözüm önerileriyle veriden aksiyona geçiş</li>
-                  </ul>
-                  <p>Bu proje, hem iş zekâsı uygulamaları hem de CRM bakış açısıyla veri analizi konusunda yetkinliğimi ortaya koymaktadır.</p>
+		 <img src="images/Excel 05_Telco_DataCleaned.png" alt="Excel Analysis" style="width:1000px;height:500px;" data-position="center center" />
+									<p><i> Resim 1. Temizlenmiş ve segment etiketleriyle zenginleştirilmiş müşteri verisi görünümü.</i></p>
+	
+</li>
+<li><strong>Memnuniyet Tutarlılığı Haritası:</strong> Burada, hizmetlerin ortalama memnuniyet puanı ile bu puanların standart sapması karşılaştırılmıştır. Amaç, müşterilerin bir hizmet hakkında tutarlı mı yoksa değişken mi düşündüğünü görmek ve potansiyel kararsızlık alanlarını belirlemektir.</li>
+</ol>
+
+										 <img src="images/Excel 05_Telco_DataCleaned.png" alt="Excel Analysis" style="width:1000px;height:500px;" data-position="center center" />
+									<p><i> Resim 1. Temizlenmiş ve segment etiketleriyle zenginleştirilmiş müşteri verisi görünümü.</i></p>
+									
+
+									<h3>Segmentasyon</h3>
+<p>Business Class dışındaki genel müşteri verisi üzerinden, daha derinlemesine analiz yapılabilmesi amacıyla bazı kategori temelli segmentlemeler oluşturulmuştur.</p>
+<ul>
+<li><strong>Age_Cat:</strong> Yolcuların yaşına göre segment ayrımı:
+<ul>
+<li>Child (<18)</li>
+<li>Young (18–29)</li>
+<li>Adult (30–49)</li>
+<li>Old (50+)</li>
+</ul>
+<p>→ <code>=IFS(Age<18,"Child", Age<30,"Young", Age<50,"Adult", Age>=50,"Old")</code></p>
+</li>
+<li><strong>Dist_Cat:</strong> Uçuş mesafesine göre segment ayrımı:
+<ul>
+<li>Short (<500 km) </li>
+<li>Mid (500–2500 km)</li>
+<li>Long (>2500 km)</li>
+</ul>
+<p>→ <code>=IF(Distance<500,"Short", IF(Distance>2500,"Long","Mid"))</code></p>
+</li>
+</ul>
+
+										 <img src="images/Excel 05_Telco_DataCleaned.png" alt="Excel Analysis" style="width:1000px;height:500px;" data-position="center center" />
+									<p><i> Resim 1. Temizlenmiş ve segment etiketleriyle zenginleştirilmiş müşteri verisi görünümü.</i></p>
+									
+<p>Bu gruplandırmalar sayesinde farklı müşteri profilleriyle memnuniyet düzeyleri karşılaştırılabilmiş, yaş ve mesafe faktörlerinin memnuniyet üzerindeki etkisi net biçimde analiz edilmiştir.</p>
+
+<h3>CSS Veri Keşfi</h3>
+<p>CSS skorlarına dayalı keşifsel veri analizinde:</p>
+<ul>
+<li>Pivot tablolarla desteklenen analizler, belirli yaş grupları veya uçuş sınıflarının hizmet algılarındaki farkları ortaya koymuştur.</li>
+<li>Uçuş mesafesi ile gecikme süreleri (arrival/departure delay) ve “uçuş zamanı uygunluğu” gibi memnuniyet değişkenleri arasındaki ilişkiler incelenmiştir.</li>
+<li>‘Seat Comfort’ hizmetine yönelik memnuniyetin, uçuş mesafesi segmentlerine göre nasıl değiştiği analiz edilmiştir.</li>
+</ul>
+<p>CSS skalasında sonuçların yorumlanabilmesi için genel eşik değerleri kullanılmıştır:</p> 
+									
+							 <img src="images/Excel 05_Telco_DataCleaned.png" alt="Excel Analysis" style="width:1000px;height:500px;" data-position="center center" />
+									<p><i> Resim 1. Temizlenmiş ve segment etiketleriyle zenginleştirilmiş müşteri verisi görünümü.</i></p>
+									
+									<p></p>
+<table border="1" cellpadding="4" cellspacing="0">
+<thead>
+<tr>
+<th>CSS Skoru (0–100)</th>
+<th>Yorum</th>
+</tr>
+</thead>
+<tbody>
+<tr><td>90–100</td><td>Loyal (Sadık) – Çok yüksek memnuniyet ve bağlılık</td></tr>
+<tr><td>80–89</td><td>Satisfaction (Memnuniyet) – Hizmetten genel olarak memnun</td></tr>
+<tr><td>70–79</td><td>Problem – Bazı sorunlar algılanmış, müdahale gerekebilir</td></tr>
+<tr><td>60–69</td><td>Critical Problem – Belirgin sorunlar var, müdahale kritik</td></tr>
+<tr><td>40–59</td><td>Churn Riski – Müşteri kaybı riski yüksek</td></tr>
+<tr><td>0–39</td><td>Complaint Sharing – Müşteri memnuniyetsizliği yüksek</td></tr>
+</tbody>
+</table>
+
+										 <img src="images/Excel 05_Telco_DataCleaned.png" alt="Excel Analysis" style="width:1000px;height:500px;" data-position="center center" />
+									<p><i> Resim 1. Temizlenmiş ve segment etiketleriyle zenginleştirilmiş müşteri verisi görünümü.</i></p>
+
+<h2>NPS Analizi</h2>
+<h3>Net Tavsiye Skoru</h3>
+<p>Net Tavsiye Skoru, müşterilerin markayı tavsiye etme istekliliğini yansıtan kritik bir göstergedir:</p>
+
+									 <img src="images/Excel 05_Telco_DataCleaned.png" alt="Excel Analysis" style="width:1000px;height:500px;" data-position="center center" />
+									<p><i> Resim 1. Temizlenmiş ve segment etiketleriyle zenginleştirilmiş müşteri verisi görünümü.</i></p>
+<ul>
+<li>0–6 arası puanlayanlar: Kötüleyenler</li>
+<li>7–8 puanlayanlar: Pasifler</li>
+<li>9–10 puanlayanlar: Destekçiler</li>
+</ul>
+<p><strong>NPS</strong> = (% Destekçiler) - (% Kötüleyenler)</p>
+<p>Elde edilen NPS değeri: <strong>3.2</strong> – Bu değer sektör ortalamasının (yaklaşık 45) oldukça altındadır.</p>
+
+										 <img src="images/Excel 05_Telco_DataCleaned.png" alt="Excel Analysis" style="width:1000px;height:500px;" data-position="center center" />
+									<p><i> Resim 1. Temizlenmiş ve segment etiketleriyle zenginleştirilmiş müşteri verisi görünümü.</i></p>
+
+<h3>NPS Dönüşümü</h3>
+<p>NPS analizlerini segment bazlı olarak derinleştirmek için puanlar şu şekilde kodlanmıştır:</p>
+<ul>
+<li>Destekçiler: +100</li>
+<li>Pasifler: 0</li>
+<li>Kötüleyenler: -100</li>
+</ul>
+<p>Bu sayede her segment için ortalama NPS puanı pivot tablolarla hesaplanabilmiştir.</p>
+
+										 <img src="images/Excel 05_Telco_DataCleaned.png" alt="Excel Analysis" style="width:1000px;height:500px;" data-position="center center" />
+									<p><i> Resim 1. Temizlenmiş ve segment etiketleriyle zenginleştirilmiş müşteri verisi görünümü.</i></p>
+
+<h3>NPS Veri Keşfi</h3>
+<ul>
+<li>Yaş grupları, cinsiyet, uçuş mesafesi ve uçuş sınıfı segmentlerinde NPS ortalamaları analiz edilmiştir.</li>
+<li>En düşük NPS’ye sahip segmentler: kısa mesafeli uçan ve genç yaş grubundaki Eco Class müşteriler.</li>
+<li>En yüksek NPS değerleri: Business Class yolcuları.</li>
+</ul>
+
+										 <img src="images/Excel 05_Telco_DataCleaned.png" alt="Excel Analysis" style="width:1000px;height:500px;" data-position="center center" />
+									<p><i> Resim 1. Temizlenmiş ve segment etiketleriyle zenginleştirilmiş müşteri verisi görünümü.</i></p>
+
+<h2>Temel Bulgular</h2>
+<ul>
+<li>En yüksek memnuniyet puanları: Inflight wifi service (66.63-%65.2), inflight entertainment (46.57-%60.0) ve on-board service (68.17-%56.4).</li>
+<li>Kritik geliştirme alanı: Inflight entertainment (%60 korelasyon; 46,57 puan).</li>
+<li>Yüksek memnuniyet ama yüksek standart sapma: Inflight Wifi Service ve Online Boarding.</li>
+<li>Tutarlı hizmet: Inflight Service.</li>
+<li>En düşük memnuniyet: 18–29 yaş grubu (özellikle seat comfort ve entertainment).</li>
+<li>Kısa mesafe uçuşlarda düşük memnuniyet (ör. koltuk konforu 37.13).</li>
+<li>Uçuş mesafesi ile gecikmeler arasında anlamlı ilişki yok.</li>
+<li>Uçuş mesafesi ile sınıf tercihi ilişkili; uzun mesafe uçuşların %94’ü Business sınıfı.</li>
+<li>Genel NPS: 3.2 (sektör ortalamasının altında).</li>
+<li>NPS açısından geliştirme gereken segmentler: Eco class – business travel ve genç yaş grubu.</li>
+</ul>
+
+<h2>Öneriler</h2>
+<ul>
+<li>Inflight entertainment içerikleri çeşitlendirilmeli, dil seçenekleri artırılmalı, teknik kalite iyileştirilmeli.</li>
+<li>Wifi hız limiti artırılmalı, bağlantı kopmaları azaltılmalı, uzun uçuşlarda ücretsiz erişim sunulmalı.</li>
+<li>Online boarding süreci sadeleştirilmeli, koltuk seçimi ve bagaj ekleme tek ekrandan yapılabilmeli.</li>
+<li>Kısa mesafe uçuşlarda koltuk konforu artırılmalı, ikram çeşitleri genişletilmeli, eğlence sistemi aktif edilmeli.</li>
+<li>18–29 yaş grubu için dijital odaklı hizmetler ve sosyal medya erişimi eklenmeli.</li>
+<li>Ekonomi sınıfında premium ikram ve ekstra diz mesafesi paketleri uygun fiyatla sunulmalı.</li>
+<li>Düşük NPS segmentleri için özel kampanyalar ve sadakat programları başlatılmalı.</li>
+</ul>
+
+<h2>Sonuç</h2>
+<p>Bu proje, yalnızca Excel araçlarının etkili kullanımını değil, aynı zamanda müşteri memnuniyetini anlama, analiz etme ve strateji üretme becerisini ortaya koymaktadır.</p>
+<p><strong>Teknik Beceriler:</strong> Veri temizleme, formül kullanımı, dönüşüm işlemleri, segmentasyon, pivot tablo kullanımı, korelasyon analizi, dağılım grafikleri ile görselleştirme ve yorumlama</p>
+<p><strong>Analitik Yetkinlik:</strong> CSS ve NPS gibi müşteri memnuniyeti metriklerini yorumlama, hizmet bazlı stratejik değerlendirme, segment bazlı farklılıkların belirlenmesi</p>
+<p><strong>Stratejik Yaklaşım:</strong> En kritik iyileştirme alanlarını belirleme, sektör ortalamalarıyla karşılaştırma, veriye dayalı öneriler ve önceliklendirme</p>
+<p>Bu çalışma, müşteri deneyimi, memnuniyet yönetimi ve veri temelli karar verme alanlarında yetkinliğimi bütüncül bir şekilde yansıtmaktadır.</p>
+
 
 								</div>
 							</section>
