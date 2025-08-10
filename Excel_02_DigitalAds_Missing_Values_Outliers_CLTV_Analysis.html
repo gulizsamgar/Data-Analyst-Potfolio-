@@ -99,8 +99,8 @@ Analiz süreci yalnızca satış tahmini yapmakla sınırlı kalmamış, Custome
 <h3>Kayıp Değer Analizi</h3>
 <p>Veri setinde analiz öncesi eksik değer tespiti ve uygun doldurma yöntemlerinin belirlenmesi kritik bir adım olarak gerçekleştirildi. Missing Value &amp; Descriptive Statistics Analysis tablosu yardımıyla her değişken için eksik veri sayısı, yüzdesi, ortalama, medyan, standart sapma, değişim katsayısı (CV) ve Google Ads ile korelasyon değerleri hesaplandı.</p>
 
-                   <img src="images/Excel 02_Missing_Values.png" alt="Excel Analysis" style="width:1000px;height:500px;" data-position="center center" />
-									<p><i> Resim 1. NPS segment analizi görünümü.</i></p>
+                   <img src="images/Excel 02_Missing_Values.png" alt="Excel Analysis" style="width:1000px;height:200px;" data-position="center center" />
+									<p><i> Resim 1. Eksik değerler ve doldurma yöntemleri tablosu.</i></p>
 
 <p><strong>Doldurma Yöntemlerinin Belirlenmesi</strong></p>
 <ul>
@@ -116,7 +116,7 @@ Analiz süreci yalnızca satış tahmini yapmakla sınırlı kalmamış, Custome
   </li>
 </ul> 
                   
- <img src="images/Excel 02_Weekday_Pivot.png" alt="Excel Analysis" style="width:500px;height:auto;;" data-position="center center" />
+ <img src="images/Excel 02_Weekday_Pivot.png" alt="Excel Analysis" style="width:300px;height:auto;;" data-position="center center" />
 									<p><i> Resim 2. Haftanın günlerine göre ortalama satış pivot tablosu.</i></p>
                   
 <p>Bu adımlar sonucunda, eksiksiz, tutarlı ve analiz için hazır bir veri seti elde edildi. Eksik veri doldurma sürecinde kullanılan yöntemlerin her biri, değişkenin dağılım yapısı, standart sapması ve korelasyon özellikleri dikkate alınarak seçildi.</p>
@@ -124,7 +124,7 @@ Analiz süreci yalnızca satış tahmini yapmakla sınırlı kalmamış, Custome
 <h3>Aykırı Değer Analizi</h3>
 <p>Eksik veri doldurma işlemlerinin ardından, veri setindeki analiz güvenilirliğini artırmak için aykırı değerlerin tespiti ve düzeltilmesi adımına geçildi. Bu aşamada, IQR (Interquartile Range) yöntemi kullanılarak değişkenlerdeki aşırı uç değerler belirlendi.</p>
 
-                   <img src="images/Excel 02_Outlier_Analysis.png" alt="Excel Analysis" style="width:1000px;height:500px;" data-position="center center" />
+                   <img src="images/Excel 02_Outlier_Analysis.png" alt="Excel Analysis" style="width:1000px;height:200px;" data-position="center center" />
 									<p><i> Resim 3. IQR yöntemi ile outlier tespit tablosu.</i></p>
                   
 <p>İlk olarak, her değişken için Q1 (alt çeyrek) ve Q3 (üst çeyrek) değerleri <code>QUARTILE</code> fonksiyonu ile hesaplandı. Daha sonra IQR şu formülle elde edildi:</p>
@@ -162,15 +162,15 @@ Analiz süreci yalnızca satış tahmini yapmakla sınırlı kalmamış, Custome
 </ul>
 <p>Regresyon denklemleri çıkarıldı, regresyon grafikleri ile satış üzerindeki etkiler görselleştirildi.</p>
 
-                   <img src="images/Excel 02_Regression_Plots.png" alt="Excel Analysis" style="width:1000px;height:200px;" data-position="center center" />
-									<p><i> Resim 6. Çoklu regresyon sonuçları ve $100 yatırım ROI dağılımı.</i></p>
+                   <img src="images/Excel 02_Regression_Plots.png" alt="Excel Analysis" style="width:1000px;height:300px;" data-position="center center" />
+									<p><i> Resim 6. eklam kanalları ile satışlar arasındaki regresyon grafikleri.</i></p>
 
 <h3>Çoklu Regresyon ile Bütçe Optimizasyonu</h3>
 <p>Veri temizleme ve keşifsel analiz adımlarının ardından, reklam kanallarının satış üzerindeki etkisini ölçmek ve sınırlı bir bütçenin en verimli şekilde nasıl dağıtılabileceğini belirlemek amacıyla çoklu regresyon analizi uygulanmıştır.</p>
 <p>Bu analiz, Google Ads, Meta, Influencer pazarlama ve TikTok reklamlarının satış üzerindeki etkilerini ayrı ayrı modelleyerek, her kanal için katsayı (coefficient) değerlerini ortaya çıkarmıştır.</p>
 
-                   <img src="images/Excel_04_NPS_EDA.png" alt="Excel Analysis" style="width:1000px;height:500px;" data-position="center center" />
-									<p><i> Resim 7. NPS segment analizi görünümü.</i></p>
+                   <img src="images/Excel 02_Multiple_Regression.png" alt="Excel Analysis" style="width:1000px;height:500px;" data-position="center center" />
+									<p><i> Resim 7. Çoklu regresyon sonuçları ve $100 yatırım ROI dağılımı.</i></p>
                   
 <h4>1. Regresyon Çıktısı ve Model Performansı</h4>
 <ul>
