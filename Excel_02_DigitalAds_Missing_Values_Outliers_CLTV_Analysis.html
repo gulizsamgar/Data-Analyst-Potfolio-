@@ -59,12 +59,11 @@
 									<!--<span class="image main"><img src="images/pic11.jpg" alt="" /></span> -->
                   
                 <h2>Literatürel Bağlam</h2>
-<p>Veri analitiği, işletmelerin doğru karar alabilmesi için en önemli araçlardan biridir. Ancak, ham veriler çoğu zaman eksik gözlemler, aykırı değerler ve dağınık yapılar içerir. Eksik veriler doğru yönetilmezse model tahmin gücünü zayıflatır; aykırı değerler ise ortalamaları ve regresyon katsayılarını bozarak yanıltıcı sonuçlar üretir.</p>
-<p>Bu nedenle veri kalitesi için veri temizliği, modelleme sürecinin kritik ilk adımıdır.</p>
+<p>Veri analitiği, işletmelerin doğru karar alabilmesi için en önemli araçlardan biridir. Ancak, ham veriler çoğu zaman eksik gözlemler, aykırı değerler ve dağınık yapılar içerir. Eksik veriler doğru yönetilmezse model tahmin gücünü zayıflatır; aykırı değerler ise ortalamaları ve regresyon katsayılarını bozarak yanıltıcı sonuçlar üretir.
+Bu nedenle veri kalitesi için veri temizliği, modelleme sürecinin kritik ilk adımıdır.</p>
 <p>Kayıp Veri Analizi literatürde, “listwise deletion” (tamamen silme), “mean/median imputation” (ortalama/medyan doldurma) ve “regression imputation” gibi yöntemlerle ele alınır. Seçilecek yöntemin doğru belirlenmesi, değişkenin dağılımı, standart sapması ve diğer değişkenlerle korelasyonu dikkate alınarak yapılmalıdır.</p>
-<p>Aykırı Değer Analizi için ise yaygın bir yöntem Çeyrekler arası mesafe (IQR - Interquartile Range) yöntemidir.</p>
-
-<p>Cap işlemi (capping), bu limitlerin dışında kalan uç değerlerin sınır değerle değiştirilmesi işlemidir. Böylece veri uç değerlerden arındırılır ama veri sayısı azalmadan korunur.</p>
+<p>Aykırı Değer Analizi için ise yaygın bir yöntem Çeyrekler arası mesafe (IQR - Interquartile Range) yöntemidir. Bu yöntemde verinin limitleri belirlenir.</br>
+Cap işlemi (capping), limitlerin dışında kalan uç değerlerin sınır değerle değiştirilmesi işlemidir. Böylece veri uç değerlerden arındırılır ama veri sayısı azalmadan korunur.</p>
 <p>Son aşamalardan biri ise Müşteri Yaşam Boyu Değeri (Customer Lifetime Value – CLTV) analizidir. CLTV, bir müşterinin işletmeye tüm ilişkisi boyunca sağlayacağı tahmini gelir miktarını ölçer. Pazarlama bütçesinin hangi kanallara yönlendirileceğini belirlerken, CLTV yüksek müşteri segmentlerine öncelik verilmesi, yatırım getirisini (ROI) optimize eder. CLTV hesaplamasında ortalama sipariş değeri, satın alma sıklığı ve müşteri yaşam süresi gibi metrikler kullanılır. Ayrıca, CLTV’nin Müşteri Edinme Maliyeti (Customer Acquisition Cost – CAC) ile karşılaştırılması, yatırımın mantıklı olup olmadığını ortaya koyar.</p>
 <p>Bu proje, veri temizleme süreçlerini, istatistiksel modellemeyi ve CLTV analizini bir araya getirerek, Excel ortamında uçtan uca bir pazarlama ve yatırım optimizasyon çalışması sunmaktadır.</p>
 
@@ -73,7 +72,7 @@
 <p>Analiz süreci yalnızca satış tahmini yapmakla sınırlı kalmamış, Customer Lifetime Value (CLTV) ve Customer Acquisition Cost (CAC) hesaplamaları da yapılarak, yatırımın finansal mantığı sorgulanmıştır.</p>
 
                   </p></p>
-									<a href="https://docs.google.com/spreadsheets/d/18cxly_CX8TKYL4eY1JxeJjQYBHcpGAiB/edit?usp=drive_link&ouid=109156094529518174311&rtpof=true&sd=true" target="_blank">Google Drive'dan indirin!</a>
+									<a href="https://github.com/gulizsamgar/Excel-CRM-Analytics/blob/0ccbd5fc3d1ba11041d9fb4b4a560912ee013580/02_DigitalAds_Missing%20Values_Outliers_CLTV_Analysis.xlsx" target="_blank">Github'dan indirin!</a>
 									<p></p>
                   
 <h4>Veri Seti Açıklaması</h4>
@@ -102,27 +101,17 @@
 
                    <img src="images/Excel_04_NPS_EDA.png" alt="Excel Analysis" style="width:1000px;height:500px;" data-position="center center" />
 									<p><i> Resim 13. NPS segment analizi görünümü.</i></p>
-                  
-<p><strong>Adım 1: Kayıp Değer Oranlarının Tespiti</strong></p>
-<ul>
-  <li>Google Ads: %1,00 eksik veri oranı</li>
-  <li>Meta: %1,00 eksik veri oranı</li>
-  <li>Influencer: %0,50 eksik veri oranı</li>
-  <li>TikTok: %1,50 eksik veri oranı</li>
-  <li>Sales: %2,00 eksik veri oranı</li>
-</ul>
 
-<p><strong>Adım 2: Doldurma Yöntemlerinin Belirlenmesi</strong></p>
+<p><strong>Doldurma Yöntemlerinin Belirlenmesi</strong></p>
 <ul>
-  <li>Google Ads verileri, yüksek standart sapma (%24,49) ve satışlarla yüksek korelasyon (100%) göstermesi nedeniyle, Excel CORREL fonksiyonu kullanılarak satış değişkeni ile korelasyon analizi yapıldı. Bu ilişki doğrultusunda regresyon imputasyonu yöntemi ile eksik değerler tahmin edilerek dolduruldu.</li>
+  <li>Google Ads verileri, yüksek standart sapma (%24,49) ve satışlarla yüksek korelasyon (100%) göstermesi nedeniyle, Excel'in <code>CORREL</code> fonksiyonu kullanılarak satış değişkeni ile korelasyon analizi yapıldı. Bu ilişki doğrultusunda regresyon imputasyonu yöntemi ile eksik değerler tahmin edilerek dolduruldu.</li>
   <li>Meta, Influencer ve TikTok verileri, görece düşük standart sapma ve daha dengeli dağılıma sahip oldukları için medyan ile doldurma yöntemi kullanıldı. Bu yöntem, uç değerlerden etkilenmediği için veri setinin merkez eğilimini daha doğru yansıttı.</li>
   <li>Sales (Satış) değişkeni için, mevsimsellik etkisini azaltmak amacıyla haftanın günlerine göre ortalama satış miktarı hesaplandı. Bunun için:
     <ul>
-      <li>WEEKDAY fonksiyonu ile her tarihin haftanın hangi gününe denk geldiği belirlendi.</li>
+      <li><code>WEEKDAY</code> fonksiyonu ile her tarihin haftanın hangi gününe denk geldiği belirlendi.</li>
       <li>Pivot tablo kullanılarak her gün için ortalama satış değerleri çıkarıldı.</li>
-      <li>Eksik satış değerleri şu formülle dolduruldu:</li>
+      <li>Eksik satış değerleri şu formülle dolduruldu:<code>=IF(ISBLANK(SALES),VLOOKUP(WEEKDAY, PIVOT_TABLE, TRUE), SALES)</code></li>
     </ul>
-    <pre>=IF(ISBLANK(SALES),VLOOKUP(WEEKDAY, PIVOT_TABLE, TRUE), SALES)</pre>
     <p>Ortalama günlük satışlar 140–170 aralığında değişim gösterdi.</p>
   </li>
 </ul> 
@@ -138,10 +127,10 @@
                    <img src="images/Excel_04_NPS_EDA.png" alt="Excel Analysis" style="width:1000px;height:500px;" data-position="center center" />
 									<p><i> Resim 13. NPS segment analizi görünümü.</i></p>
                   
-<p>İlk olarak, her değişken için Q1 (alt çeyrek) ve Q3 (üst çeyrek) değerleri QUARTILE fonksiyonu ile hesaplandı. Daha sonra IQR şu formülle elde edildi:</p>
-<pre>IQR=Q3−Q1</pre>
+<p>İlk olarak, her değişken için Q1 (alt çeyrek) ve Q3 (üst çeyrek) değerleri <code>QUARTILE</code> fonksiyonu ile hesaplandı. Daha sonra IQR şu formüller elde edildi:</p>
+<pre><code>IQR=Q3−Q1</code></pre>
 <p>Üst limit ise şu formülle belirlendi:</p>
-<pre>Üst Limit = Q3 + (1.5 × IQR)</pre>
+<pre><code>Üst Limit = Q3 + (1.5 × IQR)</code></pre>
 <p>Alt limit hesaplanmış olmasına rağmen, negatif değerler içerdiği için uygulanmadı. Çünkü veri seti negatif değerler içermiyordu.</p>
 <p>Üst limiti aşan değerler, veri bütünlüğünü korumak amacıyla cap yöntemi ile üst sınıra çekildi.</p>
 <p>Örneğin:</p>
@@ -254,23 +243,23 @@
     <tr><td>Purchases</td><td>1000</td><td>16</td><td>62.50</td></tr>
   </tbody>
 </table>
-<p>Burada CAC (Customer Acquisition Cost) = Toplam Satın Alma Maliyeti / Satın Alan Kişi Sayısı → CAC = $62.50<br />Yani, bir müşteriyi kazanmanın maliyeti 62.50 dolar.</p>
+<p>Burada CAC (Customer Acquisition Cost) = <code>Toplam Satın Alma Maliyeti / Satın Alan Kişi Sayısı</code> → CAC = $62.50<br/>Yani, bir müşteriyi kazanmanın maliyeti 62.50 dolar.</p>
 
 <h3>3. Customer Lifetime Value (LTV)</h3>
 <p>Bu bölümde, bir müşterinin şirketle ilişkisinin devam ettiği süre boyunca sağlayacağı toplam gelir hesaplanmaktadır. Hesaplamalar şu adımlar ile yapılmıştır:</p>
 <ul>
-  <li>Churn Rate (Yıllık) = 1 − Müşteri Tutma Oranı (Retention → Retention = %42, dolayısıyla Churn = 1 − 0.42 = 0.58 (%58))</li>
-  <li>Müşteri Yaşam Süresi (Yıl) = 1 ÷ Churn Rate → = 1 ÷ 0.58 ≈ 1.72 yıl</li>
-  <li>Müşteri Yaşam Süresi (Ay) = Müşteri Yaşam Süresi (Yıl) × 12 → 1.72 × 12 = 20.69 ay</li>
+  <li>Churn Rate (Yıllık) = <code>1 − Müşteri Tutma Oranı</code> (Retention → = %42, dolayısıyla Churn = 1 − 0.42 = 0.58 (%58))</li>
+  <li>Müşteri Yaşam Süresi (Yıl) = <code>1 ÷ Churn Rate</code> → = 1 ÷ 0.58 ≈ 1.72 yıl</li>
+  <li>Müşteri Yaşam Süresi (Ay) = <code>Müşteri Yaşam Süresi (Yıl) × 12</code> → 1.72 × 12 = 20.69 ay</li>
   <li>Kullanıcı Başına Aylık Gelir = 15.00 $ (mevcut gelir verisi)</li>
-  <li>Müşteri Yaşam Boyu Değeri (LTV) = Müşteri Yaşam Süresi (Ay) × Kullanıcı Başına Aylık Gelir → 20,69 × 15,00 = 310,34 $.</li>
+  <li>Müşteri Yaşam Boyu Değeri (LTV) = <code>Müşteri Yaşam Süresi (Ay) × Kullanıcı Başına Aylık Gelir</code> → 20,69 × 15,00 = 310,34 $.</li>
 </ul>
 <p>Bu hesaplama sonucunda, ortalama bir müşterinin yaşam boyu şirkete getireceği gelir 310,34 $ olarak belirlenmiştir.</p>
 
 <h3>4. LTV / CAC Karşılaştırması</h3>
-<p>LTV / CAC = 310.34 ÷ 62.50 = 4.97</p>
-<p>Yani, bir müşteriden yaşam boyu elde edilen gelir (LTV), onu kazanmak için harcanan maliyetin (CAC) yaklaşık 5 katı.</p>
-<p>Genel kabul gören iş kârlılık kriterine göre, LTV/CAC oranının en az 3 olması beklenir. Burada elde edilen 4,97 değeri, bu eşiğin oldukça üzerinde olup, yatırımın kârlı ve sürdürülebilir olduğunu göstermektedir. Bu nedenle sonuç kısmında "Feasible" (Uygulanabilir/Kârlı) değerlendirmesi yapılmıştır.</p>
+<p><code>LTV / CAC</code> = 310.34 ÷ 62.50 = 4.97</p>
+<p>Yani, bir müşteriden yaşam boyu elde edilen gelir (LTV), onu kazanmak için harcanan maliyetin (CAC) yaklaşık 5 katı.</br>
+Genel kabul gören iş kârlılık kriterine göre, <strong>LTV/CAC oranının en az 3</strong> olması beklenir. Burada elde edilen 4,97 değeri, bu eşiğin oldukça üzerinde olup, yatırımın kârlı ve sürdürülebilir olduğunu göstermektedir. Bu nedenle sonuç kısmında "Feasible" (Uygulanabilir/Kârlı) değerlendirmesi yapılmıştır.</p>
 
 <h2>Temel Bulgular</h2>
 <ol>
@@ -337,9 +326,12 @@
 
 <h2>Sonuç</h2>
 <p>Bu proje, Excel ortamında veri temizleme, eksik veri doldurma, aykırı değer analizi, regresyon modelleme ve CLTV hesaplamasını bir arada sunarak pazarlama bütçesi optimizasyonu ve yatırım fizibilitesi konusunda kapsamlı bir çalışma ortaya koymaktadır.</p>
-<p><strong>Teknik beceriler:</strong> Veri temizleme, formül geliştirme, pivot tablo, korelasyon analizi, regresyon modelleme, ROI hesaplama</p>
-<p><strong>Analitik yetkinlik:</strong> Kanal bazlı etki analizi, bütçe optimizasyonu, CLTV–CAC karşılaştırması</p>
-<p><strong>Stratejik yaklaşım:</strong> Kısıtlı bütçelerde maksimum getiri sağlayacak kanal dağılımı ve uzun vadeli müşteri değeri yönetimi</p>
+									<ul>
+<li><strong>Teknik Beceriler:</strong> Veri temizleme, formül geliştirme, pivot tablo, korelasyon analizi, regresyon modelleme, ROI hesaplama</li>
+<li><strong>Analitik Yetkinlik:</strong> Kanal bazlı etki analizi, bütçe optimizasyonu, CLTV–CAC karşılaştırması</li>
+<li><strong>Stratejik Yaklaşım:</strong> Kısıtlı bütçelerde maksimum getiri sağlayacak kanal dağılımı ve uzun vadeli müşteri değeri yönetimi</li>
+</ul>
+
 
 										
 
