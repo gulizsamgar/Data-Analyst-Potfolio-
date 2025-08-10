@@ -1,0 +1,438 @@
+<!DOCTYPE HTML>
+<!--
+	Forty by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>OnlineRetail Market Basket & RFM - Excel with CRM Anlaytics</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<a href="index.html" class="logo"><strong>Data Analyst Portfolio</strong> <span>by Güliz Samğar </span></a>
+						<nav>
+							<a href="#menu">Menü</a>
+						</nav>
+					</header>
+
+				<!-- Menu -->
+				<nav id="menu">
+					<ul class="links">
+						<li><a href="index.html">Ana Sayfa</a></li>
+						<li><a href="about.html">Hakkında</a></li>
+						<li><a href="#footer">İletişim</a></li>
+						 <div class="dropup">
+							<button class="dropbtn">Portfolyo Projeleri</button>
+							  <div class="dropup-content">
+									<a href="python.html">Python</a>
+									<a href="sql.html">SQL</a>
+									<a href="excel.html">Excel</a>
+									<a href="https://public.tableau.com/app/profile/tianna.parris" target="_blank" class="link">Tableau</a>
+									<a href="powerbi.html">Power BI</a>
+								  <a href="articel.html">Makale</a>
+							</div>
+						 </div>	
+					</ul>						
+				</nav>
+
+
+				<!-- Main -->
+					<div id="main" class="alt">
+						
+
+						<!-- One -->
+							<section id="one">
+								<div class="inner">
+									<header class="major">
+										<h1>Proje Detayları</h1>
+									</header>
+									<!--<span class="image main"><img src="images/pic11.jpg" alt="" /></span> -->
+                  
+                <h2>Literatürel Bağlam</h2>
+<p>Veri analitiği, işletmelerin doğru karar alabilmesi için en önemli araçlardan biridir. Ancak, ham veriler çoğu zaman eksik gözlemler, aykırı değerler ve dağınık yapılar içerir. Eksik veriler doğru yönetilmezse model tahmin gücünü zayıflatır; aykırı değerler ise ortalamaları ve regresyon katsayılarını bozarak yanıltıcı sonuçlar üretir.
+Bu nedenle veri kalitesi için veri temizliği, modelleme sürecinin kritik ilk adımıdır.</p>
+<p>Kayıp Veri Analizi literatürde, “listwise deletion” (tamamen silme), “mean/median imputation” (ortalama/medyan doldurma) ve “regression imputation” gibi yöntemlerle ele alınır. Seçilecek yöntemin doğru belirlenmesi, değişkenin dağılımı, standart sapması ve diğer değişkenlerle korelasyonu dikkate alınarak yapılmalıdır.</p>
+<p>Aykırı Değer Analizi için ise yaygın bir yöntem Çeyrekler arası mesafe (IQR - Interquartile Range) yöntemidir. Bu yöntemde verinin limitleri belirlenir.</br>
+Cap işlemi (capping), limitlerin dışında kalan uç değerlerin sınır değerle değiştirilmesi işlemidir. Böylece veri uç değerlerden arındırılır ama veri sayısı azalmadan korunur.</p>
+<p>Son aşamalardan biri ise Müşteri Yaşam Boyu Değeri (Customer Lifetime Value – CLTV) analizidir. CLTV, bir müşterinin işletmeye tüm ilişkisi boyunca sağlayacağı tahmini gelir miktarını ölçer. Pazarlama bütçesinin hangi kanallara yönlendirileceğini belirlerken, CLTV yüksek müşteri segmentlerine öncelik verilmesi, yatırım getirisini (ROI) optimize eder. CLTV hesaplamasında ortalama sipariş değeri, satın alma sıklığı ve müşteri yaşam süresi gibi metrikler kullanılır. Ayrıca, CLTV’nin Müşteri Edinme Maliyeti (Customer Acquisition Cost – CAC) ile karşılaştırılması, yatırımın mantıklı olup olmadığını ortaya koyar.</p>
+<p>Bu proje, veri temizleme süreçlerini, istatistiksel modellemeyi ve CLTV analizini bir araya getirerek, Excel ortamında uçtan uca bir pazarlama ve yatırım optimizasyon çalışması sunmaktadır.</p>
+
+<h2>Proje Hedefi</h2>
+<p>Bu proje, eksik veri ve aykırı değerlerin temizlenmesinin ardından, çoklu regresyon modeli ile satışa etki eden faktörleri belirlemeyi ve bu bulgular doğrultusunda pazarlama bütçesinin hangi kanallara dağıtılması gerektiğini belirleyerek maksimum yatırım getirisi elde etmeyi amaçlamaktadır.
+Analiz süreci yalnızca satış tahmini yapmakla sınırlı kalmamış, Customer Lifetime Value (CLTV) ve Customer Acquisition Cost (CAC) hesaplamaları da yapılarak, yatırımın finansal mantığı sorgulanmıştır.</p>
+
+                  </p></p>
+									<a href="https://docs.google.com/spreadsheets/d/1YO1oSpYl0A8E2BBA05ZN2ZUkdytFymez/edit?usp=drive_link&ouid=109156094529518174311&rtpof=true&sd=true" target="_blank">Github'dan indirin!</a>
+									<p></p>
+                  
+<h4>Veri Seti Açıklaması</h4>
+<ul>
+  <li>Kaynak: Simüle edilmiş dijital reklam ve satış verileri.</li>
+  <li>Kapsam: Google, Facebook, Instagram, TikTok gibi reklam kanalları ile satış verileri.</li>
+  <li>Değişkenler: ID, DAYS, GoogleAds, Meta, Influencer, TIKTO, SALES.</li>
+  <li>Toplam işlem sayısı: 200</li>
+  <li>Veri süresi: 11 Mart 2023 — 26 Eylül 2023</li>
+</ul>
+
+                  <h2>Analiz</h2>
+<h4>İş Soruları</h4>
+<p>keşifsel veri analizleri gerçekleştirmek ve iç görüler elde etmek amacıyla aşağıdaki iş sorularına odaklanılmıştır:</p>
+<ol>
+  <li>Hangi reklam kanalı satışlarla en güçlü ilişkiye sahiptir?</li>
+  <li>Kısıtlı bir bütçe farklı kanallara dağıtıldığında en yüksek getiriyi sağlayacak dağılım nedir?</li>
+  <li>CLTV değeri, müşteri edinme maliyetini karşılayacak kadar yüksek mi?</li>
+  <li>Veri temizleme adımları satış tahminlerinin doğruluğunu nasıl etkiledi?</li>
+</ol>
+
+<h2>Kurulum: Veri Hazırlığı ve Temizleme</h2>
+
+<h3>Kayıp Değer Analizi</h3>
+<p>Veri setinde analiz öncesi eksik değer tespiti ve uygun doldurma yöntemlerinin belirlenmesi kritik bir adım olarak gerçekleştirildi. Missing Value &amp; Descriptive Statistics Analysis tablosu yardımıyla her değişken için eksik veri sayısı, yüzdesi, ortalama, medyan, standart sapma, değişim katsayısı (CV) ve Google Ads ile korelasyon değerleri hesaplandı.</p>
+
+                   <img src="images/Excel 02_Missing_Values.png" alt="Excel Analysis" style="width:1000px;height:200px;" data-position="center center" />
+									<p><i> Resim 1. Eksik değerler ve doldurma yöntemleri tablosu.</i></p>
+
+<p><strong>Doldurma Yöntemlerinin Belirlenmesi</strong></p>
+<ul>
+  <li>Google Ads verileri, yüksek standart sapma (%24,49) ve satışlarla yüksek korelasyon (100%) göstermesi nedeniyle, Excel'in <code>CORREL</code> fonksiyonu kullanılarak satış değişkeni ile korelasyon analizi yapıldı. Bu ilişki doğrultusunda regresyon imputasyonu yöntemi ile eksik değerler tahmin edilerek dolduruldu.</li>
+  <li>Meta, Influencer ve TikTok verileri, görece düşük standart sapma ve daha dengeli dağılıma sahip oldukları için medyan ile doldurma yöntemi kullanıldı. Bu yöntem, uç değerlerden etkilenmediği için veri setinin merkez eğilimini daha doğru yansıttı.</li>
+  <li>Sales (Satış) değişkeni için, mevsimsellik etkisini azaltmak amacıyla haftanın günlerine göre ortalama satış miktarı hesaplandı. Bunun için:
+    <ul>
+      <li><code>WEEKDAY</code> fonksiyonu ile her tarihin haftanın hangi gününe denk geldiği belirlendi.</li>
+      <li>Pivot tablo kullanılarak her gün için ortalama satış değerleri çıkarıldı.</li>
+      <li>Eksik satış değerleri şu formülle dolduruldu:<code>=IF(ISBLANK(SALES),VLOOKUP(WEEKDAY, PIVOT_TABLE, TRUE), SALES)</code></li>
+    </ul>
+    <p>Ortalama günlük satışlar 140–170 aralığında değişim gösterdi.</p>
+  </li>
+</ul> 
+                  
+ <img src="images/Excel 02_Weekday_Pivot.png" alt="Excel Analysis" style="width:300px;height:auto;;" data-position="center center" />
+									<p><i> Resim 2. Haftanın günlerine göre ortalama satış pivot tablosu.</i></p>
+                  
+<p>Bu adımlar sonucunda, eksiksiz, tutarlı ve analiz için hazır bir veri seti elde edildi. Eksik veri doldurma sürecinde kullanılan yöntemlerin her biri, değişkenin dağılım yapısı, standart sapması ve korelasyon özellikleri dikkate alınarak seçildi.</p>
+
+<h3>Aykırı Değer Analizi</h3>
+<p>Eksik veri doldurma işlemlerinin ardından, veri setindeki analiz güvenilirliğini artırmak için aykırı değerlerin tespiti ve düzeltilmesi adımına geçildi. Bu aşamada, IQR (Interquartile Range) yöntemi kullanılarak değişkenlerdeki aşırı uç değerler belirlendi.</p>
+
+                   <img src="images/Excel 02_Outlier_Analysis.png" alt="Excel Analysis" style="width:1000px;height:200px;" data-position="center center" />
+									<p><i> Resim 3. IQR yöntemi ile outlier tespit tablosu.</i></p>
+                  
+<p>İlk olarak, her değişken için Q1 (alt çeyrek) ve Q3 (üst çeyrek) değerleri <code>QUARTILE</code> fonksiyonu ile hesaplandı. Daha sonra IQR şu formülle elde edildi:</p>
+<pre><code>IQR=Q3−Q1</code></pre>
+<p>Üst limit ise şu formülle belirlendi:</p>
+<pre><code>Üst Limit = Q3 + (1.5 × IQR)</code></pre>
+<p>Alt limit hesaplanmış olmasına rağmen, negatif değerler içerdiği için uygulanmadı. Çünkü veri seti negatif değerler içermiyordu.</p>
+<p>Üst limiti aşan değerler, veri bütünlüğünü korumak amacıyla cap yöntemi ile üst sınıra çekildi.</p>
+<p>Örneğin:</p>
+<ul>
+  <li>ID 82 – Google Ads: Orijinal değer 152,00; üst sınır 96,18 → 96,18 olarak güncellendi.</li>
+  <li>ID 93 – Sales: Orijinal değer 811,00; üst sınır 291,75 → 291,75 olarak güncellendi.</li>
+</ul>
+<p>Bu işlem, verideki uç noktaların analiz sonuçlarını bozmasını engelleyerek modelin daha gerçekçi ve dengeli çalışmasını sağladı.</p>
+<p>Son aşamada, düzeltilmiş veri dağılımları box plot (kutu grafikleri) ile görselleştirildi. Google Ads, Meta, Influencer, TikTok ve Sales değişkenleri için oluşturulan bu grafikler, her bir değişkenin medyanını, çeyreklerini ve üst sınır değerlerini net şekilde gösterdi. Aykırı değerlerin temizlenmesiyle veri seti daha homojen, tutarlı ve analiz için güvenilir bir yapıya kavuştu.</p>
+
+                   <img src="images/Excel 02_Outlier_Box_Plot.png" alt="Excel Analysis" style="width:1000px;height:500px;" data-position="center center" />
+									<p><i> Resim 4. Reklam kanalları ve satışlar için box-plot görünümleri.</i></p> 
+                  
+<h3>Temizlenmiş Veri Seti</h3>
+<p>Tüm doldurma ve cap işlemlerinden sonra veri yeniden tanımlayıcı istatistik analizi ile incelendi. Ortalama değerler daha dengeli, standart sapmalar daha düşük hale geldi.</p>
+
+   <img src="images/Excel 02_Cleaned_Data.png" alt="Excel Analysis" style="width:1000px;height:200px;" data-position="center center" />
+									<p><i> Resim 5. Temizlenmiş veri seti değişken istatistikleri tablosu.</i></p> 
+                  
+<h2>Regresyon Analizi</h2>
+
+<h3>Tek Değişkenli Regresyon</h3>
+<p>Her reklam kanalının satışlarla ilişkisi incelendi:</p>
+<ul>
+  <li>Google → En yüksek korelasyon katsayısı</li>
+<li>TikTok → Birim bazda yüksek katsayıya sahip olsa da veri dağılımı daha dağınık, bu nedenle korelasyon gücü Google kadar yüksek değil.</li>
+	<li>Meta → Orta düzey katsayı ve korelasyon; etkisi anlamlı fakat dalgalı.</li>
+		<li>Influencer → Katsayı düşük, satış üzerindeki etkisi sınırlı.</li>
+</ul>
+<p>Regresyon denklemleri çıkarıldı, regresyon grafikleri ile satış üzerindeki etkiler görselleştirildi.</p>
+
+                   <img src="images/Excel 02_Regression_Plots.png" alt="Excel Analysis" style="width:1000px;height:350px;" data-position="center center" />
+									<p><i> Resim 6. Reklam kanalları ile satışlar arasındaki regresyon grafikleri.</i></p>
+
+<h3>Çoklu Regresyon ile Bütçe Optimizasyonu</h3>
+<p>Veri temizleme ve keşifsel analiz adımlarının ardından, reklam kanallarının satış üzerindeki etkisini ölçmek ve sınırlı bir bütçenin en verimli şekilde nasıl dağıtılabileceğini belirlemek amacıyla çoklu regresyon analizi uygulanmıştır.</p>
+<p>Bu analiz, Google Ads, Meta, Influencer pazarlama ve TikTok reklamlarının satış üzerindeki etkilerini ayrı ayrı modelleyerek, her kanal için katsayı (coefficient) değerlerini ortaya çıkarmıştır.</p>
+
+                   <img src="images/Excel 02_Multiple_Regression.png" alt="Excel Analysis" style="width:1000px;height:500px;" data-position="center center" />
+									<p><i> Resim 7. Çoklu regresyon sonuçları ve $100 yatırım ROI dağılımı.</i></p>
+                  
+<h4>1. Regresyon Çıktısı ve Model Performansı</h4>
+<ul>
+  <li>Multiple R: 0,7777 → Satışlar ile reklam harcamaları arasında güçlü bir ilişki olduğunu gösterir.</li>
+  <li>R Square: 0,6048 → Satışlardaki değişkenliğin yaklaşık %60’ı modeldeki reklam kanallarıyla açıklanabiliyor.</li>
+  <li>Adjusted R Square: 0,5967 → Model, değişken sayısına göre düzeltilmiş R² değeriyle de yüksek bir açıklama gücüne sahip.</li>
+  <li>F istatistiği ve Significance F: Modelin istatistiksel olarak anlamlı olduğunu gösterir (p-değeri çok düşük → güvenilir sonuçlar).</li>
+</ul>
+
+<h4>2. Katsayılar ve Yorumları</h4>
+<ul>
+  <li>Intercept (46,12): Hiçbir reklam yatırımı yapılmasa bile beklenen satış değeri.</li>
+  <li>Google Ads (1,43): Her 1 $’lık Google Ads harcaması, satışlarda ortalama 1,43 $ artış sağlıyor. (En yüksek etkiye sahip kanal)</li>
+  <li>Meta (1,37): Her 1 $’lık yatırım, ortalama 1,37 $ satış getiriyor. (İkinci en etkili kanal)</li>
+  <li>Influencer (0,24): Düşük etki. 1 $’lık yatırım yalnızca 0,24 $ getiri sağlıyor.</li>
+  <li>TikTok (0,69): Orta düzey etki. 1 $’lık yatırım ortalama 0,69 $ getiriyor.</li>
+</ul>
+<p>P-değerleri incelendiğinde, Google Ads ve Meta yüksek anlamlılığa sahipken, Influencer kanalı anlamlılık eşiğinin altında kalıyor. Bu durum, bütçe dağılımında hangi kanalların öncelikli olması gerektiğini açıkça gösteriyor.</p>
+
+<h4>3. Bütçe Dağılım Senaryosu – 100 $ ile Maksimum Getiri</h4>
+<p>Model katsayıları kullanılarak, 100 $’lık bir reklam bütçesinin en verimli şekilde hangi kanallara dağıtılması gerektiği hesaplanmıştır:</p>
+																			<p></p>
+<table>
+  <thead>
+    <tr><th>Kanal</th><th>Yatırım ($)</th><th>Beklenen Getiri ($)</th><th>Etki Düzeyi</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Google Ads</td><td>40</td><td>103,36</td><td>En yüksek etki</td></tr>
+    <tr><td>Meta</td><td>35</td><td>94,00</td><td>İkinci en iyi</td></tr>
+    <tr><td>Influencer</td><td>15</td><td>49,79</td><td>Orta düzey</td></tr>
+    <tr><td>TikTok</td><td>10</td><td>52,98</td><td>En düşük</td></tr>
+  </tbody>
+</table>
+
+<h4>4. Sonuç ve ROI Değerlendirmesi</h4>
+<ul>
+  <li>Bu dağılım ile toplam beklenen getiri <strong>300,13 $</strong> olarak hesaplanmıştır.</li>
+  <li>ROI (Yatırım Getirisi) en yüksek seviyeye çıkmıştır.</li>
+  <li>Stratejik olarak, yüksek katsayıya sahip Google Ads ve Meta’ya ağırlık verilmesi; düşük katsayıya sahip Influencer ve TikTok kanallarına ise sınırlı yatırım yapılması en verimli sonuçları sağlamaktadır.</li>
+</ul>
+<p>Bu analiz, kısıtlı bütçeyle maksimum satış artışını hedefleyen veri odaklı bir yatırım stratejisi sunmaktadır.</p>
+
+<h2>Müşteri Yaşam Boyu Değeri (CLTV) Analizi</h2>
+<p>Bu bölüm, yapılan reklam harcamalarının finansal açıdan mantıklı olup olmadığını LTV (Customer Lifetime Value) ve CAC (Customer Acquisition Cost) karşılaştırması ile değerlendiriyor. Analiz adım adım ilerliyor.</p>
+
+                   <img src="images/Excel 02_CLTV.png" style="width:1000px;height:500px;" data-position="center center" />
+									<p><i> Resim 8. Dönüşüm hunisi, CAC ve LTV/CAC oranı analizi.</i></p>
+                  
+<h4>1. User Conversion Funnel (Kullanıcı Dönüşüm Hunisi)</h4>
+<p>İlk tablo, reklam kampanyası ile ulaşılan kullanıcıların satın alma aşamasına kadar hangi oranlarda elendiğini gösteriyor:</p>
+																			<p></p>
+<table>
+  <thead>
+    <tr><th>Aşama</th><th>Kişi Sayısı</th><th>Dönüşüm Oranı</th><th>Kümülatif Dönüşüm</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Awareness (Farkındalık)</td><td>1000</td><td>%100</td><td>%100</td></tr>
+    <tr><td>App Downloads (Uygulama İndirme)</td><td>300</td><td>%30</td><td>%30</td></tr>
+    <tr><td>Registrations (Kayıt)</td><td>240</td><td>%80</td><td>%24</td></tr>
+    <tr><td>Purchases (Satın Alma)</td><td>16</td><td>%6.7</td><td>%1.6</td></tr>
+  </tbody>
+</table>
+<p>Bu yapı sayesinde, reklam bütçesinin hangi aşamalarda kayıplar verdiği net biçimde izleniyor. Örneğin, farkındalık aşamasında ulaşılan 1000 kişiden sadece 16’sı satın almaya dönüyor (%1.6).</p>
+						
+
+<h4>2. Ad Spend and CAC (Reklam Harcaması ve Müşteri Edinme Maliyeti)</h4>
+										<p></p>
+<table>
+  <thead>
+    <tr><th>Aşama</th><th>Toplam Maliyet ($)</th><th>Ulaşılan Kişi</th><th>Kişi Başına Maliyet ($)</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Awareness</td><td>1000</td><td>1000</td><td>1.00</td></tr>
+    <tr><td>App Downloads</td><td>1000</td><td>300</td><td>3.33</td></tr>
+    <tr><td>Registrations</td><td>1000</td><td>240</td><td>4.17</td></tr>
+    <tr><td>Purchases</td><td>1000</td><td>16</td><td>62.50</td></tr>
+  </tbody>
+</table>
+<p>Burada CAC (Customer Acquisition Cost) = <code>Toplam Satın Alma Maliyeti / Satın Alan Kişi Sayısı</code> → CAC = $62.50<br/>Yani, bir müşteriyi kazanmanın maliyeti 62.50 dolar.</p>
+
+<h4>3. Customer Lifetime Value (LTV)</h4>
+<p>Bu bölümde, bir müşterinin şirketle ilişkisinin devam ettiği süre boyunca sağlayacağı toplam gelir hesaplanmaktadır. Hesaplamalar şu adımlar ile yapılmıştır:</p>
+<ul>
+  <li>Churn Rate (Yıllık) = <code>1 − Müşteri Tutma Oranı</code> (Retention → = %42, dolayısıyla Churn = 1 − 0.42 = 0.58 (%58))</li>
+  <li>Müşteri Yaşam Süresi (Yıl) = <code>1 ÷ Churn Rate</code> → = 1 ÷ 0.58 ≈ 1.72 yıl</li>
+  <li>Müşteri Yaşam Süresi (Ay) = <code>Müşteri Yaşam Süresi (Yıl) × 12</code> → 1.72 × 12 = 20.69 ay</li>
+  <li>Kullanıcı Başına Aylık Gelir = 15.00 $ (mevcut gelir verisi)</li>
+  <li>Müşteri Yaşam Boyu Değeri (LTV) = <code>Müşteri Yaşam Süresi (Ay) × Kullanıcı Başına Aylık Gelir</code> → 20,69 × 15,00 = 310,34 $.</li>
+</ul>
+<p>Bu hesaplama sonucunda, ortalama bir müşterinin yaşam boyu şirkete getireceği gelir 310,34 $ olarak belirlenmiştir.</p>
+
+<h4>4. LTV / CAC Karşılaştırması</h4>
+<p><code>LTV / CAC</code> = 310.34 ÷ 62.50 = 4.97</p>
+<p>Yani, bir müşteriden yaşam boyu elde edilen gelir (LTV), onu kazanmak için harcanan maliyetin (CAC) yaklaşık 5 katı.</br>
+Genel kabul gören iş kârlılık kriterine göre, <strong>LTV/CAC oranının en az 3</strong> olması beklenir. Burada elde edilen 4,97 değeri, bu eşiğin oldukça üzerinde olup, yatırımın kârlı ve sürdürülebilir olduğunu göstermektedir. Bu nedenle sonuç kısmında "Feasible" (Uygulanabilir/Kârlı) değerlendirmesi yapılmıştır.</p>
+
+<h2>Temel Bulgular</h2>
+<ol>
+  <li><strong>Reklam Kanallarının Satış Üzerindeki Etkisi</strong>
+    <ul>
+      <li>Google reklam harcamaları, satışlar üzerinde açık ara en yüksek pozitif etkiye sahip. Korelasyon analizi (CORREL) sonuçları, Google değişkeninin satışlarla güçlü bir doğrusal ilişkiye sahip olduğunu gösteriyor. Tek değişkenli regresyon grafiğinde eğim katsayısı (slope) diğer kanallara kıyasla belirgin şekilde yüksek, bu da Google’daki 1 birimlik artışın satışlarda daha yüksek artışa karşılık geldiğini ortaya koyuyor.</li>
+      <li>TikTok reklamları, satışlarla anlamlı ama Google’a kıyasla daha düşük etkili bir ilişki sergiliyor.</li>
+      <li>Meta ve Influencer reklam harcamaları ise satışlarla daha zayıf korelasyonlara sahip; bu da bu kanalların tek başına satış hacmini artırmada yeterince güçlü olmadığını gösteriyor.</li>
+    </ul>
+  </li>
+
+  <li><strong>Bütçe Optimizasyonu ve ROI</strong>
+    <ul>
+      <li>Çoklu regresyon analizine göre, 100$’lık sınırlı bütçenin kanallara dağıtımında Google (%40) ve TikTok (%30) ağırlığı ROI’yi maksimize ediyor.</li>
+      <li>Meta (%20) ve Influencer (%10) harcamaları, toplam bütçede daha küçük pay almasına rağmen, kanallar arası çeşitliliği koruyarak risk dağılımı sağlıyor.</li>
+      <li>Bu dağılımla hesaplanan ROI değeri, alternatif senaryolara kıyasla en yüksek seviyeye ulaştı.</li>
+    </ul>
+  </li>
+
+  <li><strong>Veri Temizleme Sonrası Model Performansı</strong>
+    <ul>
+      <li>Eksik veri doldurma (regresyon ve medyan yöntemleri) ve aykırı değerlerin cap edilmesi sonrası, değişkenlerin standart sapmaları dengelendi.</li>
+      <li>Temiz veri ile yapılan regresyon modellerinde R² değerleri anlamlı şekilde yükseldi. Bu, veri temizliğinin model doğruluğunu artırmada kritik olduğunu kanıtlıyor.</li>
+    </ul>
+  </li>
+
+  <li><strong>CLTV – CAC Analizi</strong>
+    <ul>
+      <li>CLTV hesaplamaları sonucunda elde edilen değer, müşteri edinme maliyeti (CAC) değerinin üzerinde.</li>
+      <li>Bu fark, reklam yatırımlarının uzun vadede finansal olarak mantıklı olduğunu gösteriyor. CLTV’nin CAC’ten belirgin şekilde yüksek olması, mevcut stratejinin kârlı bir yatırım olduğunu doğruluyor.</li>
+    </ul>
+  </li>
+
+  <li><strong>Google Kanalının Stratejik Önemi</strong>
+    <ul>
+      <li>Hem tek değişkenli hem çoklu regresyon analizinde Google’ın katsayısı, diğer tüm kanallardan daha yüksek çıktı.</li>
+      <li>Bu durum, bütçe optimizasyonunda Google kanalının temel omurga olarak korunması gerektiğini net şekilde ortaya koyuyor.</li>
+    </ul>
+  </li>
+</ol>
+
+<h2>Öneriler</h2>
+<ol>
+  <li><strong>Google ve TikTok Ağırlığının Korunması</strong>
+    <p>Google reklam yatırımları mevcut etkisini korumalı, TikTok ise genç kitleye erişim avantajı nedeniyle ikinci sıradaki öncelikli kanal olarak bütçe planına dahil edilmeli.</p>
+  </li>
+
+  <li><strong>Meta ve Influencer Kanallarında Strateji Revizyonu</strong>
+    <p>Bu kanallar düşük korelasyon sergilese de, marka bilinirliği ve uzun vadeli potansiyel için tamamen kaldırılmamalı. Performansı artırmak için daha hedefli kampanyalar (retargeting, niche influencer iş birlikleri) denenmeli.</p>
+  </li>
+
+  <li><strong>Veri Toplama Sürecinin İyileştirilmesi</strong>
+    <p>Kayıp veri oranlarını azaltacak bir veri toplama protokolü oluşturulmalı. Özellikle satış kayıtlarının eksiksiz tutulması, mevsimsellik analizlerinde daha güçlü sonuçlar sağlayacaktır.</p>
+  </li>
+
+  <li><strong>CLTV İzleme ve CAC Optimizasyonu</strong>
+    <p>CLTV–CAC oranı düzenli olarak takip edilmeli. CAC’i düşürmek için hedef kitle segmentasyonu geliştirilmeli ve düşük dönüşüm oranına sahip kanallar optimize edilmeli.</p>
+  </li>
+
+  <li><strong>Aykırı Değer Yönetiminin Sürekliliği</strong>
+    <p>Cap yöntemi veri dengesini korudu, ancak bu işlem periyodik olarak tekrarlanmalı. Yeni veri eklendikçe outlier kontrolü yapılmalı, aksi takdirde model doğruluğu zamanla düşebilir.</p>
+  </li>
+</ol>
+
+<h2>Sonuç</h2>
+<p>Bu proje, Excel ortamında veri temizleme, eksik veri doldurma, aykırı değer analizi, regresyon modelleme ve CLTV hesaplamasını bir arada sunarak pazarlama bütçesi optimizasyonu ve yatırım fizibilitesi konusunda kapsamlı bir çalışma ortaya koymaktadır.</p>
+									<ul>
+<li><strong>Teknik Beceriler:</strong> Veri temizleme, formül geliştirme, pivot tablo, korelasyon analizi, regresyon modelleme, ROI hesaplama</li>
+<li><strong>Analitik Yetkinlik:</strong> Kanal bazlı etki analizi, bütçe optimizasyonu, CLTV–CAC karşılaştırması</li>
+<li><strong>Stratejik Yaklaşım:</strong> Kısıtlı bütçelerde maksimum getiri sağlayacak kanal dağılımı ve uzun vadeli müşteri değeri yönetimi</li>
+</ul>
+
+
+										
+
+
+
+
+								</div>
+							</section>
+                        
+					</div>
+
+				<!-- Contact -->
+					<!--<section id="contact">
+						<div class="inner">
+							<section>
+								<form method="post" action="#">
+									<div class="fields">
+										<div class="field half">
+											<label for="name">Name</label>
+											<input type="text" name="name" id="name" />
+										</div>
+										<div class="field half">
+											<label for="email">Email</label>
+											<input type="text" name="email" id="email" />
+										</div>
+										<div class="field">
+											<label for="message">Message</label>
+											<textarea name="message" id="message" rows="6"></textarea>
+										</div>
+									</div>
+									<ul class="actions">
+										<li><input type="submit" value="Send Message" class="primary" /></li>
+										<li><input type="reset" value="Clear" /></li>
+									</ul>
+								</form>
+							</section>
+							<section class="split">
+								<section>
+									<div class="contact-method">
+										<span class="icon solid alt fa-envelope"></span>
+										<h3>Email</h3>
+										<a href="#">information@untitled.tld</a>
+									</div>
+								</section>
+								<section>
+									<div class="contact-method">
+										<span class="icon solid alt fa-phone"></span>
+										<h3>Phone</h3>
+										<span>(000) 000-0000 x12387</span>
+									</div>
+								</section>
+								<section>
+									<div class="contact-method">
+										<span class="icon solid alt fa-home"></span>
+										<h3>Address</h3>
+										<span>1234 Somewhere Road #5432<br />
+										Nashville, TN 00000<br />
+										United States of America</span>
+									</div>
+								</section>
+							</section>-->
+						</div>
+					</section>
+
+				<!-- Footer -->
+				<section class="split">
+					<section>
+						<h4>İletişim Bilgileri</h4>															
+					</section>
+				</section>
+			</div>
+			<!-- Footer -->
+			<footer id="footer">
+				<div class="inner">
+					<ul class="icons">
+						<li><a href="mailto:gulizsam@gmail.com?subject=Portföy Hakkında&body=Merhaba Güliz, portföyünü inceledim..."target="_blank" class="icon solid alt fa-envelope"><span class="label">Twitter</span></a></li>
+						<li><a href="https://github.com/gulizsamgar" target="_blank" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+					        <li><a href="https://www.linkedin.com/in/g%C3%BCliz-sam%C4%9Far/" target="_blank" class="icon brands alt fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
+					</ul>
+					<ul class="copyright">
+						<li>&copy; Untitled</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li>
+					</ul>
+				</div>
+			</footer>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
