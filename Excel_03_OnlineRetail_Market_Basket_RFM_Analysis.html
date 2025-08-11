@@ -85,13 +85,9 @@ Analiz süreci yalnızca satış tahmini yapmakla sınırlı kalmamış, Custome
   <li>Toplam işlem sayısı: 200</li>
   <li>Veri süresi: 11 Mart 2023 — 26 Eylül 2023</li>
 </ul>
-
-                <h2>Analiz</h2>
-
-<p>Bu proje boyunca yanıtlanması hedeflenen temel iş sorularına odaklanılmıştır:</p>
+<h2>Analiz</h2>
 
 <h4>İş Soruları</h4>
-
 <ol>
   <li>Hangi ürünler, müşteriler tarafından en sık birlikte satın alınmaktadır?</li>
   <li>Sepet başına ortalama ürün sayısı nedir ve hangi ürünler büyük sepetlerde daha sık yer almaktadır?</li>
@@ -99,251 +95,297 @@ Analiz süreci yalnızca satış tahmini yapmakla sınırlı kalmamış, Custome
   <li>Müşteri tabanı satın alma davranışlarına göre hangi segmentlere ayrılmaktadır ve her segmentin özellikleri nelerdir?</li>
   <li>Potansiyel olarak sadakat gösterecek müşteri grupları kimlerdir ve hangi ürünleri daha fazla satın almaktadırlar?</li>
 </ol>
-									
-<h2>Kurulum: Veri Hazırlığı ve Temizleme</h2>
 
-<h3>Kayıp Değer Analizi</h3>
-<p>Veri setinde analiz öncesi eksik değer tespiti ve uygun doldurma yöntemlerinin belirlenmesi kritik bir adım olarak gerçekleştirildi. Missing Value &amp; Descriptive Statistics Analysis tablosu yardımıyla her değişken için eksik veri sayısı, yüzdesi, ortalama, medyan, standart sapma, değişim katsayısı (CV) ve Google Ads ile korelasyon değerleri hesaplandı.</p>
+<h2>Market Sepet Analizi (MBA)</h2>
 
-                   <img src="images/Excel_03_BasketCover.png" alt="Excel Analysis" style="width:1000px;height:300px;" data-position="center center" />
-									<p><i> Resim 1. Eksik değerler ve doldurma yöntemleri tablosu.</i></p>
+<p>Analizin başlangıç noktasında, her fatura numarası (Invoice No) tek bir alışveriş sepeti olarak kabul edilmiştir. Böylece değerlendirme, müşteri düzeyinden ziyade “sepet düzeyinde” yürütülerek satın alma davranışlarının işlem bazlı incelenmesi sağlanmıştır.</p>
 
-<p><strong>Doldurma Yöntemlerinin Belirlenmesi</strong></p>
-<ul>
-  <li>Google Ads verileri, yüksek standart sapma (%24,49) ve satışlarla yüksek korelasyon (100%) göstermesi nedeniyle, Excel'in <code>CORREL</code> fonksiyonu kullanılarak satış değişkeni ile korelasyon analizi yapıldı. Bu ilişki doğrultusunda regresyon imputasyonu yöntemi ile eksik değerler tahmin edilerek dolduruldu.</li>
-  <li>Meta, Influencer ve TikTok verileri, görece düşük standart sapma ve daha dengeli dağılıma sahip oldukları için medyan ile doldurma yöntemi kullanıldı. Bu yöntem, uç değerlerden etkilenmediği için veri setinin merkez eğilimini daha doğru yansıttı.</li>
-  <li>Sales (Satış) değişkeni için, mevsimsellik etkisini azaltmak amacıyla haftanın günlerine göre ortalama satış miktarı hesaplandı. Bunun için:
-    <ul>
-      <li><code>WEEKDAY</code> fonksiyonu ile her tarihin haftanın hangi gününe denk geldiği belirlendi.</li>
-      <li>Pivot tablo kullanılarak her gün için ortalama satış değerleri çıkarıldı.</li>
-      <li>Eksik satış değerleri şu formülle dolduruldu:<code>=IF(ISBLANK(SALES),VLOOKUP(WEEKDAY, PIVOT_TABLE, TRUE), SALES)</code></li>
-    </ul>
-    <p>Ortalama günlük satışlar 140–170 aralığında değişim gösterdi.</p>
-  </li>
-</ul> 
-                  
- <img src="images/Excel 02_Weekday_Pivot.png" alt="Excel Analysis" style="width:300px;height:auto;;" data-position="center center" />
-									<p><i> Resim 2. Haftanın günlerine göre ortalama satış pivot tablosu.</i></p>
-                  
-<p>Bu adımlar sonucunda, eksiksiz, tutarlı ve analiz için hazır bir veri seti elde edildi. Eksik veri doldurma sürecinde kullanılan yöntemlerin her biri, değişkenin dağılım yapısı, standart sapması ve korelasyon özellikleri dikkate alınarak seçildi.</p>
+<h3>Sepet Sayısı ve Tipik Boyutun Belirlenmesi</h3>
 
-<h3>Aykırı Değer Analizi</h3>
-<p>Eksik veri doldurma işlemlerinin ardından, veri setindeki analiz güvenilirliğini artırmak için aykırı değerlerin tespiti ve düzeltilmesi adımına geçildi. Bu aşamada, IQR (Interquartile Range) yöntemi kullanılarak değişkenlerdeki aşırı uç değerler belirlendi.</p>
+<p>İlk olarak, pivot tablo kullanılarak her sepetteki ürün adedi hesaplanmıştır. COUNT fonksiyonu ile her fatura satırında yer alan ürünler sayılmış, tekil fatura numaralarının sayılmasıyla toplam 20.725 sepet belirlenmiştir. Sepet boyutları dağılımından MEDIAN fonksiyonu ile tipik sepet büyüklüğü hesaplanmış ve 15 ürün olarak bulunmuştur. Medyanın tercih edilmesi, aşırı yüksek veya düşük adetli siparişlerin analizi bozmasının önüne geçerek daha gerçekçi bir “ortalama sepet” profilinin ortaya çıkarılmasını sağlamıştır.</p>
 
-                   <img src="images/Excel 02_Outlier_Analysis.png" alt="Excel Analysis" style="width:1000px;height:200px;" data-position="center center" />
-									<p><i> Resim 3. IQR yöntemi ile outlier tespit tablosu.</i></p>
-                  
-<p>İlk olarak, her değişken için Q1 (alt çeyrek) ve Q3 (üst çeyrek) değerleri <code>QUARTILE</code> fonksiyonu ile hesaplandı. Daha sonra IQR şu formülle elde edildi:</p>
-<pre><code>IQR=Q3−Q1</code></pre>
-<p>Üst limit ise şu formülle belirlendi:</p>
-<pre><code>Üst Limit = Q3 + (1.5 × IQR)</code></pre>
-<p>Alt limit hesaplanmış olmasına rağmen, negatif değerler içerdiği için uygulanmadı. Çünkü veri seti negatif değerler içermiyordu.</p>
-<p>Üst limiti aşan değerler, veri bütünlüğünü korumak amacıyla cap yöntemi ile üst sınıra çekildi.</p>
-<p>Örneğin:</p>
-<ul>
-  <li>ID 82 – Google Ads: Orijinal değer 152,00; üst sınır 96,18 → 96,18 olarak güncellendi.</li>
-  <li>ID 93 – Sales: Orijinal değer 811,00; üst sınır 291,75 → 291,75 olarak güncellendi.</li>
-</ul>
-<p>Bu işlem, verideki uç noktaların analiz sonuçlarını bozmasını engelleyerek modelin daha gerçekçi ve dengeli çalışmasını sağladı.</p>
-<p>Son aşamada, düzeltilmiş veri dağılımları box plot (kutu grafikleri) ile görselleştirildi. Google Ads, Meta, Influencer, TikTok ve Sales değişkenleri için oluşturulan bu grafikler, her bir değişkenin medyanını, çeyreklerini ve üst sınır değerlerini net şekilde gösterdi. Aykırı değerlerin temizlenmesiyle veri seti daha homojen, tutarlı ve analiz için güvenilir bir yapıya kavuştu.</p>
+<h3>Hedef Sepet Belirleme ve Sepet Görülme Oranı Hesaplama</h3>
 
-                   <img src="images/Excel 02_Outlier_Box_Plot.png" alt="Excel Analysis" style="width:1000px;height:500px;" data-position="center center" />
-									<p><i> Resim 4. Reklam kanalları ve satışlar için box-plot görünümleri.</i></p> 
-                  
-<h3>Temizlenmiş Veri Seti</h3>
-<p>Tüm doldurma ve cap işlemlerinden sonra veri yeniden tanımlayıcı istatistik analizi ile incelendi. Ortalama değerler daha dengeli, standart sapmalar daha düşük hale geldi.</p>
+<p>Bunun ardından, pivot tablo aracılığıyla veri kümesindeki tüm ürünler tek tek değerlendirilmiştir. Her bir ürün için toplam satış adedi (Units Sold) hesaplanmış, bu işlemde ürün açıklaması (Description) alanının saydırılmasıyla COUNT fonksiyonu kullanılmıştır. Böylece hangi ürünün toplamda kaç kez sipariş edildiği net olarak ortaya konmuştur.</p>
 
-   <img src="images/Excel 02_Cleaned_Data.png" alt="Excel Analysis" style="width:1000px;height:200px;" data-position="center center" />
-									<p><i> Resim 5. Temizlenmiş veri seti değişken istatistikleri tablosu.</i></p> 
-                  
-<h2>Regresyon Analizi</h2>
+<p>Ayrıca, her ürünün sepetlerde görülme oranı (Share of Total Baskets) da hesaplanmıştır. Bu oran, ilgili ürünün toplam satış adedinin (Units Sold), toplam sepet sayısına (Total Basket Count) bölünmesiyle elde edilmiştir. Böylece her bir ürünün alışveriş sepetlerinde ne sıklıkta yer aldığı yüzdesel olarak belirlenmiştir.</p>
 
-<h3>Tek Değişkenli Regresyon</h3>
-<p>Her reklam kanalının satışlarla ilişkisi incelendi:</p>
-<ul>
-  <li>Google → En yüksek korelasyon katsayısı</li>
-<li>TikTok → Birim bazda yüksek katsayıya sahip olsa da veri dağılımı daha dağınık, bu nedenle korelasyon gücü Google kadar yüksek değil.</li>
-	<li>Meta → Orta düzey katsayı ve korelasyon; etkisi anlamlı fakat dalgalı.</li>
-		<li>Influencer → Katsayı düşük, satış üzerindeki etkisi sınırlı.</li>
-</ul>
-<p>Regresyon denklemleri çıkarıldı, regresyon grafikleri ile satış üzerindeki etkiler görselleştirildi.</p>
+<p>Hedef ürün olan “<strong>JAM MAKING SET WITH JARS</strong>”, %5,5 oranla tüm sepetlerde yer aldığı görülmüş ve analizde odak noktası olarak seçilmiştir. Bu ürünün bulunduğu tüm faturalar filtrelenerek “Target Basket” kategorisine ayrılmış, ilerleyen adımlarda yapılacak ürün birliktelik analizine veri sağlayacak şekilde etiketlenmiştir.</p>
 
-                   <img src="images/Excel 02_Regression_Plots.png" alt="Excel Analysis" style="width:1000px;height:350px;" data-position="center center" />
-									<p><i> Resim 6. Reklam kanalları ile satışlar arasındaki regresyon grafikleri.</i></p>
+<p>Hedef ürün olarak “<strong>JAM MAKING SET WITH JARS</strong>” belirlenmiş ve %5,5 oranla tüm sepetlerde yer aldığı tespit edilmiştir. Bu ürünün bulunduğu faturalar filtrelenerek ayrı bir listede “Target Basket” etiketiyle işaretlenmiştir. Böylece, ilerleyen analizlerde bu ürünün satın alındığı sepetlerde başka hangi ürünlerin yer aldığı incelenebilecektir.</p>
 
-<h3>Çoklu Regresyon ile Bütçe Optimizasyonu</h3>
-<p>Veri temizleme ve keşifsel analiz adımlarının ardından, reklam kanallarının satış üzerindeki etkisini ölçmek ve sınırlı bir bütçenin en verimli şekilde nasıl dağıtılabileceğini belirlemek amacıyla çoklu regresyon analizi uygulanmıştır.</p>
-<p>Bu analiz, Google Ads, Meta, Influencer pazarlama ve TikTok reklamlarının satış üzerindeki etkilerini ayrı ayrı modelleyerek, her kanal için katsayı (coefficient) değerlerini ortaya çıkarmıştır.</p>
+<h3>Hedef Ürünle Birlikte Satılan Ürünlerin Tespiti</h3>
 
-                   <img src="images/Excel 02_Multiple_Regression.png" alt="Excel Analysis" style="width:1000px;height:500px;" data-position="center center" />
-									<p><i> Resim 7. Çoklu regresyon sonuçları ve $100 yatırım ROI dağılımı.</i></p>
-                  
-<h4>1. Regresyon Çıktısı ve Model Performansı</h4>
-<ul>
-  <li>Multiple R: 0,7777 → Satışlar ile reklam harcamaları arasında güçlü bir ilişki olduğunu gösterir.</li>
-  <li>R Square: 0,6048 → Satışlardaki değişkenliğin yaklaşık %60’ı modeldeki reklam kanallarıyla açıklanabiliyor.</li>
-  <li>Adjusted R Square: 0,5967 → Model, değişken sayısına göre düzeltilmiş R² değeriyle de yüksek bir açıklama gücüne sahip.</li>
-  <li>F istatistiği ve Significance F: Modelin istatistiksel olarak anlamlı olduğunu gösterir (p-değeri çok düşük → güvenilir sonuçlar).</li>
-</ul>
+<p>Analizin bu aşamasında amaç, hedef ürün olan “JAM MAKING SET WITH JARS” ile birlikte sepette yer alan diğer ürünleri belirlemektir. Önceki adımlarda hedef ürünü içeren faturalar zaten etiketlenmişti. Ancak bu bilgi, yalnızca özet tablo düzeyinde bulunuyordu ve orijinal veri setinde hangi satırların bu faturalarla ilişkili olduğunu doğrudan göstermiyordu.</p>
 
-<h4>2. Katsayılar ve Yorumları</h4>
-<ul>
-  <li>Intercept (46,12): Hiçbir reklam yatırımı yapılmasa bile beklenen satış değeri.</li>
-  <li>Google Ads (1,43): Her 1 $’lık Google Ads harcaması, satışlarda ortalama 1,43 $ artış sağlıyor. (En yüksek etkiye sahip kanal)</li>
-  <li>Meta (1,37): Her 1 $’lık yatırım, ortalama 1,37 $ satış getiriyor. (İkinci en etkili kanal)</li>
-  <li>Influencer (0,24): Düşük etki. 1 $’lık yatırım yalnızca 0,24 $ getiri sağlıyor.</li>
-  <li>TikTok (0,69): Orta düzey etki. 1 $’lık yatırım ortalama 0,69 $ getiriyor.</li>
-</ul>
-<p>P-değerleri incelendiğinde, Google Ads ve Meta yüksek anlamlılığa sahipken, Influencer kanalı anlamlılık eşiğinin altında kalıyor. Bu durum, bütçe dağılımında hangi kanalların öncelikli olması gerektiğini açıkça gösteriyor.</p>
+<p>Bu nedenle, orijinal veri setine “Target Basket?” adında yeni bir sütun eklenmiş ve burada VLOOKUP işlevi ile özet tablodaki hedef sepetler listesiyle eşleştirme yapılmıştır. Böylece her satırın (ürün bazında) hedef ürünü içeren bir faturaya ait olup olmadığı işaretlenmiştir.</p>
 
-<h4>3. Bütçe Dağılım Senaryosu – 100 $ ile Maksimum Getiri</h4>
-<p>Model katsayıları kullanılarak, 100 $’lık bir reklam bütçesinin en verimli şekilde hangi kanallara dağıtılması gerektiği hesaplanmıştır:</p>
-																			<p></p>
+<p>Bu işlem sayesinde, hedef ürünün yer aldığı sepetlerde birlikte satın alınan diğer ürünler kolayca tespit edilebilmiş, ilerleyen adımlarda ürün birliktelik analizi için gerekli alt veri seti hazırlanmıştır.</p>
+
+<h3>Hedef Ürün Etrafında Veri Hazırlığı</h3>
+
+<p>Ürün birlikteliklerini analiz edebilmek için ilk olarak hedef ürün olarak belirlenen "JAM MAKING SET WITH JARS" içeren tüm sepetler filtrelenmiştir. Böylece analiz yalnızca bu ürünü satın alan müşterilere ait işlemler üzerinden yürütülmüştür.</p>
+
+<p>Ayrıca, satır düzeyinde Amount (satış getirisi), Price (birim fiyat) ve DateDiff (analiz tarihi ile işlem tarihi arasındaki gün farkı) gibi ek sütunlar hesaplanmıştır. Bu yardımcı değişkenler, ilerleyen aşamalarda yapılacak gelir analizi ve zaman bazlı değerlendirmeler için veri altyapısını oluşturmuştur.</p>
+
+<h3>Birliktelik Metriklerinin Hesaplanması</h3>
+
+<p>Filtreleme sonrasında pivot tablo kullanılarak ; bu aşamada, hedef ürün “JAM MAKING SET WITH JARS” bulunan sepetlerde yer alan diğer ürünlerin, bu hedef ürünle birlikte kaç kez satın alındığı belirlendi. Yani iki ürünün aynı sepette yer aldığı toplam sepet sayısı sistematik olarak ortaya çıkarıldı. Ayrıca hedef ürünü içeren sepet sayısı 1.142 olarak tespit edildi. Elde edilen bu veri, birliktelik analizi sürecinde confidence (güven) metriğinin hesaplanabilmesi için gerekli olan “ürünü içeren hedef sepet sayısı” bilgisini sağlamaktadır.</p>
+
+<p>Ardından, birlikteliklerin anlamlılığını ve gücünü ölçmek amacıyla üç temel metrik formüller aracılığıyla hesaplandı:</p>
+
+<pre><code>Support (%) = (İlgili Ürünün Sepette Geçtiği Sayı / Tüm Sepet Sayısı) × 100
+Confidence (%)  = (İki ürünün birlikte yer aldığı sepet sayısı / Birinci ürünü içeren sepet sayısı) × 100
+Lift = Confidence /  Support</code></pre>
+
+<p>Öncelikle, support değeri her bir ürünün tüm sepetlerde görülme oranını ifade eder. Örneğin, “<strong>JAM MAKING SET WITH JARS</strong>” ürünü, analiz dönemindeki 20.725 benzersiz sepetin yaklaşık %5,5’inde yer aldı. Ardından, confidence metriği, hedef ürün ile birlikte görülen diğer ürünlerin bu birlikteliğinin ne kadar tutarlı olduğunu ölçtü. Bu hesaplama, “Hedef ürünü alan müşterilerin yüzde kaçı bu diğer ürünü de aldı?” sorusuna yanıt verir. Örneğin, “JAM MAKING SET PRINTED” ürünü, hedef ürünün bulunduğu sepetlerin %41,7’sinde yer alarak güçlü bir birliktelik gösterdi.</p>
+
+<p>Son olarak, lift metriği ile bu birlikteliğin rastlantısal olup olmadığı değerlendirildi. Lift değeri 1’in üzerinde olduğunda pozitif ilişki, çok daha yüksek olduğunda ise beklenenden çok daha güçlü bir birliktelik olduğu kabul edilir. Örneğin, “JAM MAKING SET PRINTED” ürünü için lift değeri 7,39 olarak hesaplandı; bu, bu iki ürünün birlikte satın alınma olasılığının genel beklentiden yaklaşık yedi kat fazla olduğunu gösterir. Böylece, analiz yalnızca sıklığa değil, birlikteliğin gücüne de ışık tutarak sonraki pazarlama ve çapraz satış stratejilerine yön verecek sağlam bir temel oluşturdu.</p>
+
+<h3>Bundle Ürünlerini Seçme Stratejisi</h3>
+
+<p>Bu metrikler ışığında, iş kararları (örneğin bundle ürün oluşturma veya çapraz satış fırsatları) belirlenirken yalnızca lift değeri en yüksek olan ürünlere odaklanmak, karar sürecini tek boyutlu hale getirebilirdi. Lift yüksek olsa bile support değeri düşük olan kombinasyonlarda hedef müşteri kitlesi sınırlı kalabileceğinden, daha dengeli, tematik ve erişilebilir bir seçim yaklaşımı geliştirildi. Bu doğrultuda kullanılan seçim kriterleri aşağıdaki gibidir:</p>
+<p></p>
 <table>
   <thead>
-    <tr><th>Kanal</th><th>Yatırım ($)</th><th>Beklenen Getiri ($)</th><th>Etki Düzeyi</th></tr>
+    <tr><th>Kriter</th><th>Açıklama</th></tr>
   </thead>
   <tbody>
-    <tr><td>Google Ads</td><td>40</td><td>103,36</td><td>En yüksek etki</td></tr>
-    <tr><td>Meta</td><td>35</td><td>94,00</td><td>İkinci en iyi</td></tr>
-    <tr><td>Influencer</td><td>15</td><td>49,79</td><td>Orta düzey</td></tr>
-    <tr><td>TikTok</td><td>10</td><td>52,98</td><td>En düşük</td></tr>
+    <tr><td>Lift > 5</td><td>İki ürünün birlikte görülme olasılığının, rastgele seçime kıyasla anlamlı düzeyde yüksek olması.</td></tr>
+    <tr><td>Confidence > %25</td><td>Müşterilerin en az dörtte birinin bu ürünleri birlikte satın almış olması.</td></tr>
+    <tr><td>Fiyat Dengesi</td><td>Çok pahalı ürünleri eleyerek bundle’ların ulaşılabilirliğini artırmak.</td></tr>
+    <tr><td>Tema Uygunluğu</td><td>Ürünlerin mantıklı bir hikâye veya kullanım bağlamında bir araya gelmesini sağlamak.</td></tr>
   </tbody>
 </table>
 
-<h4>4. Sonuç ve ROI Değerlendirmesi</h4>
+<p>Bu yaklaşım sayesinde hem güçlü ilişki metriklerine sahip hem de pazarlama açısından anlamlı, geniş müşteri kitlesine hitap eden ürün çiftleri önceliklendirildi.</p>
+
+<h3>Bundle Ürün Seçimi ve Paket Fiyatlandırması</h3>
+
+<p>Analiz sürecinde, “<strong>JAM MAKING SET WITH JARS</strong>” ana ürünü için birlikte satın alma potansiyeli yüksek üç tamamlayıcı ürün belirlendikten sonra, paket fiyatlandırması adımına geçilmiştir. Seçilen ürünler, yüksek lift ve confidence değerleri ile birlikte görsel ve işlevsel uyumları dikkate alınarak seçilmiştir:</p>
+
 <ul>
-  <li>Bu dağılım ile toplam beklenen getiri <strong>300,13 $</strong> olarak hesaplanmıştır.</li>
-  <li>ROI (Yatırım Getirisi) en yüksek seviyeye çıkmıştır.</li>
-  <li>Stratejik olarak, yüksek katsayıya sahip Google Ads ve Meta’ya ağırlık verilmesi; düşük katsayıya sahip Influencer ve TikTok kanallarına ise sınırlı yatırım yapılması en verimli sonuçları sağlamaktadır.</li>
+  <li><strong>JAM MAKING SET PRINTED</strong> – En yüksek lift değerine sahip ürün.</li>
+  <li><strong>SET OF 3 CAKE TINS PANTRY DESIGN</strong> – Görsel ve işlevsel açıdan uyumlu temaya sahip.</li>
+  <li><strong>RECIPE BOX PANTRY YELLOW DESIGN</strong> – Tarif saklama işlevi ile ana ürünü tamamlıyor.</li>
 </ul>
-<p>Bu analiz, kısıtlı bütçeyle maksimum satış artışını hedefleyen veri odaklı bir yatırım stratejisi sunmaktadır.</p>
 
-<h2>Müşteri Yaşam Boyu Değeri (CLTV) Analizi</h2>
-<p>Bu bölüm, yapılan reklam harcamalarının finansal açıdan mantıklı olup olmadığını LTV (Customer Lifetime Value) ve CAC (Customer Acquisition Cost) karşılaştırması ile değerlendiriyor. Analiz adım adım ilerliyor.</p>
+<p>Tüm ürünlerin birim fiyatları üzerinden toplam paket maliyeti <strong>13.60 $</strong> olarak hesaplanmıştır. Müşterilere cazip bir teklif sunmak amacıyla iki farklı fiyatlandırma stratejisi geliştirilmiştir:</p>
 
-                   <img src="images/Excel 02_CLTV.png" style="width:1000px;height:500px;" data-position="center center" />
-									<p><i> Resim 8. Dönüşüm hunisi, CAC ve LTV/CAC oranı analizi.</i></p>
-                  
-<h4>1. User Conversion Funnel (Kullanıcı Dönüşüm Hunisi)</h4>
-<p>İlk tablo, reklam kampanyası ile ulaşılan kullanıcıların satın alma aşamasına kadar hangi oranlarda elendiğini gösteriyor:</p>
-																			<p></p>
-<table>
-  <thead>
-    <tr><th>Aşama</th><th>Kişi Sayısı</th><th>Dönüşüm Oranı</th><th>Kümülatif Dönüşüm</th></tr>
-  </thead>
-  <tbody>
-    <tr><td>Awareness (Farkındalık)</td><td>1000</td><td>%100</td><td>%100</td></tr>
-    <tr><td>App Downloads (Uygulama İndirme)</td><td>300</td><td>%30</td><td>%30</td></tr>
-    <tr><td>Registrations (Kayıt)</td><td>240</td><td>%80</td><td>%24</td></tr>
-    <tr><td>Purchases (Satın Alma)</td><td>16</td><td>%6.7</td><td>%1.6</td></tr>
-  </tbody>
-</table>
-<p>Bu yapı sayesinde, reklam bütçesinin hangi aşamalarda kayıplar verdiği net biçimde izleniyor. Örneğin, farkındalık aşamasında ulaşılan 1000 kişiden sadece 16’sı satın almaya dönüyor (%1.6).</p>
-						
-
-<h4>2. Ad Spend and CAC (Reklam Harcaması ve Müşteri Edinme Maliyeti)</h4>
-										<p></p>
-<table>
-  <thead>
-    <tr><th>Aşama</th><th>Toplam Maliyet ($)</th><th>Ulaşılan Kişi</th><th>Kişi Başına Maliyet ($)</th></tr>
-  </thead>
-  <tbody>
-    <tr><td>Awareness</td><td>1000</td><td>1000</td><td>1.00</td></tr>
-    <tr><td>App Downloads</td><td>1000</td><td>300</td><td>3.33</td></tr>
-    <tr><td>Registrations</td><td>1000</td><td>240</td><td>4.17</td></tr>
-    <tr><td>Purchases</td><td>1000</td><td>16</td><td>62.50</td></tr>
-  </tbody>
-</table>
-<p>Burada CAC (Customer Acquisition Cost) = <code>Toplam Satın Alma Maliyeti / Satın Alan Kişi Sayısı</code> → CAC = $62.50<br/>Yani, bir müşteriyi kazanmanın maliyeti 62.50 dolar.</p>
-
-<h4>3. Customer Lifetime Value (LTV)</h4>
-<p>Bu bölümde, bir müşterinin şirketle ilişkisinin devam ettiği süre boyunca sağlayacağı toplam gelir hesaplanmaktadır. Hesaplamalar şu adımlar ile yapılmıştır:</p>
-<ul>
-  <li>Churn Rate (Yıllık) = <code>1 − Müşteri Tutma Oranı</code> (Retention → = %42, dolayısıyla Churn = 1 − 0.42 = 0.58 (%58))</li>
-  <li>Müşteri Yaşam Süresi (Yıl) = <code>1 ÷ Churn Rate</code> → = 1 ÷ 0.58 ≈ 1.72 yıl</li>
-  <li>Müşteri Yaşam Süresi (Ay) = <code>Müşteri Yaşam Süresi (Yıl) × 12</code> → 1.72 × 12 = 20.69 ay</li>
-  <li>Kullanıcı Başına Aylık Gelir = 15.00 $ (mevcut gelir verisi)</li>
-  <li>Müşteri Yaşam Boyu Değeri (LTV) = <code>Müşteri Yaşam Süresi (Ay) × Kullanıcı Başına Aylık Gelir</code> → 20,69 × 15,00 = 310,34 $.</li>
-</ul>
-<p>Bu hesaplama sonucunda, ortalama bir müşterinin yaşam boyu şirkete getireceği gelir 310,34 $ olarak belirlenmiştir.</p>
-
-<h4>4. LTV / CAC Karşılaştırması</h4>
-<p><code>LTV / CAC</code> = 310.34 ÷ 62.50 = 4.97</p>
-<p>Yani, bir müşteriden yaşam boyu elde edilen gelir (LTV), onu kazanmak için harcanan maliyetin (CAC) yaklaşık 5 katı.</br>
-Genel kabul gören iş kârlılık kriterine göre, <strong>LTV/CAC oranının en az 3</strong> olması beklenir. Burada elde edilen 4,97 değeri, bu eşiğin oldukça üzerinde olup, yatırımın kârlı ve sürdürülebilir olduğunu göstermektedir. Bu nedenle sonuç kısmında "Feasible" (Uygulanabilir/Kârlı) değerlendirmesi yapılmıştır.</p>
-
-<h2>Temel Bulgular</h2>
 <ol>
-  <li><strong>Reklam Kanallarının Satış Üzerindeki Etkisi</strong>
-    <ul>
-      <li>Google reklam harcamaları, satışlar üzerinde açık ara en yüksek pozitif etkiye sahip. Korelasyon analizi (CORREL) sonuçları, Google değişkeninin satışlarla güçlü bir doğrusal ilişkiye sahip olduğunu gösteriyor. Tek değişkenli regresyon grafiğinde eğim katsayısı (slope) diğer kanallara kıyasla belirgin şekilde yüksek, bu da Google’daki 1 birimlik artışın satışlarda daha yüksek artışa karşılık geldiğini ortaya koyuyor.</li>
-      <li>TikTok reklamları, satışlarla anlamlı ama Google’a kıyasla daha düşük etkili bir ilişki sergiliyor.</li>
-      <li>Meta ve Influencer reklam harcamaları ise satışlarla daha zayıf korelasyonlara sahip; bu da bu kanalların tek başına satış hacmini artırmada yeterince güçlü olmadığını gösteriyor.</li>
-    </ul>
-  </li>
-
-  <li><strong>Bütçe Optimizasyonu ve ROI</strong>
-    <ul>
-      <li>Çoklu regresyon analizine göre, 100$’lık sınırlı bütçenin kanallara dağıtımında Google (%40) ve TikTok (%30) ağırlığı ROI’yi maksimize ediyor.</li>
-      <li>Meta (%20) ve Influencer (%10) harcamaları, toplam bütçede daha küçük pay almasına rağmen, kanallar arası çeşitliliği koruyarak risk dağılımı sağlıyor.</li>
-      <li>Bu dağılımla hesaplanan ROI değeri, alternatif senaryolara kıyasla en yüksek seviyeye ulaştı.</li>
-    </ul>
-  </li>
-
-  <li><strong>Veri Temizleme Sonrası Model Performansı</strong>
-    <ul>
-      <li>Eksik veri doldurma (regresyon ve medyan yöntemleri) ve aykırı değerlerin cap edilmesi sonrası, değişkenlerin standart sapmaları dengelendi.</li>
-      <li>Temiz veri ile yapılan regresyon modellerinde R² değerleri anlamlı şekilde yükseldi. Bu, veri temizliğinin model doğruluğunu artırmada kritik olduğunu kanıtlıyor.</li>
-    </ul>
-  </li>
-
-  <li><strong>CLTV – CAC Analizi</strong>
-    <ul>
-      <li>CLTV hesaplamaları sonucunda elde edilen değer, müşteri edinme maliyeti (CAC) değerinin üzerinde.</li>
-      <li>Bu fark, reklam yatırımlarının uzun vadede finansal olarak mantıklı olduğunu gösteriyor. CLTV’nin CAC’ten belirgin şekilde yüksek olması, mevcut stratejinin kârlı bir yatırım olduğunu doğruluyor.</li>
-    </ul>
-  </li>
-
-  <li><strong>Google Kanalının Stratejik Önemi</strong>
-    <ul>
-      <li>Hem tek değişkenli hem çoklu regresyon analizinde Google’ın katsayısı, diğer tüm kanallardan daha yüksek çıktı.</li>
-      <li>Bu durum, bütçe optimizasyonunda Google kanalının temel omurga olarak korunması gerektiğini net şekilde ortaya koyuyor.</li>
-    </ul>
-  </li>
+  <li><strong>%15 indirimli paket fiyatı:</strong> 11.56 $</li>
+  <li><strong>Psikolojik fiyatlandırma:</strong> 11.90 $</li>
 </ol>
 
-<h2>Öneriler</h2>
+<p>Bu yaklaşım, hem fiyat cazibesini hem de algısal değer avantajını bir araya getirerek satış olasılığını artırmayı hedeflemektedir.</p>
+
+<h3>Kampanya Maili – Ürün Hikayesi</h3>
+
+<pre><code>Konu: Büyükannenin Reçel Mirası: %50 İndirim Sizi Bekliyor!
+Gövde:
+
+Sınırlı süreli reçel paketi setimizi sunuyoruz — stoklar tükenene kadar!
+
+Bir zamanlar, her yaz sonunda bir büyükanne tatlı ritüeline başlardı. Torunları fal taşı gibi açılmış gözlerle izlerken, şekerli meyvelerin kokusu evi doldururdu. Güvendiği reçel kavanozlarını kullanır, elle çizilmiş etiketler ekler, kek kalıplarında meyveli kekler pişirir ve her tarifi sarı kutusuna özenle yazarak sadece lezzetleri değil, anıları da saklardı.
+
+✨ Büyükannenin Reçel Mirası Paketi'nin içinde neler var?
+✅ KAVANOZLU REÇEL YAPIM SETİ
+✅ BASKILI REÇEL YAPIM SETİ
+✅ 3'LÜ KEK KALIBI SETİ
+✅ SARI TARİF KUTUSU
+💰 Hepsi sadece ₺11,90
+📦 [Hemen Sipariş Verin]
+
+💡 Anneanneden ipucu:
+"Erik reçelinize bir tutam tarçın ekleyin - çocuklar asla unutamayacak."
+
+🎟 Kampanya Kodu: JAM 50
+📅 Geçerlilik Tarihi: 1-10 Ağustos
+Saygılarımızla,
+Müşteri Deneyimi Ekibiniz 💛</code></pre>
+
+<h2>RFM Analizi</h2>
+
+<p>RFM (Recency, Frequency, Monetary) analizi; müşterileri satın alma alışkanlıklarına göre üç ana boyutta değerlendirir:</p>
+
+<ul>
+  <li><strong>Recency (Yakınlık):</strong> Müşterinin en son ne zaman alışveriş yaptığı. Daha düşük gün farkı, müşterinin yakın zamanda alışveriş yaptığını gösterir.</li>
+  <li><strong>Frequency (Sıklık):</strong> Belirli bir zaman diliminde kaç kez alışveriş yaptığı. Daha yüksek sayı, markayla daha sık temas eden müşteri anlamına gelir.</li>
+  <li><strong>Monetary (Parasal Değer):</strong> Müşterinin toplam harcama tutarı. Daha yüksek tutar, daha değerli bir müşteri profili ortaya koyar.</li>
+</ul>
+
+<p>Bu üç boyut, müşteri sadakatini ve işletmeye kattıkları değeri anlamak için bir arada değerlendirilir. Her müşteri, her boyutta 1 ile 5 arasında puan alır (5 en iyi değer).</p>
+
+<p>Bu analizde, “<strong>JAM MAKING SET WITH JARS</strong>” ürününü satın alan müşterilerimizin bir “müşteri karnesi” çıkarılarak, onlarla gerektiği şekilde ilgilenmek ve kaçma risklerini azaltmak hedeflenmiştir. Bahsedilen boyutlar için, Excel üzerinde pivot tablolar ve fonksiyonlar kullanılarak detaylı hesaplamalar gerçekleştirilmiştir.</p>
+
+<h3>RFM Metriklerinin Hesaplanması</h3>
+
+<h4>Adım 1 – Monetary (Toplam Harcama Tutarı)</h4>
+<p>İlk olarak, “JAM MAKING SET WITH JARS” ürününü satın alan müşterilerin, toplam alışveriş tutarları hesaplandı. Burada her müşteri için, alışveriş faturalarındaki ürün bedelleri SUM fonksiyonu ile toplanarak Monetary değeri belirlendi. Bu değer, müşterinin şirkete kattığı ekonomik katkıyı ifade ediyor.</p>
+
+<h4>Adım 2 – Frequency (Satın Alma Sıklığı)</h4>
+<p>Ardından, her müşterinin kaç farklı alışveriş yaptığı tespit edildi. Bunun için, her müşterinin tekrar eden fatura kayıtları temizlenip tekilleştirildi, ardından COUNT fonksiyonu ile toplam alışveriş adedi hesaplandı. Böylece müşterilerin markayla ne sıklıkla etkileşimde bulunduğu ortaya çıkarıldı.</p>
+
+<h4>Adım 3 – Recency (Son Alışverişten Geçen Gün Sayısı)</h4>
+<p>Üçüncü adımda, müşterilerin en son alışveriş yaptığı tarih ile analiz tarihi arasındaki gün farkı hesaplandı. Daha düşük gün farkı, müşterinin yakın zamanda aktif olduğunu; yüksek gün farkı ise uzun süredir alışveriş yapmadığını gösterir.</p>
+
+<h4>Adım 4 – Tenure (İlk Alışverişten Bu Yana Geçen Süre)</h4>
+<p>RFM metodolojisinde yer almasa da, ek olarak müşterilerin ilk alışverişinden bugüne kadar geçen süre (tenure) de hesaplandı. Bu metrik, müşteri ile marka arasındaki toplam ilişki süresini gösterir. Böylece, ilk alışverişten bugüne geçen süre ile son alışverişten bu yana geçen gün sayısı karşılaştırılarak, müşterinin ilişkisinin başından beri ne kadar aktif kaldığı ve yakın zamanda etkileşim sıklığının azalıp azalmadığı analiz edilebilmiştir. Bu karşılaştırma, özellikle sadakat seviyesini ve terk etme eğilimini daha net anlamada önemli bir tamamlayıcı içgörü sağlamaktadır.</p>
+
+<h4>Adım 5 – Puanlama ve Karnenin Oluşturulması</h4>
+<p>Metrikler (Recency, Frequency) 1–5 arasında puanlandı.</p>
+
+<ul>
+  <li>5 puan: O metrikte en iyi durumda olan müşteri</li>
+  <li>1 puan: O metrikte en zayıf durumda olan müşteri</li>
+</ul>
+
+<p>Bu adımların ardından, aşağıdaki tabloda görüldüğü üzere her müşteri için ilgili metrikler VLOOKUP işlevi kullanılarak tabloya aktarıldı. Sepet büyüklüğü, müşterinin alışveriş başına şirkete bıraktığı ortalama tutarı ifade eder ve <code>=W4/V4</code> formülü ile (ör. <code>=W4/V4</code>) hesaplanmıştır. Böylece her müşteri için Recency, Frequency, Monetary ve Basket Size verilerini bir arada gösteren bütünsel bir yapı elde edildi.</p>
+
+<h3>RFM Skorlarının Hesaplanması ve Segmentlerin Oluşturulması</h3>
+
+<p>Daha önce hesaplanmış Recency Score ve Frequency Score değerleri kullanılarak FR Segment kodları oluşturulmuştur.</p>
+
+<p>Bu kodlar, müşteri segmentlerini belirlemek için referans olarak kullanılmıştır. Segment Name sütununda görülen isimler, FR Segment kodlarının LOOKUP formülü ile önceden tanımlı segment eşleştirme tablosundan (Segment Name ve FR eşleşmeleri) çekilmesiyle elde edilmiştir. Böylece her müşteri, alışveriş sıklığı ve son alışveriş zamanına göre anlamlı bir segment adıyla etiketlenmiştir.</p>
+
+<p>Segmentlerin adlandırılması, müşteri davranışlarını stratejik olarak anlamlandırmayı sağlamaktadır:</p>
+									<p></p>
+
+<table>
+  <thead>
+    <tr><th>Segment</th><th>Açıklama</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Champions</td><td>En sık ve en yakın zamanda alışveriş yapan en değerli müşteriler</td></tr>
+    <tr><td>Loyal Customers</td><td>Sık alışveriş yapan, sadık müşteriler</td></tr>
+    <tr><td>Potential Loyalists</td><td>Bağlılık potansiyeli yüksek, yeni veya az sıklıkta alışveriş yapan müşteriler</td></tr>
+    <tr><td>New Customers</td><td>Yeni kazanılmış müşteriler</td></tr>
+    <tr><td>Promising</td><td>Yeni ve umut vadeden müşteriler</td></tr>
+    <tr><td>Need Attention</td><td>Etkileşimi azalan müşteriler</td></tr>
+    <tr><td>At Risk</td><td>Uzun süredir alışveriş yapmayan, kaybedilme riski olanlar</td></tr>
+    <tr><td>Can’t Lose Them</td><td>Değerli ama sessizleşmiş müşteriler</td></tr>
+    <tr><td>Hibernating</td><td>Çok uzun süredir pasif olanlar</td></tr>
+    <tr><td>About to Sleep</td><td>Neredeyse tamamen pasifleşmiş müşteriler</td></tr>
+  </tbody>
+</table>
+
+<p>Sayfanın sağındaki renkli treemap grafik, müşteri segmentlerini Recency–Frequency ekseninde görselleştirerek hem segmentlerin büyüklüğünü hem de konumunu göstermektedir. Bu görselleştirme, hangi müşteri gruplarının öncelikli olduğunu netleştirerek, pazarlama ve müşteri ilişkileri stratejilerinin belirlenmesine destek olur.</p>
+
+<h3>Segment Bazlı Performans Analizi</h3>
+
+<p>Bu aşamada, proje kapsamında önceden hesaplanan RFM metrikleri kullanılarak her müşterinin ait olduğu segment bilgisi VLOOKUP fonksiyonu ile müşteri bazlı tabloya entegre edilmiştir. Daha sonra bu segment verileri üzerinden pivot tablo oluşturularak segment bazlı performans analizi gerçekleştirilmiştir. Analizde, her segmentin müşteri sayısı, ortalama müşteri yaşı (tenure), son alışverişten bu yana geçen süreyi ifade eden recency değeri, alışveriş sıklığı (frequency), ortalama harcama tutarı (monetary), ortalama sepet büyüklüğü ve toplam gelir katkısı gibi metrikler karşılaştırmalı olarak değerlendir
+ildi. Bu çalışma, yüksek potansiyel taşıyan segmentleri, mevcut durumda en yüksek geliri sağlayan grupları ve risk altında bulunan müşteri kümelerini net bir şekilde ortaya koyarak, pazarlama stratejilerinde hangi segmentlere öncelik verileceğine dair güçlü bir karar destek zemini sunmaktadır.</p>
+
+<h3>Potansiyel Sadık Müşterilerin Ürün Bazlı Tercih Analizi</h3>
+
+<p>Satış veri setinde (hedef ürünü — <strong>JAM MAKING SET WITH JARS</strong> — içeren sepete ait satır kayıtları) zaten mevcut olan hedef sepet satırlarına, önceden hesaplanmış RFM segment etiketleri VLOOKUP ile aktarıldı. Bu işlem sırasında hiçbir ek filtreleme yapılmadı; her hedef sepet satırı doğrudan ilgili müşterinin RFM segmentiyle eşleştirildi.</p>
+
+<p>Eşleştirme tamamlandıktan sonra, Potential Loyalists (Potansiyel Sadıklar) segmentine ait satırlar pivot tablo ile özetlendi: her ürün için bu segmentin gerçekleştirdiği toplam satın alma sayısı hesaplandı ve ürünlere göre Top-10 tercih listesi çıkarıldı. Bu adımın amacı, potansiyel sadık müşterilerin hangi ürün gruplarında yoğunlaştığını tespit etmek ve bu veriye dayalı olarak kapsamlı, hedeflenmiş pazarlama ve bundle stratejileri geliştirmek için sağlam bir temel hazırlamaktır.</p>
+
+<h2>SEGMENT BAZLI ANALİZ ve KAMPANYA ÖNERİLERİ</h2>
+
+<p><strong>Champions (7 müşteri)</strong></p>
+<ul>
+  <li>En değerli müşteriler: En sık alışveriş yapanlar (avg. F = 10), en yüksek harcama (avg. $24,991), sık geliyorlar (avg. Recency = 34 gün).</li>
+  <li>Toplam ciro: $174,938 (%30'a yakın tek başlarına!)</li>
+</ul>
+
+<p>🎯 <strong>Kampanya Önerileri:</strong></p>
+<ul>
+  <li>VIP sadakat programı (erken erişim, özel indirim)</li>
+  <li>Kişisel hediye veya özel teşekkür e-postası</li>
+  <li>Yeni ürün lansmanları için beta tester olarak dahil et</li>
+</ul>
+
+<p><strong>Potential Loyalists (57 müşteri)</strong></p>
+<ul>
+  <li>Alışveriş frekansı yüksek (avg. F = 3), monetary $2,535</li>
+  <li>Recency 80 → Aktif olma potansiyelleri var</li>
+</ul>
+
+<p>🎯 <strong>Potansiyel Sadık Müşterilerin Sadık Müşteriye Dönüşmesi İçin Stratejiler</strong></p>
 <ol>
-  <li><strong>Google ve TikTok Ağırlığının Korunması</strong>
-    <p>Google reklam yatırımları mevcut etkisini korumalı, TikTok ise genç kitleye erişim avantajı nedeniyle ikinci sıradaki öncelikli kanal olarak bütçe planına dahil edilmeli.</p>
-  </li>
-
-  <li><strong>Meta ve Influencer Kanallarında Strateji Revizyonu</strong>
-    <p>Bu kanallar düşük korelasyon sergilese de, marka bilinirliği ve uzun vadeli potansiyel için tamamen kaldırılmamalı. Performansı artırmak için daha hedefli kampanyalar (retargeting, niche influencer iş birlikleri) denenmeli.</p>
-  </li>
-
-  <li><strong>Veri Toplama Sürecinin İyileştirilmesi</strong>
-    <p>Kayıp veri oranlarını azaltacak bir veri toplama protokolü oluşturulmalı. Özellikle satış kayıtlarının eksiksiz tutulması, mevsimsellik analizlerinde daha güçlü sonuçlar sağlayacaktır.</p>
-  </li>
-
-  <li><strong>CLTV İzleme ve CAC Optimizasyonu</strong>
-    <p>CLTV–CAC oranı düzenli olarak takip edilmeli. CAC’i düşürmek için hedef kitle segmentasyonu geliştirilmeli ve düşük dönüşüm oranına sahip kanallar optimize edilmeli.</p>
-  </li>
-
-  <li><strong>Aykırı Değer Yönetiminin Sürekliliği</strong>
-    <p>Cap yöntemi veri dengesini korudu, ancak bu işlem periyodik olarak tekrarlanmalı. Yeni veri eklendikçe outlier kontrolü yapılmalı, aksi takdirde model doğruluğu zamanla düşebilir.</p>
-  </li>
+  <li>Kişiselleştirilmiş Teklifler: En çok satın aldıkları bu 10 ürün, müşterilerin ilgi alanlarının ve ihtiyaçlarının doğrudan göstergesi. Bu ürünlerde özel indirim, paket kampanya veya "bir alana bir bedava" gibi promosyonlar uygulanabilir.</li>
+  <li>Çapraz Satış ve Tamamlayıcı Ürün Önerileri: Top 10 ürünü alanlara, bu ürünlerle uyumlu tamamlayıcı ürünler (örneğin aksesuar, yedek parça, ek set) önerilerek sepet değeri artırılabilir.</li>
+  <li>Sadakat Programı Entegrasyonu: Bu ürünlerin satın alımına ekstra puan veya özel statü avantajı eklenerek, müşterinin tekrar alım yapması teşvik edilebilir.</li>
+  <li>Yeni Ürün Lansmanlarında Öncelik: Bu gruba hitap eden ürün kategorilerinde yeni ürün çıktığında ilk olarak bu müşterilere sunulması, marka ile duygusal bağı güçlendirebilir.</li>
+  <li>Abonelik / Düzenli Teslimat Modeli: Tüketim sıklığı yüksek olan ürünler için abonelik sistemine davet edilerek müşteri elde tutma oranı artırılabilir.</li>
 </ol>
+
+<p><strong>Loyal Customers (2 müşteri)</strong></p>
+<ul>
+  <li>Yüksek frekans (F = 8), Recency = 110 → Son zamanlarda biraz uzaklaşmış</li>
+  <li>Kişi sayısı az ama dikkat edilmeli</li>
+</ul>
+
+<p>🎯 <strong>Kampanya Önerileri:</strong></p>
+<ul>
+  <li>Yeniden katılım hediyesi</li>
+  <li>“Size özel tekrar hoş geldiniz indirimi”</li>
+  <li>Feedback anketi ile temas kur (neden uzaklaştığını öğren)</li>
+</ul>
+
+<p><strong>At Risk (4 müşteri)</strong></p>
+<ul>
+  <li>Tenure yüksek (avg. 382 gün), ama Recency de yüksek (312 gün) → Kaybedilmek üzere</li>
+  <li>F = 3 → Geçmişte alışveriş yaptı</li>
+</ul>
+
+<p>🎯 <strong>Kampanya Önerileri:</strong></p>
+<ul>
+  <li>“Sizi özledik” başlıklı e-posta + özel %20 indirim</li>
+  <li>Ürün önerileri: daha önce aldıkları ürünlere benzer tavsiyeler</li>
+  <li>“Bir dahaki alışverişinizde ücretsiz kargo” promosyonu</li>
+</ul>
+
+<p><strong>Hibernating (227 müşteri)</strong></p>
+<ul>
+  <li>En geniş segment</li>
+  <li>Recency en yüksek (317 gün) → Çok uzun süredir alışveriş yapmamış</li>
+  <li>Tek alışveriş yapan müşteri (F = 1)</li>
+</ul>
+
+<p>🎯 <strong>Kampanya Önerileri:</strong></p>
+<ul>
+  <li>Otomatik e-posta serisi (3 hafta süren “geri kazanım kampanyası”)</li>
+  <li>“Daha önce alanların favorisi şu anda indirimde!” tarzında tetikleyici içerikler</li>
+  <li>Yeni ürün tanıtımları veya sezonluk kampanya duyurusu</li>
+</ul>
+
+<p><strong>Need Attention (10 müşteri)</strong></p>
+<ul>
+  <li>Ortalama monetary çok yüksek ($7,028), Basket Size $2,160</li>
+  <li>Recency makul (203 gün)</li>
+</ul>
+
+<p>🎯 <strong>Kampanya Önerileri:</strong></p>
+<ul>
+  <li>Yüksek sepet harcaması yapan VIP adayı → Hemen kaybedilmemeli</li>
+  <li>Sadakat programı ile bağlanmalı</li>
+  <li>“Yalnızca size özel teklif” e-postası</li>
+</ul>
+
+<p><strong>About to Sleep (63 müşteri)</strong></p>
+<ul>
+  <li>Orta derece uzaklaşmış, genellikle tek alışveriş (F=1), Recency = 217 gün</li>
+</ul>
+
+<p>🎯 <strong>Kampanya Önerileri:</strong></p>
+<ul>
+  <li>Hafif geri kazanım kampanyası</li>
+  <li>Yeni ürün kategorileri önerisi → belki ilgisini çeker</li>
+  <li>“Yıl dönümünüz kutlu olsun” tarzı kişiselleştirilmiş mesajlar</li>
+</ul>
 
 <h2>Sonuç</h2>
-<p>Bu proje, Excel ortamında veri temizleme, eksik veri doldurma, aykırı değer analizi, regresyon modelleme ve CLTV hesaplamasını bir arada sunarak pazarlama bütçesi optimizasyonu ve yatırım fizibilitesi konusunda kapsamlı bir çalışma ortaya koymaktadır.</p>
-									<ul>
-<li><strong>Teknik Beceriler:</strong> Veri temizleme, formül geliştirme, pivot tablo, korelasyon analizi, regresyon modelleme, ROI hesaplama</li>
-<li><strong>Analitik Yetkinlik:</strong> Kanal bazlı etki analizi, bütçe optimizasyonu, CLTV–CAC karşılaştırması</li>
-<li><strong>Stratejik Yaklaşım:</strong> Kısıtlı bütçelerde maksimum getiri sağlayacak kanal dağılımı ve uzun vadeli müşteri değeri yönetimi</li>
-</ul>
 
+<p>Bu proje, Excel ortamında müşteri verilerinin hazırlanması, RFM analizi ile segmentasyon yapılması ve sepet analizi ile ürün bazlı satın alma davranışlarının incelenmesini bir araya getirerek, müşteri değeri yönetimi ve hedefli pazarlama stratejileri için uygulanabilir içgörüler sunmaktadır.</p>
+
+<ul>
+  <li><strong>Teknik Beceriler:</strong> Veri düzenleme, segment entegrasyonu, RFM metrikleri oluşturma, pivot tablo ile analiz, sepet analizi, ürün bazlı sıralama,</li>
+  <li><strong>Analitik Yetkinlik:</strong> Segment bazlı müşteri davranış analizi, potansiyel müşteri tespiti, sepet kompozisyonu çıkarımı, çapraz satış ve upsell fırsatlarının belirlenmesi</li>
+  <li><strong>Stratejik Yaklaşım:</strong> Segment bazlı kampanya geliştirme, potansiyel sadık müşterilerin sadakat programlarına dahil edilmesi, yüksek talep gören ürünler üzerinden marka bağlılığının güçlendirilmesi, ürün kombinasyonlarının sepet analizi sonuçlarına kurgulanması</li>
+</ul>
 
 										
 
