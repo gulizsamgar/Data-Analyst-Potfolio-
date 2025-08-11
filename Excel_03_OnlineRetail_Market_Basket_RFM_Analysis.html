@@ -67,7 +67,8 @@
 <p>Diğer yandan, her müşterinin marka ile kurduğu ilişki farklıdır. Kimileri sık ve yüksek tutarlı alışverişler yaparken, kimileri nadiren alışveriş yapar. RFM Analizi (Recency, Frequency, Monetary), bu farklılıkları net bir şekilde ortaya koyarak, müşteri tabanını değerlerine göre segmente eder. Böylece her gruba uygun pazarlama stratejileri geliştirilebilir ve müşteri kaybı azaltılabilir.</p>
 <p>Bu iki yaklaşım birleştiğinde, hem ürün bazlı hem müşteri bazlı stratejik fırsatlar aynı projede yakalanabilir.</p>
 
-
+                   <img src="images/Excel_03_BasketCover.png" alt="Excel Analysis" style="width:1000px;height:300px;" data-position="center center" />
+									
 <h2>Proje Hedefi</h2>
 <p>Bu proje, eksik veri ve aykırı değerlerin temizlenmesinin ardından, çoklu regresyon modeli ile satışa etki eden faktörleri belirlemeyi ve bu bulgular doğrultusunda pazarlama bütçesinin hangi kanallara dağıtılması gerektiğini belirleyerek maksimum yatırım getirisi elde etmeyi amaçlamaktadır.
 Analiz süreci yalnızca satış tahmini yapmakla sınırlı kalmamış, Customer Lifetime Value (CLTV) ve Customer Acquisition Cost (CAC) hesaplamaları da yapılarak, yatırımın finansal mantığı sorgulanmıştır.</p>
@@ -85,24 +86,26 @@ Analiz süreci yalnızca satış tahmini yapmakla sınırlı kalmamış, Custome
   <li>Veri süresi: 11 Mart 2023 — 26 Eylül 2023</li>
 </ul>
 
-                  <h2>Analiz</h2>
+                <h2>Analiz</h2>
 
-									<p>keşifsel veri analizleri gerçekleştirmek ve iç görüler elde etmek amacıyla aşağıdaki iş sorularına odaklanılmıştır:</p>
+<p>Bu proje boyunca yanıtlanması hedeflenen temel iş sorularına odaklanılmıştır:</p>
+
 <h4>İş Soruları</h4>
 
 <ol>
-  <li>Hangi reklam kanalı satışlarla en güçlü ilişkiye sahiptir?</li>
-  <li>Kısıtlı bir bütçe farklı kanallara dağıtıldığında en yüksek getiriyi sağlayacak dağılım nedir?</li>
-  <li>CLTV değeri, müşteri edinme maliyetini karşılayacak kadar yüksek mi?</li>
-  <li>Veri temizleme adımları satış tahminlerinin doğruluğunu nasıl etkiledi?</li>
+  <li>Hangi ürünler, müşteriler tarafından en sık birlikte satın alınmaktadır?</li>
+  <li>Sepet başına ortalama ürün sayısı nedir ve hangi ürünler büyük sepetlerde daha sık yer almaktadır?</li>
+  <li>Destek, güven ve asansör değerleri açısından en güçlü ürün çiftleri hangileridir?</li>
+  <li>Müşteri tabanı satın alma davranışlarına göre hangi segmentlere ayrılmaktadır ve her segmentin özellikleri nelerdir?</li>
+  <li>Potansiyel olarak sadakat gösterecek müşteri grupları kimlerdir ve hangi ürünleri daha fazla satın almaktadırlar?</li>
 </ol>
-
+									
 <h2>Kurulum: Veri Hazırlığı ve Temizleme</h2>
 
 <h3>Kayıp Değer Analizi</h3>
 <p>Veri setinde analiz öncesi eksik değer tespiti ve uygun doldurma yöntemlerinin belirlenmesi kritik bir adım olarak gerçekleştirildi. Missing Value &amp; Descriptive Statistics Analysis tablosu yardımıyla her değişken için eksik veri sayısı, yüzdesi, ortalama, medyan, standart sapma, değişim katsayısı (CV) ve Google Ads ile korelasyon değerleri hesaplandı.</p>
 
-                   <img src="images/Excel 02_Missing_Values.png" alt="Excel Analysis" style="width:1000px;height:200px;" data-position="center center" />
+                   <img src="images/Excel_03_BasketCover.png" alt="Excel Analysis" style="width:1000px;height:300px;" data-position="center center" />
 									<p><i> Resim 1. Eksik değerler ve doldurma yöntemleri tablosu.</i></p>
 
 <p><strong>Doldurma Yöntemlerinin Belirlenmesi</strong></p>
