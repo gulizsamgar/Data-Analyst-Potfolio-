@@ -113,7 +113,7 @@
 
 <p>İlk olarak, pivot tablo kullanılarak her sepetteki ürün adedi hesaplanmıştır. COUNT fonksiyonu ile her fatura satırında yer alan ürünler sayılmış, tekil fatura numaralarının sayılmasıyla toplam 20.725 sepet belirlenmiştir. Sepet boyutları dağılımından MEDIAN fonksiyonu ile tipik sepet büyüklüğü hesaplanmış ve 15 ürün olarak bulunmuştur. Medyanın tercih edilmesi, aşırı yüksek veya düşük adetli siparişlerin analizi bozmasının önüne geçerek daha gerçekçi bir “ortalama sepet” profilinin ortaya çıkarılmasını sağlamıştır.</p>
 
-									<img src="images/Excel 03_BasketCover.png" alt="Excel Analysis" style="width:1000px;height:300px;" data-position="center center" />
+									<img src="images/Excel 03_Pivot1.png" alt="Excel Analysis" style="width:600px;height:400px;" data-position="center center" />
 									
 <h3>Hedef Sepet Belirleme ve Sepet Görülme Oranı Hesaplama</h3>
 
@@ -125,7 +125,7 @@
 
 <p>Hedef ürün olarak “<strong>JAM MAKING SET WITH JARS</strong>” belirlenmiş ve %5,5 oranla tüm sepetlerde yer aldığı tespit edilmiştir. Bu ürünün bulunduğu faturalar filtrelenerek ayrı bir listede “Target Basket” etiketiyle işaretlenmiştir. Böylece, ilerleyen analizlerde bu ürünün satın alındığı sepetlerde başka hangi ürünlerin yer aldığı incelenebilecektir.</p>
 
-									<img src="images/Excel 03_BasketCover.png" alt="Excel Analysis" style="width:1000px;height:300px;" data-position="center center" />
+									<img src="images/Excel 03_Pivot2.png" alt="Excel Analysis" style="width:1000px;height:300px;" data-position="center center" />
 									
 <h3>Hedef Ürünle Birlikte Satılan Ürünlerin Tespiti</h3>
 
@@ -135,7 +135,7 @@
 
 <p>Bu işlem sayesinde, hedef ürünün yer aldığı sepetlerde birlikte satın alınan diğer ürünler kolayca tespit edilebilmiş, ilerleyen adımlarda ürün birliktelik analizi için gerekli alt veri seti hazırlanmıştır.</p>
 
-									 <img src="images/Excel 03_BasketCover.png" alt="Excel Analysis" style="width:1000px;height:300px;" data-position="center center" />
+									 <img src="images/Excel 03_Target Baskets.png" alt="Excel Analysis" style="width:1000px;height:300px;" data-position="center center" />
 									
 <h3>Hedef Ürün Etrafında Veri Hazırlığı</h3>
 
@@ -143,7 +143,7 @@
 
 <p>Ayrıca, satır düzeyinde Amount (satış getirisi), Price (birim fiyat) ve DateDiff (analiz tarihi ile işlem tarihi arasındaki gün farkı) gibi ek sütunlar hesaplanmıştır. Bu yardımcı değişkenler, ilerleyen aşamalarda yapılacak gelir analizi ve zaman bazlı değerlendirmeler için veri altyapısını oluşturmuştur.</p>
   
-									<img src="images/Excel 03_BasketCover.png" alt="Excel Analysis" style="width:1000px;height:300px;" data-position="center center" />
+									<img src="images/Excel 03_Jam_Orders.png" alt="Excel Analysis" style="width:1000px;height:300px;" data-position="center center" />
 									
 <h3>Birliktelik Metriklerinin Hesaplanması</h3>
 
@@ -177,7 +177,7 @@ Lift = Confidence /  Support</code></pre>
 
 <p>Bu yaklaşım sayesinde hem güçlü ilişki metriklerine sahip hem de pazarlama açısından anlamlı, geniş müşteri kitlesine hitap eden ürün çiftleri önceliklendirildi.</p>
  
-									<img src="images/Excel 03_BasketCover.png" alt="Excel Analysis" style="width:1000px;height:300px;" data-position="center center" />
+									<img src="images/Excel 03_Basket_Size_Analysis.png" alt="Excel Analysis" style="width:1000px;height:300px;" data-position="center center" />
 									
 <h3>Bundle Ürün Seçimi ve Paket Fiyatlandırması</h3>
 
@@ -198,7 +198,7 @@ Lift = Confidence /  Support</code></pre>
 
 <p>Bu yaklaşım, hem fiyat cazibesini hem de algısal değer avantajını bir araya getirerek satış olasılığını artırmayı hedeflemektedir.</p>
 
-									 <img src="images/Excel 03_BasketCover.png" alt="Excel Analysis" style="width:1000px;height:300px;" data-position="center center" />
+									 <img src="images/Excel 03_Budle_Email.png" alt="Excel Analysis" style="width:1000px;height:300px;" data-position="center center" />
 									
 <h3>Kampanya Maili – Ürün Hikayesi</h3>
 
@@ -220,7 +220,7 @@ Güvendiği reçel kavanozlarını kullanır, elle çizilmiş etiketler ekler, k
 💰 Hepsi sadece ₺11,90
 📦 [Hemen Sipariş Verin]
 
-  <img src="images/Excel 03_Mail_Bundles.png" alt="Excel Analysis" style="width:1000px;height:500px;" data-position="center center" />
+  <img src="images/Excel 03_Mail_Bundles.png" alt="Excel Analysis" style="width:600px;height:500px;" data-position="center center" />
 	
 💡 Anneanneden ipucu:
 "Erik reçelinize bir tutam tarçın ekleyin - çocuklar asla unutamayacak."
@@ -266,8 +266,12 @@ Müşteri Deneyimi Ekibiniz 💛</code></pre>
   <li>1 puan: O metrikte en zayıf durumda olan müşteri</li>
 </ul>
 
+									  <img src="images/Excel 03_RFM_Metrics_Calculation.png" alt="Excel Analysis" style="width:1000px;height:500px;" data-position="center center" />
+	
 <p>Bu adımların ardından, aşağıdaki tabloda görüldüğü üzere her müşteri için ilgili metrikler VLOOKUP işlevi kullanılarak tabloya aktarıldı. Sepet büyüklüğü, müşterinin alışveriş başına şirkete bıraktığı ortalama tutarı ifade eder ve <code>=W4/V4</code> formülü ile (ör. <code>=W4/V4</code>) hesaplanmıştır. Böylece her müşteri için Recency, Frequency, Monetary ve Basket Size verilerini bir arada gösteren bütünsel bir yapı elde edildi.</p>
-
+ 
+									<img src="images/Excel 03_Table1_RFM_Metrics.png" alt="Excel Analysis" style="width:600px;height:500px;" data-position="center center" />
+	
 <h3>RFM Skorlarının Hesaplanması ve Segmentlerin Oluşturulması</h3>
 
 <p>Daha önce hesaplanmış Recency Score ve Frequency Score değerleri kullanılarak FR Segment kodları oluşturulmuştur.
@@ -296,14 +300,14 @@ Müşteri Deneyimi Ekibiniz 💛</code></pre>
 
 <p>Sayfanın sağındaki renkli treemap grafik, müşteri segmentlerini Recency–Frequency ekseninde görselleştirerek hem segmentlerin büyüklüğünü hem de konumunu göstermektedir. Bu görselleştirme, hangi müşteri gruplarının öncelikli olduğunu netleştirerek, pazarlama ve müşteri ilişkileri stratejilerinin belirlenmesine destek olur.</p>
  
-									<img src="images/Excel 03_BasketCover.png" alt="Excel Analysis" style="width:1000px;height:300px;" data-position="center center" /> 
+									<img src="images/Excel 03_RFM_Scores_Segments.png" alt="Excel Analysis" style="width:1000px;height:300px;" data-position="center center" /> 
 									
 <h3>Segment Bazlı Performans Analizi</h3>
 
 <p>Bu aşamada, proje kapsamında önceden hesaplanan RFM metrikleri kullanılarak her müşterinin ait olduğu segment bilgisi VLOOKUP fonksiyonu ile müşteri bazlı tabloya entegre edilmiştir. Daha sonra bu segment verileri üzerinden pivot tablo oluşturularak segment bazlı performans analizi gerçekleştirilmiştir. Analizde, her segmentin müşteri sayısı, ortalama müşteri yaşı (tenure), son alışverişten bu yana geçen süreyi ifade eden recency değeri, alışveriş sıklığı (frequency), ortalama harcama tutarı (monetary), ortalama sepet büyüklüğü ve toplam gelir katkısı gibi metrikler karşılaştırmalı olarak değerlendir
 ildi. Bu çalışma, yüksek potansiyel taşıyan segmentleri, mevcut durumda en yüksek geliri sağlayan grupları ve risk altında bulunan müşteri kümelerini net bir şekilde ortaya koyarak, pazarlama stratejilerinde hangi segmentlere öncelik verileceğine dair güçlü bir karar destek zemini sunmaktadır.</p>
 
-									 <img src="images/Excel 03_BasketCover.png" alt="Excel Analysis" style="width:1000px;height:300px;" data-position="center center" />
+									 <img src="images/Excel 03_Segment_Analysis.png" alt="Excel Analysis" style="width:1000px;height:500px;" data-position="center center" />
 									
 <h3>Potansiyel Sadık Müşterilerin Ürün Bazlı Tercih Analizi</h3>
 
@@ -311,7 +315,7 @@ ildi. Bu çalışma, yüksek potansiyel taşıyan segmentleri, mevcut durumda en
 
 <p>Eşleştirme tamamlandıktan sonra, Potential Loyalists (Potansiyel Sadıklar) segmentine ait satırlar pivot tablo ile özetlendi: her ürün için bu segmentin gerçekleştirdiği toplam satın alma sayısı hesaplandı ve ürünlere göre Top-10 tercih listesi çıkarıldı. Bu adımın amacı, potansiyel sadık müşterilerin hangi ürün gruplarında yoğunlaştığını tespit etmek ve bu veriye dayalı olarak kapsamlı, hedeflenmiş pazarlama ve bundle stratejileri geliştirmek için sağlam bir temel hazırlamaktır.</p>
 
-									 <img src="images/Excel 03_BasketCover.png" alt="Excel Analysis" style="width:1000px;height:300px;" data-position="center center" />
+									 <img src="images/Excel 03_Potential Loyalist_Analysis.png" alt="Excel Analysis" style="width:1000px;height:500px;" data-position="center center" />
 									
 <h2>SEGMENT BAZLI ANALİZ ve KAMPANYA ÖNERİLERİ</h2>
 
