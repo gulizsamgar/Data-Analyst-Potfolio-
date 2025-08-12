@@ -74,9 +74,6 @@
 
 <p>Bu iki yaklaşım birleştiğinde, hem ürün bazlı hem müşteri bazlı stratejik fırsatlar aynı projede yakalanabilir.</p>
 
-<h2>Hedef</h2>
-
-<p>Bu proje, bir çevrim içi perakendecinin 2010–2011 yıllarındaki satış verilerini kullanarak, hem ürün bazında hem müşteri bazında ticari fırsatları ortaya çıkarmayı hedeflemektedir. Çalışma; satış verilerini analiz ederek, <strong>JAM MAKING SET WITH JARS</strong> ürününü satın alan müşterilerin sepetlerinden yola çıkıp birlikte satılmaya uygun (bundle) ürün kombinasyonlarını belirlemekte ve bu kombinasyonlar üzerinden pazarlama kurgusu geliştirmektedir. Aynı zamanda  <strong>RFM</strong> yöntemi ile müşteri tabanını segmentlere ayırarak bağlılık stratejileri geliştirmeyi amaçlamaktadır. Böylece, hangi ürünlerin paketlenebileceği, hangi müşteri gruplarına özel kampanyalar yapılabileceği ve müşteri sadakatini artırmak için hangi pazarlama stratejilerinin izlenebileceği konusunda veri temelli içgörüler elde edilmiştir.</p>
 
                    <img src="images/Excel 03_BasketCover.png" alt="Excel Analysis" style="width:1000px;height:300px;" data-position="center center" />
 									
@@ -116,6 +113,8 @@
 
 <p>İlk olarak, pivot tablo kullanılarak her sepetteki ürün adedi hesaplanmıştır. COUNT fonksiyonu ile her fatura satırında yer alan ürünler sayılmış, tekil fatura numaralarının sayılmasıyla toplam 20.725 sepet belirlenmiştir. Sepet boyutları dağılımından MEDIAN fonksiyonu ile tipik sepet büyüklüğü hesaplanmış ve 15 ürün olarak bulunmuştur. Medyanın tercih edilmesi, aşırı yüksek veya düşük adetli siparişlerin analizi bozmasının önüne geçerek daha gerçekçi bir “ortalama sepet” profilinin ortaya çıkarılmasını sağlamıştır.</p>
 
+									<img src="images/Excel 03_BasketCover.png" alt="Excel Analysis" style="width:1000px;height:300px;" data-position="center center" />
+									
 <h3>Hedef Sepet Belirleme ve Sepet Görülme Oranı Hesaplama</h3>
 
 <p>Bunun ardından, pivot tablo aracılığıyla veri kümesindeki tüm ürünler tek tek değerlendirilmiştir. Her bir ürün için toplam satış adedi (Units Sold) hesaplanmış, bu işlemde ürün açıklaması (Description) alanının saydırılmasıyla COUNT fonksiyonu kullanılmıştır. Böylece hangi ürünün toplamda kaç kez sipariş edildiği net olarak ortaya konmuştur.</p>
@@ -126,6 +125,8 @@
 
 <p>Hedef ürün olarak “<strong>JAM MAKING SET WITH JARS</strong>” belirlenmiş ve %5,5 oranla tüm sepetlerde yer aldığı tespit edilmiştir. Bu ürünün bulunduğu faturalar filtrelenerek ayrı bir listede “Target Basket” etiketiyle işaretlenmiştir. Böylece, ilerleyen analizlerde bu ürünün satın alındığı sepetlerde başka hangi ürünlerin yer aldığı incelenebilecektir.</p>
 
+									<img src="images/Excel 03_BasketCover.png" alt="Excel Analysis" style="width:1000px;height:300px;" data-position="center center" />
+									
 <h3>Hedef Ürünle Birlikte Satılan Ürünlerin Tespiti</h3>
 
 <p>Analizin bu aşamasında amaç, hedef ürün olan “JAM MAKING SET WITH JARS” ile birlikte sepette yer alan diğer ürünleri belirlemektir. Önceki adımlarda hedef ürünü içeren faturalar zaten etiketlenmişti. Ancak bu bilgi, yalnızca özet tablo düzeyinde bulunuyordu ve orijinal veri setinde hangi satırların bu faturalarla ilişkili olduğunu doğrudan göstermiyordu.</p>
@@ -134,12 +135,16 @@
 
 <p>Bu işlem sayesinde, hedef ürünün yer aldığı sepetlerde birlikte satın alınan diğer ürünler kolayca tespit edilebilmiş, ilerleyen adımlarda ürün birliktelik analizi için gerekli alt veri seti hazırlanmıştır.</p>
 
+									 <img src="images/Excel 03_BasketCover.png" alt="Excel Analysis" style="width:1000px;height:300px;" data-position="center center" />
+									
 <h3>Hedef Ürün Etrafında Veri Hazırlığı</h3>
 
 <p>Ürün birlikteliklerini analiz edebilmek için ilk olarak hedef ürün olarak belirlenen "JAM MAKING SET WITH JARS" içeren tüm sepetler filtrelenmiştir. Böylece analiz yalnızca bu ürünü satın alan müşterilere ait işlemler üzerinden yürütülmüştür.</p>
 
 <p>Ayrıca, satır düzeyinde Amount (satış getirisi), Price (birim fiyat) ve DateDiff (analiz tarihi ile işlem tarihi arasındaki gün farkı) gibi ek sütunlar hesaplanmıştır. Bu yardımcı değişkenler, ilerleyen aşamalarda yapılacak gelir analizi ve zaman bazlı değerlendirmeler için veri altyapısını oluşturmuştur.</p>
-
+  
+									<img src="images/Excel 03_BasketCover.png" alt="Excel Analysis" style="width:1000px;height:300px;" data-position="center center" />
+									
 <h3>Birliktelik Metriklerinin Hesaplanması</h3>
 
 <p>Filtreleme sonrasında pivot tablo kullanılarak ; bu aşamada, hedef ürün “JAM MAKING SET WITH JARS” bulunan sepetlerde yer alan diğer ürünlerin, bu hedef ürünle birlikte kaç kez satın alındığı belirlendi. Yani iki ürünün aynı sepette yer aldığı toplam sepet sayısı sistematik olarak ortaya çıkarıldı. Ayrıca hedef ürünü içeren sepet sayısı 1.142 olarak tespit edildi. Elde edilen bu veri, birliktelik analizi sürecinde confidence (güven) metriğinin hesaplanabilmesi için gerekli olan “ürünü içeren hedef sepet sayısı” bilgisini sağlamaktadır.</p>
@@ -171,7 +176,9 @@ Lift = Confidence /  Support</code></pre>
 </table>
 
 <p>Bu yaklaşım sayesinde hem güçlü ilişki metriklerine sahip hem de pazarlama açısından anlamlı, geniş müşteri kitlesine hitap eden ürün çiftleri önceliklendirildi.</p>
-
+ 
+									<img src="images/Excel 03_BasketCover.png" alt="Excel Analysis" style="width:1000px;height:300px;" data-position="center center" />
+									
 <h3>Bundle Ürün Seçimi ve Paket Fiyatlandırması</h3>
 
 <p>Analiz sürecinde, “<strong>JAM MAKING SET WITH JARS</strong>” ana ürünü için birlikte satın alma potansiyeli yüksek üç tamamlayıcı ürün belirlendikten sonra, paket fiyatlandırması adımına geçilmiştir. Seçilen ürünler, yüksek lift ve confidence değerleri ile birlikte görsel ve işlevsel uyumları dikkate alınarak seçilmiştir:</p>
@@ -191,6 +198,8 @@ Lift = Confidence /  Support</code></pre>
 
 <p>Bu yaklaşım, hem fiyat cazibesini hem de algısal değer avantajını bir araya getirerek satış olasılığını artırmayı hedeflemektedir.</p>
 
+									 <img src="images/Excel 03_BasketCover.png" alt="Excel Analysis" style="width:1000px;height:300px;" data-position="center center" />
+									
 <h3>Kampanya Maili – Ürün Hikayesi</h3>
 
 <pre><code>Konu: Büyükannenin Reçel Mirası: %50 İndirim Sizi Bekliyor!
@@ -286,18 +295,24 @@ Müşteri Deneyimi Ekibiniz 💛</code></pre>
 </table>
 
 <p>Sayfanın sağındaki renkli treemap grafik, müşteri segmentlerini Recency–Frequency ekseninde görselleştirerek hem segmentlerin büyüklüğünü hem de konumunu göstermektedir. Bu görselleştirme, hangi müşteri gruplarının öncelikli olduğunu netleştirerek, pazarlama ve müşteri ilişkileri stratejilerinin belirlenmesine destek olur.</p>
-
+ 
+									<img src="images/Excel 03_BasketCover.png" alt="Excel Analysis" style="width:1000px;height:300px;" data-position="center center" /> 
+									
 <h3>Segment Bazlı Performans Analizi</h3>
 
 <p>Bu aşamada, proje kapsamında önceden hesaplanan RFM metrikleri kullanılarak her müşterinin ait olduğu segment bilgisi VLOOKUP fonksiyonu ile müşteri bazlı tabloya entegre edilmiştir. Daha sonra bu segment verileri üzerinden pivot tablo oluşturularak segment bazlı performans analizi gerçekleştirilmiştir. Analizde, her segmentin müşteri sayısı, ortalama müşteri yaşı (tenure), son alışverişten bu yana geçen süreyi ifade eden recency değeri, alışveriş sıklığı (frequency), ortalama harcama tutarı (monetary), ortalama sepet büyüklüğü ve toplam gelir katkısı gibi metrikler karşılaştırmalı olarak değerlendir
 ildi. Bu çalışma, yüksek potansiyel taşıyan segmentleri, mevcut durumda en yüksek geliri sağlayan grupları ve risk altında bulunan müşteri kümelerini net bir şekilde ortaya koyarak, pazarlama stratejilerinde hangi segmentlere öncelik verileceğine dair güçlü bir karar destek zemini sunmaktadır.</p>
 
+									 <img src="images/Excel 03_BasketCover.png" alt="Excel Analysis" style="width:1000px;height:300px;" data-position="center center" />
+									
 <h3>Potansiyel Sadık Müşterilerin Ürün Bazlı Tercih Analizi</h3>
 
 <p>Satış veri setinde (hedef ürünü — <strong>JAM MAKING SET WITH JARS</strong> — içeren sepete ait satır kayıtları) zaten mevcut olan hedef sepet satırlarına, önceden hesaplanmış RFM segment etiketleri VLOOKUP ile aktarıldı. Bu işlem sırasında hiçbir ek filtreleme yapılmadı; her hedef sepet satırı doğrudan ilgili müşterinin RFM segmentiyle eşleştirildi.</p>
 
 <p>Eşleştirme tamamlandıktan sonra, Potential Loyalists (Potansiyel Sadıklar) segmentine ait satırlar pivot tablo ile özetlendi: her ürün için bu segmentin gerçekleştirdiği toplam satın alma sayısı hesaplandı ve ürünlere göre Top-10 tercih listesi çıkarıldı. Bu adımın amacı, potansiyel sadık müşterilerin hangi ürün gruplarında yoğunlaştığını tespit etmek ve bu veriye dayalı olarak kapsamlı, hedeflenmiş pazarlama ve bundle stratejileri geliştirmek için sağlam bir temel hazırlamaktır.</p>
 
+									 <img src="images/Excel 03_BasketCover.png" alt="Excel Analysis" style="width:1000px;height:300px;" data-position="center center" />
+									
 <h2>SEGMENT BAZLI ANALİZ ve KAMPANYA ÖNERİLERİ</h2>
 
 <strong>Champions (7 müşteri)</strong>
